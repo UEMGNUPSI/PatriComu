@@ -33,7 +33,7 @@ import util.ColorirVenda;
 public class EmprestimoView extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form VendaView_DO_CU_QUENTE
+     * Creates new form 
      */
     
     PatrimonioM patrimonio = new PatrimonioM();
