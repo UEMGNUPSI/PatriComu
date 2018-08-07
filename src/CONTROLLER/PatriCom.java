@@ -1,15 +1,15 @@
 package CONTROLLER;
 
 
-import view.LoginView;
-import view.PrincipalView;
+import VIEW.LoginView;
+import VIEW.PrincipalView3;
 
 
-public class Energy {
+public class PatriCom {
 
 
     public static void main(String[] args) {
-    new Energy().executar();
+    new PatriCom().executar();
     }
     
     public void executar(){

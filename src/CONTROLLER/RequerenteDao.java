@@ -13,72 +13,71 @@ import java.util.List;
  */
 public class RequerenteDao {
     
-    public void salvar (RequerenteM Cliente) throws SQLException{
+    public void salvar (RequerenteM requerente) throws SQLException{
         PreparedStatement pst;
         String sql;
-        sql = "insert into Cliente set id = ?, nome = ?, cpf = ?, rg = ?, rua = ?, numero = ?, bairro = ?,"
-                + " cidade = ?, telefone = ?, celular1 = ?, celular2 = ?,"
-                + " Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ), observacao = ?";
+        sql = "insert into Requerente set id = ?, nome = ?, endereco = ?, cidade = ?, telefone = ?, email = ?, Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
+                + "ra = ?, rg = ?, cpf = ?, curso = ?, bloqueio = ?, senha = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1,0);
-        pst.setString(2, Cliente.getNome());
-        pst.setString(3, Cliente.getCpf());
-        pst.setString(4, Cliente.getRg());
-        pst.setString(5, Cliente.getRua());
-        pst.setString(6, Cliente.getNumero());
-        pst.setString(7, Cliente.getBairro()); 
-        pst.setString(8, Cliente.getCidade());
-        pst.setString(9, Cliente.getTelefone());
-        pst.setString(10, Cliente.getCelular1());
-        pst.setString(11, Cliente.getCelular2());
-        pst.setString(12, Cliente.getNascimento());
-        pst.setString(13, Cliente.getObservacao());         
+        pst.setString(2, requerente.getNome());
+        pst.setString(3, requerente.getEndereco());
+        pst.setString(4, requerente.getCidade());
+        pst.setString(5, requerente.getTelefone());
+        pst.setString(6, requerente.getEmail());
+        pst.setString(7, requerente.getNascimento());
+        pst.setString(8, requerente.getRA());
+        pst.setString(9, requerente.getRg());
+        pst.setString(10, requerente.getCpf());
+        pst.setString(11, requerente.getCurso());
+        pst.setBoolean(12, requerente.getBloqueio());
+        pst.setString(13, requerente.getSenha());
         pst.execute();
         pst.close();
     }
     
-    public void excluir(RequerenteM Cliente) throws SQLException{
+    public void excluir(RequerenteM requerente) throws SQLException{
         PreparedStatement pst;
         String sql;
-        sql = "delete from Cliente where id = ?";
+        sql = "delete from Requerente where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
-        pst.setInt(1, Cliente.getId());
+        pst.setInt(1, requerente.getId());
         pst.execute();
         pst.close();
     }
       
-    public void alterar(RequerenteM Cliente) throws SQLException{
+    public void alterar(RequerenteM requerente) throws SQLException{
         PreparedStatement pst;
         String sql;
-        sql = "update Cliente set "
+        sql = "update Requerente set "
                         + "nome = ?, "
-                        + "cpf = ?, "
-                        + "rg = ?, "
-                        + "rua = ?, "
-                        + "numero = ?, "
-                        + "bairro  = ?, "
-                        + "cidade  = ?, "
-                        + "telefone  = ?, "
-                        + "celular1  = ?, "
-                        + "celular2  = ?, "
+                        + "endereco = ?, "
+                        + "cidade = ?, "
+                        + "telefone = ?, "
+                        + "email = ?, "
                         + "Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ), "
-                        + "observacao  = ? "
+                        + "ra = ?, "
+                        + "rg = ?, "
+                        + "cpf = ?, "
+                        + "curso  = ?, "
+                        + "bloqueio  = ?, "
+                        + "senha  = ? "
 
                         + "where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
-        pst.setString(1, Cliente.getNome());
-        pst.setString(2, Cliente.getCpf());
-        pst.setString(3, Cliente.getRg());
-        pst.setString(4, Cliente.getRua());
-        pst.setString(5, Cliente.getNumero());
-        pst.setString(6, Cliente.getBairro()); 
-        pst.setString(7, Cliente.getCidade());
-        pst.setString(8, Cliente.getTelefone());
-        pst.setString(9, Cliente.getCelular1());
-        pst.setString(10, Cliente.getCelular2());
-        pst.setString(11, Cliente.getNascimento());
-        pst.setString(12, Cliente.getObservacao());
-        pst.setInt(13,Cliente.getId());
+        pst.setString(1, requerente.getNome());
+        pst.setString(2, requerente.getEndereco());
+        pst.setString(3, requerente.getCidade());
+        pst.setString(4, requerente.getTelefone());
+        pst.setString(5, requerente.getEmail());
+        pst.setString(6, requerente.getNascimento());
+        pst.setString(7, requerente.getRA());
+        pst.setString(8, requerente.getRg());
+        pst.setString(9, requerente.getCpf());
+        pst.setString(10, requerente.getCurso());
+        pst.setBoolean(11, requerente.getBloqueio());
+        pst.setString(12, requerente.getSenha());
+        pst.setInt(13,requerente.getId());
         pst.execute();
         pst.close();
      }
@@ -86,122 +85,122 @@ public class RequerenteDao {
     public List<RequerenteM> listaTodos() throws SQLException{
         PreparedStatement pst;
         String sql;
-        List<RequerenteM> listaCliente = new ArrayList<>();
-        sql = "select id, nome,cpf, rg, rua, numero, bairro, cidade, telefone, celular1,celular2,"
-                + " DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, observacao from Cliente order by nome";
+        List<RequerenteM> listaRequerente = new ArrayList<>();
+        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
+                + "ra, rg, cpf, curso, bloqueio, senha  from Requerente order by nome";
         pst = Conexao.getInstance().prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
         
         while(rs.next()){
-            listaCliente.add(new RequerenteM(
+            listaRequerente.add(new RequerenteM(
                             rs.getInt("id"),
                             rs.getString("nome"),
-                            rs.getString("cpf"),
-                            rs.getString("rg"),
-                            rs.getString("rua"),
-                            rs.getString("numero"),
-                            rs.getString("bairro"),
+                            rs.getString("endereco"),
                             rs.getString("cidade"),
                             rs.getString("telefone"),
-                            rs.getString("celular1"),
-                            rs.getString("celular2"),
+                            rs.getString("email"),
                             rs.getString("nascimento"),
-                            rs.getString("observacao")));
+                            rs.getString("ra"),
+                            rs.getString("rg"),
+                            rs.getString("cpf"),
+                            rs.getString("curso"),
+                            rs.getBoolean("bloqueio"),
+                            rs.getString("senha")));
         }
         pst.close();
-        return listaCliente;
+        return listaRequerente;
     }
     
     public RequerenteM busca(int id) throws SQLException{
         PreparedStatement pst;
         String sql;
-        RequerenteM cliente = null;        
-        sql = "select id, nome,cpf, rg, rua, numero, bairro, cidade, telefone, celular1,celular2,"
-                + " DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, observacao from Cliente where id = ?";
+        RequerenteM requerente = null;        
+        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
+                + "ra, rg, cpf, curso, bloqueio, senha from Requerente where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, id);
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
-            cliente = new RequerenteM(
+            requerente = new RequerenteM(
                             rs.getInt("id"),
                             rs.getString("nome"),
-                            rs.getString("cpf"),
-                            rs.getString("rg"),
-                            rs.getString("rua"),
-                            rs.getString("numero"),
-                            rs.getString("bairro"),
+                            rs.getString("endereco"),
                             rs.getString("cidade"),
                             rs.getString("telefone"),
-                            rs.getString("celular1"),
-                            rs.getString("celular2"),
+                            rs.getString("email"),
                             rs.getString("nascimento"),
-                            rs.getString("observacao"));
+                            rs.getString("ra"),
+                            rs.getString("rg"),
+                            rs.getString("cpf"),
+                            rs.getString("curso"),
+                            rs.getBoolean("bloqueio"),
+                            rs.getString("senha"));
         }
         pst.close();
-        return cliente;
+        return requerente;
     }
     
     public List<RequerenteM> buscaNomeLista(String Nome) throws SQLException{
         PreparedStatement pst;
         String sql;
-        List<RequerenteM> listaCliente = new ArrayList<>();
+        List<RequerenteM> listaRequerente = new ArrayList<>();
         String name = "%"+Nome+"%";
-        sql = "select id, nome,cpf, rg, rua, numero, bairro, cidade, telefone, celular1,celular2,"
-                + " DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, observacao from Cliente where nome like ?";
+        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
+                + "ra, rg, cpf, curso, bloqueio, senha from Requerente where nome like ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setString(1, name);
         pst.execute();
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
-            listaCliente.add(new RequerenteM(
+            listaRequerente.add(new RequerenteM(
                             rs.getInt("id"),
                             rs.getString("nome"),
-                            rs.getString("cpf"),
-                            rs.getString("rg"),
-                            rs.getString("rua"),
-                            rs.getString("numero"),
-                            rs.getString("bairro"),
+                            rs.getString("endereco"),
                             rs.getString("cidade"),
                             rs.getString("telefone"),
-                            rs.getString("celular1"),
-                            rs.getString("celular2"),
+                            rs.getString("email"),
                             rs.getString("nascimento"),
-                            rs.getString("observacao")));
+                            rs.getString("ra"),
+                            rs.getString("rg"),
+                            rs.getString("cpf"),
+                            rs.getString("curso"),
+                            rs.getBoolean("bloqueio"),
+                            rs.getString("senha")));
         }
 
         pst.close();
-        return listaCliente;
+        return listaRequerente;
     }
     
     public RequerenteM buscaNome2(String Nome) throws SQLException{
         PreparedStatement pst;
         String sql;
-        RequerenteM cliente = new RequerenteM();
+        RequerenteM requerente = new RequerenteM();
         String name = "%"+Nome+"%";
-        sql = "select id, nome,cpf, rg, rua, numero, bairro, cidade, telefone, celular1,celular2,"
-                + " DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, observacao from Cliente where nome like ?";
+        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
+                + "ra, rg, cpf, curso, bloqueio, senha from Requerente where nome like ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setString(1, name);
         pst.execute();
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
-            cliente = new RequerenteM(
+            requerente = new RequerenteM(
                             rs.getInt("id"),
                             rs.getString("nome"),
-                            rs.getString("cpf"),
-                            rs.getString("rg"),
-                            rs.getString("rua"),
-                            rs.getString("numero"),
-                            rs.getString("bairro"),
+                            rs.getString("endereco"),
                             rs.getString("cidade"),
                             rs.getString("telefone"),
-                            rs.getString("celular1"),
-                            rs.getString("celular2"),
+                            rs.getString("email"),
                             rs.getString("nascimento"),
-                            rs.getString("observacao"));
+                            rs.getString("ra"),
+                            rs.getString("rg"),
+                            rs.getString("cpf"),
+                            rs.getString("curso"),
+                            rs.getBoolean("bloqueio"),
+                            rs.getString("senha"));
         }
 
         pst.close();
-        return cliente;
+        return requerente;
     }
 }

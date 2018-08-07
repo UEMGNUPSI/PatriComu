@@ -17,7 +17,7 @@ public class UsuarioDao {
         PreparedStatement pst;
         String sql;
         sql = "insert into Funcionario set id = ?, nome = ?, cpf = ?, rg = ?, Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
-                + " telefone = ?, celular1 = ?, celular2 = ?, login = ?, senha = ? admin = ?";
+                + " telefone = ?, celular = ?, login = ?, senha = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1,0);
         pst.setString(2, funcionario.getNome());
@@ -25,11 +25,9 @@ public class UsuarioDao {
         pst.setString(4, funcionario.getRg());
         pst.setString(5, funcionario.getNascimento());
         pst.setString(6, funcionario.getTelefone());
-        pst.setString(7, funcionario.getCelular1());
-        pst.setString(8, funcionario.getCelular2());
-        pst.setString(9, funcionario.getLogin());
-        pst.setString(10, funcionario.getSenha());
-        pst.setBoolean(11, funcionario.getAdmin());        
+        pst.setString(7, funcionario.getCelular());
+        pst.setString(8, funcionario.getLogin());
+        pst.setString(9, funcionario.getSenha());     
         pst.execute();
         pst.close();
     }
@@ -53,11 +51,9 @@ public class UsuarioDao {
                         + "rg = ?, "
                         + "Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ), "
                         + "telefone = ?, "
-                        + "celular1 = ?, "
-                        + "celular2 = ?, "
+                        + "celular = ?, "
                         + "login = ?, "
-                        + "senha = ?, "
-                        + "admin = ? "
+                        + "senha = ? "
 
                         + "where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
@@ -66,12 +62,10 @@ public class UsuarioDao {
         pst.setString(3, funcionario.getRg());
         pst.setString(4, funcionario.getNascimento());
         pst.setString(5, funcionario.getTelefone());
-        pst.setString(6, funcionario.getCelular1());
-        pst.setString(7, funcionario.getCelular2());
-        pst.setString(8, funcionario.getLogin());
-        pst.setString(9, funcionario.getSenha());
-        pst.setBoolean(10, funcionario.getAdmin());
-        pst.setInt(11, funcionario.getId());
+        pst.setString(6, funcionario.getCelular());
+        pst.setString(7, funcionario.getLogin());
+        pst.setString(8, funcionario.getSenha());
+        pst.setInt(9, funcionario.getId());
         pst.execute();
         pst.close();
      }
@@ -80,7 +74,7 @@ public class UsuarioDao {
         PreparedStatement pst;
         String sql;
         List<UsuarioM> listaFuncionario = new ArrayList<>();
-        sql = "select id, nome, cpf, rg, DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, telefone, celular1, celular2, login, senha, admin from Funcionario order by nome";
+        sql = "select id, nome, cpf, rg, DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, telefone, celular, login, senha from Funcionario order by nome";
         pst = Conexao.getInstance().prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
@@ -91,11 +85,9 @@ public class UsuarioDao {
                             rs.getString("rg"),
                             rs.getString("nascimento"),
                             rs.getString("telefone"),
-                            rs.getString("celular1"),
-                            rs.getString("celular2"),
+                            rs.getString("celular"),
                             rs.getString("login"),
-                            rs.getString("senha"),
-                            rs.getBoolean("admin")));
+                            rs.getString("senha")));
         }
         pst.close();
         return listaFuncionario;
@@ -105,8 +97,8 @@ public class UsuarioDao {
         PreparedStatement pst;
         String sql;
         UsuarioM funcionario = null;        
-        sql = "select id, nome, cpf, rg, DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, telefone, celular1, celular2,"
-                + "login, senha, admin from Funcionario where id = ?";
+        sql = "select id, nome, cpf, rg, DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, telefone, celular, "
+                + "login, senha from Funcionario where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, id);
         ResultSet rs = pst.executeQuery();
@@ -118,11 +110,9 @@ public class UsuarioDao {
                             rs.getString("rg"),
                             rs.getString("nascimento"),
                             rs.getString("telefone"),
-                            rs.getString("celular1"),
-                            rs.getString("celular2"),
+                            rs.getString("celular"),
                             rs.getString("login"),
-                            rs.getString("senha"),
-                            rs.getBoolean("admin"));
+                            rs.getString("senha"));
         }
         pst.close();
         return funcionario;
@@ -132,8 +122,8 @@ public class UsuarioDao {
         PreparedStatement pst;
         String sql;
         UsuarioM funcionario = null;        
-        sql = "select id, nome, cpf, rg, DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, telefone, celular1, celular2,"
-                + "login, senha, admin from Funcionario where nome = ?";
+        sql = "select id, nome, cpf, rg, DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, telefone, celular, "
+                + "login, senha from Funcionario where nome = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setString(1, nome);
         ResultSet rs = pst.executeQuery();
@@ -145,11 +135,9 @@ public class UsuarioDao {
                             rs.getString("rg"),
                             rs.getString("nascimento"),
                             rs.getString("telefone"),
-                            rs.getString("celular1"),
-                            rs.getString("celular2"),
+                            rs.getString("celular"),
                             rs.getString("login"),
-                            rs.getString("senha"),
-                            rs.getBoolean("admin"));
+                            rs.getString("senha"));
         }
         pst.close();
         return funcionario;
@@ -160,8 +148,8 @@ public class UsuarioDao {
         String sql;
         List<UsuarioM> listaFuncionario = new ArrayList<>();
         String name = "%"+Nome+"%";
-        sql = "select id,nome, cpf, rg, DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, telefone, celular1, celular2,"
-                + "login, senha, admin from Funcionario where nome like ?";
+        sql = "select id,nome, cpf, rg, DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento, telefone, celular, "
+                + "login, senha from Funcionario where nome like ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setString(1, name);
         pst.execute();
@@ -174,11 +162,9 @@ public class UsuarioDao {
                             rs.getString("rg"),
                             rs.getString("nascimento"),
                             rs.getString("telefone"),
-                            rs.getString("celular1"),
-                            rs.getString("celular2"),
+                            rs.getString("celular"),
                             rs.getString("login"),
-                            rs.getString("senha"),
-                            rs.getBoolean("admin")));
+                            rs.getString("senha")));
         }
         pst.close();
         return listaFuncionario;
@@ -202,11 +188,9 @@ public class UsuarioDao {
                             rs.getString("rg"),
                             rs.getString("nascimento"),
                             rs.getString("telefone"),
-                            rs.getString("celular1"),
-                            rs.getString("celular2"),
+                            rs.getString("celular"),
                             rs.getString("login"),
-                            rs.getString("senha"),
-                            rs.getBoolean("admin"));;
+                            rs.getString("senha"));
             }
             pst.close();
             return funcionario;
