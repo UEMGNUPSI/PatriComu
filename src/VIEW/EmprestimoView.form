@@ -482,7 +482,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel9" min="-2" pref="166" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="txtIdFuncionario" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="txtIdUsuario" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="txtFuncionario" min="-2" pref="376" max="-2" attributes="0"/>
@@ -499,7 +499,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtIdFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtIdUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtFuncionario" min="-2" pref="26" max="-2" attributes="0"/>
@@ -514,7 +514,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Champagne &amp; Limousines" size="15" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Funcionario:"/>
+                    <Property name="text" type="java.lang.String" value="Usuario:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtFuncionario">
@@ -537,7 +537,7 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtFuncionarioMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtIdFuncionario">
+                <Component class="javax.swing.JTextField" name="txtIdUsuario">
                 </Component>
               </SubComponents>
             </Container>
@@ -566,7 +566,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel1" min="-2" pref="166" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="txtIdCliente" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="txtIdRequerente" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -579,7 +579,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtIdCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtIdRequerente" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtCliente" min="-2" pref="26" max="-2" attributes="0"/>
@@ -617,7 +617,7 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtClienteMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtIdCliente">
+                <Component class="javax.swing.JTextField" name="txtIdRequerente">
                 </Component>
               </SubComponents>
             </Container>
@@ -684,7 +684,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtFuncionario1" alignment="0" pref="376" max="32767" attributes="0"/>
+                              <Component id="txtProfessor" alignment="0" pref="376" max="32767" attributes="0"/>
                               <Component id="jLabel11" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
                               <Component id="jLabel12" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
@@ -699,7 +699,7 @@
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtFuncionario1" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="txtProfessor" min="-2" pref="26" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -710,7 +710,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="txtFuncionario1">
+                <Component class="javax.swing.JTextField" name="txtProfessor">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f5" green="f5" red="f5" type="rgb"/>
@@ -727,7 +727,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtFuncionario1MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtProfessorMouseClicked"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
@@ -753,7 +753,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea1">
+                    <Component class="javax.swing.JTextArea" name="txtDescricao">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f5" green="f5" red="f5" type="rgb"/>
@@ -1075,7 +1075,7 @@
                           <Component id="jScrollPane13" pref="550" max="32767" attributes="0"/>
                           <Component id="jSeparator9" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnExcluir" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="btnDevolver" min="-2" pref="120" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="txtIdVenda" min="-2" pref="62" max="-2" attributes="0"/>
                           </Group>
@@ -1093,7 +1093,7 @@
                       <Component id="jScrollPane13" pref="365" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnExcluir" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="btnDevolver" min="-2" pref="39" max="-2" attributes="0"/>
                           <Component id="txtIdVenda" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1172,7 +1172,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnExcluir">
+            <Component class="javax.swing.JButton" name="btnDevolver">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1180,7 +1180,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Champagne &amp; Limousines" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Excluir Venda"/>
+                <Property name="text" type="java.lang.String" value="Devolver Itens"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
@@ -1190,7 +1190,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDevolverActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtIdVenda">
@@ -1325,7 +1325,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="168" max="32767" attributes="0"/>
+                          <EmptySpace pref="142" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1492,7 +1492,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Champagne &amp; Limousines" size="15" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cliente:"/>
+                        <Property name="text" type="java.lang.String" value="Requerente:"/>
                       </Properties>
                     </Component>
                   </SubComponents>

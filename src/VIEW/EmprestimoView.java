@@ -88,8 +88,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         txtIdProduto.setVisible(false);
         txtIDIten.setVisible(false);
         txtQuantidadeTotal.setVisible(false);
-        txtIdFuncionario.setVisible(false);
-        txtIdCliente.setVisible(false);
+        txtIdUsuario.setVisible(false);
+        txtIdRequerente.setVisible(false);
         
         RequerenteDialog.setSize(525, 490);
         PatrimonioDialog.setSize(535, 500);
@@ -99,7 +99,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnAddItemVendas.setUI(new BasicButtonUI());
         btnCancelar.setUI(new BasicButtonUI());
         btnExcluiItemVenda.setUI(new BasicButtonUI());
-        btnExcluir.setUI(new BasicButtonUI());
+        btnDevolver.setUI(new BasicButtonUI());
         btnFinalizar.setUI(new BasicButtonUI());
         btnNovo.setUI(new BasicButtonUI());
         btnSalvar.setUI(new BasicButtonUI());
@@ -575,21 +575,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             tblItensDialog.setRowHeight(35);
             tblItensDialog.updateUI();
     }
-    
-    public void CalculaVenda(){
-        txtTotal.setText(String.valueOf(Float.valueOf(txtQuantidade.getText()) * Float.valueOf(txtUnidade.getText())));
-    }
-    
-    private float totalVenda(){
-        float total = 0;
-        for(ItenEmprestimoM iv : getListaItemVenda()){
-            total += iv.getTotal();
-        }
-        return total;
-    }
+
     
     public void PreparaVenda(){
-        txtQuantidade.setText("1");
         txtIdProduto.setText("");
         txtproduto.setText("");
     }
@@ -599,33 +587,23 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     public void limparCampos(){
         lblTOTAL.setText("");
         txtIDIten.setText("");
-        txtIdCliente.setText("");
+        txtIdRequerente.setText("");
         txtCliente.setText("");
         txtDataAtual.setText("");
-        txtQuantidade.setText("");
-        txtUnidade.setText("");
-        txtTotal.setText("");
-        cbxFormaPagamento.setSelectedIndex(0);
+        txtDataPrevista.setText("");
+        txtHora.setText("");
     }
    
     public void ativarCampos(){
-        txtIdCliente.setEnabled(true);
+        txtIdRequerente.setEnabled(true);
         txtCliente.setEnabled(true);
         txtDataAtual.setEnabled(true);
-        txtQuantidade.setEnabled(true);
-        txtUnidade.setEnabled(true);
-        txtTotal.setEnabled(true);
-        cbxFormaPagamento.setEnabled(true);
     }
 
     public void desativarCampos(){
-        txtIdCliente.setEnabled(false);
+        txtIdRequerente.setEnabled(false);
         txtCliente.setEnabled(false);
         txtDataAtual.setEnabled(false);
-        txtQuantidade.setEnabled(false);
-        txtUnidade.setEnabled(false);
-        txtTotal.setEnabled(false);
-        cbxFormaPagamento.setEnabled(false);
 
     }
    
@@ -679,19 +657,19 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         txtFuncionario = new javax.swing.JTextField();
-        txtIdFuncionario = new javax.swing.JTextField();
+        txtIdUsuario = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtCliente = new javax.swing.JTextField();
-        txtIdCliente = new javax.swing.JTextField();
+        txtIdRequerente = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
-        txtFuncionario1 = new javax.swing.JTextField();
+        txtProfessor = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtDescricao = new javax.swing.JTextArea();
         txtDataAtual = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         txtDataPrevista = new javax.swing.JFormattedTextField();
@@ -711,7 +689,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jScrollPane13 = new javax.swing.JScrollPane();
         tblItensDialog = new javax.swing.JTable();
         jSeparator9 = new javax.swing.JSeparator();
-        btnExcluir = new javax.swing.JButton();
+        btnDevolver = new javax.swing.JButton();
         txtIdVenda = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -924,7 +902,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Iniciais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Champagne & Limousines", 0, 14), new java.awt.Color(30, 30, 30))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
-        jLabel9.setText("Funcionario:");
+        jLabel9.setText("Usuario:");
 
         txtFuncionario.setBackground(new java.awt.Color(245, 245, 245));
         txtFuncionario.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
@@ -945,7 +923,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtIdFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(txtFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -957,7 +935,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtIdFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -989,7 +967,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtIdRequerente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -998,7 +976,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdRequerente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1027,12 +1005,12 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Champagne & Limousines", 0, 14), new java.awt.Color(30, 30, 30))); // NOI18N
 
-        txtFuncionario1.setBackground(new java.awt.Color(245, 245, 245));
-        txtFuncionario1.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
-        txtFuncionario1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
-        txtFuncionario1.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtProfessor.setBackground(new java.awt.Color(245, 245, 245));
+        txtProfessor.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtProfessor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
+        txtProfessor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtFuncionario1MouseClicked(evt);
+                txtProfessorMouseClicked(evt);
             }
         });
 
@@ -1042,13 +1020,13 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
         jLabel12.setText("Justificativa do Emprestimo:");
 
-        jTextArea1.setBackground(new java.awt.Color(245, 245, 245));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
-        jScrollPane1.setViewportView(jTextArea1);
+        txtDescricao.setBackground(new java.awt.Color(245, 245, 245));
+        txtDescricao.setColumns(20);
+        txtDescricao.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtDescricao.setLineWrap(true);
+        txtDescricao.setRows(5);
+        txtDescricao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
+        jScrollPane1.setViewportView(txtDescricao);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -1057,7 +1035,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtFuncionario1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(txtProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1))
@@ -1069,7 +1047,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addGap(13, 13, 13)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFuncionario1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1288,13 +1266,13 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jSeparator9.setBackground(new java.awt.Color(249, 249, 249));
         jSeparator9.setForeground(new java.awt.Color(104, 129, 164));
 
-        btnExcluir.setBackground(new java.awt.Color(255, 255, 255));
-        btnExcluir.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnExcluir.setText("Excluir Venda");
-        btnExcluir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 51)));
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btnDevolver.setBackground(new java.awt.Color(255, 255, 255));
+        btnDevolver.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
+        btnDevolver.setText("Devolver Itens");
+        btnDevolver.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 51)));
+        btnDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
+                btnDevolverActionPerformed(evt);
             }
         });
 
@@ -1309,7 +1287,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel37Layout.createSequentialGroup()
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtIdVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -1323,7 +1301,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1397,7 +1375,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         });
 
         jLabel13.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
-        jLabel13.setText("Cliente:");
+        jLabel13.setText("Requerente:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1431,7 +1409,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(157, 157, 157)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1764,12 +1742,10 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         txtIdProduto.setText(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 0).toString());
         txtproduto.setText(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 1).toString());
         txtQuantidadeTotal.setText(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 2).toString());
-        txtUnidade.setText(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 3).toString());
         patrimonio = new PatrimonioM();
         patrimonio.setId(Integer.parseInt(txtIdProduto.getText()));
         patrimonio.setNome(txtproduto.getText());
         PatrimonioDialog.dispose();
-        txtQuantidade.setText("1");
     }//GEN-LAST:event_tblProdutoDialogMouseClicked
 
     private void txtClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtClienteMouseClicked
@@ -1780,9 +1756,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtClienteMouseClicked
 
     private void tblClienteDialogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteDialogMouseClicked
-        txtIdCliente.setText(tblClienteDialog.getValueAt(tblClienteDialog.getSelectedRow(), 0).toString());
+        txtIdRequerente.setText(tblClienteDialog.getValueAt(tblClienteDialog.getSelectedRow(), 0).toString());
         txtCliente.setText(tblClienteDialog.getValueAt(tblClienteDialog.getSelectedRow(), 1).toString());
-        requerente.setId(Integer.valueOf(txtIdCliente.getText()));
+        requerente.setId(Integer.valueOf(txtIdRequerente.getText()));
         requerente.setNome(txtCliente.getText());
         RequerenteDialog.dispose();
     }//GEN-LAST:event_tblClienteDialogMouseClicked
@@ -1796,11 +1772,13 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
             emprestimo.setIdCliente(requerente);
-            emprestimo.setIdFuncionario(usuario);
-            emprestimo.setData(txtDataAtual.getText());
-            emprestimo.setTotalVendas(Float.valueOf(lblTOTAL.getText()));
-            emprestimo.setFormaPagamento(String.valueOf(cbxFormaPagamento.getSelectedItem()));
-            emprestimo.setExcluido(false);
+            emprestimo.setIdUsuario(usuario);
+            emprestimo.setProfessor(txtProfessor.getText());
+            emprestimo.setDescricao(txtDescricao.getText());
+            emprestimo.setHora(txtHora.getText());
+            emprestimo.setDataEmprestimo(txtDataAtual.getText());
+            emprestimo.setDataPrevista(txtDataPrevista.getText());
+            emprestimo.setDataPrevista("");
             try{
                 emprestimodao.salvar(emprestimo,listaItemEmprestimo);
                 JOptionPane.showMessageDialog(null, "Gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
@@ -1838,9 +1816,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtBuscaFuncionarioDialogCaretUpdate
 
     private void tblFuncionarioDialogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFuncionarioDialogMouseClicked
-        txtIdFuncionario.setText(tblFuncionarioDialog.getValueAt(tblFuncionarioDialog.getSelectedRow(), 0).toString());
+        txtIdUsuario.setText(tblFuncionarioDialog.getValueAt(tblFuncionarioDialog.getSelectedRow(), 0).toString());
         txtFuncionario.setText(tblFuncionarioDialog.getValueAt(tblFuncionarioDialog.getSelectedRow(), 1).toString());
-        usuario.setId(Integer.valueOf(txtIdFuncionario.getText()));
+        usuario.setId(Integer.valueOf(txtIdUsuario.getText()));
         usuario.setNome(txtFuncionario.getText());
         UsuarioDialog.dispose();
     }//GEN-LAST:event_tblFuncionarioDialogMouseClicked
@@ -1893,7 +1871,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
     }//GEN-LAST:event_btnSairMouseExited
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+    private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
         int confirma = JOptionPane.showConfirmDialog(null, "Deseja Excluir ?");
             if (confirma == 0) {
                 try {
@@ -1937,7 +1915,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 }
 
             }
-    }//GEN-LAST:event_btnExcluirActionPerformed
+    }//GEN-LAST:event_btnDevolverActionPerformed
 
     private void txtprodutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtprodutoMouseClicked
         PatrimonioDialog.setVisible(true);
@@ -2000,9 +1978,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         txtIDIten.setText(tblItenVenda.getValueAt(tblItenVenda.getSelectedRow(), 0).toString());
     }//GEN-LAST:event_tblItenVendaMouseClicked
 
-    private void txtFuncionario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFuncionario1MouseClicked
+    private void txtProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtProfessorMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFuncionario1MouseClicked
+    }//GEN-LAST:event_txtProfessorMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog FinalizaDialog;
@@ -2012,8 +1990,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     private javax.swing.JDialog UsuarioDialog;
     private javax.swing.JButton btnAddItemVendas;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDevolver;
     private javax.swing.JButton btnExcluiItemVenda;
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JLabel btnSair;
@@ -2059,7 +2037,6 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblTOTAL;
     private javax.swing.JTable tblClienteDialog;
     private javax.swing.JTable tblFuncionarioDialog;
@@ -2074,14 +2051,15 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCliente;
     private javax.swing.JFormattedTextField txtDataAtual;
     private javax.swing.JFormattedTextField txtDataPrevista;
+    private javax.swing.JTextArea txtDescricao;
     private javax.swing.JTextField txtFuncionario;
-    private javax.swing.JTextField txtFuncionario1;
     private javax.swing.JFormattedTextField txtHora;
     private javax.swing.JTextField txtIDIten;
-    private javax.swing.JTextField txtIdCliente;
-    private javax.swing.JTextField txtIdFuncionario;
     private javax.swing.JTextField txtIdProduto;
+    private javax.swing.JTextField txtIdRequerente;
+    private javax.swing.JTextField txtIdUsuario;
     private javax.swing.JTextField txtIdVenda;
+    private javax.swing.JTextField txtProfessor;
     private javax.swing.JTextField txtQuantidadeTotal;
     private javax.swing.JTextField txtproduto;
     // End of variables declaration//GEN-END:variables
