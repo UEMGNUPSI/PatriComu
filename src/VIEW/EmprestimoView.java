@@ -98,7 +98,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         FinalizaDialog.setSize(825, 365);
         btnAddItemVendas.setUI(new BasicButtonUI());
         btnCancelar.setUI(new BasicButtonUI());
-        btnExcluiItemVenda.setUI(new BasicButtonUI());
+        btnRemoverItemVenda.setUI(new BasicButtonUI());
         btnDevolver.setUI(new BasicButtonUI());
         btnFinalizar.setUI(new BasicButtonUI());
         btnNovo.setUI(new BasicButtonUI());
@@ -704,7 +704,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jScrollPane12 = new javax.swing.JScrollPane();
         tblItenVenda = new javax.swing.JTable();
         btnAddItemVendas = new javax.swing.JButton();
-        btnExcluiItemVenda = new javax.swing.JButton();
+        btnRemoverItemVenda = new javax.swing.JButton();
         txtproduto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtIdProduto = new javax.swing.JTextField();
@@ -712,6 +712,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         lblTOTAL = new javax.swing.JLabel();
         txtQuantidadeTotal = new javax.swing.JTextField();
+        txtQualidade = new javax.swing.JTextField();
         btnFinalizar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -1457,13 +1458,13 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             }
         });
 
-        btnExcluiItemVenda.setBackground(new java.awt.Color(255, 255, 255));
-        btnExcluiItemVenda.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnExcluiItemVenda.setText("Remover Produto -");
-        btnExcluiItemVenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 51)));
-        btnExcluiItemVenda.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoverItemVenda.setBackground(new java.awt.Color(255, 255, 255));
+        btnRemoverItemVenda.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
+        btnRemoverItemVenda.setText("Remover Produto -");
+        btnRemoverItemVenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 51)));
+        btnRemoverItemVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluiItemVendaActionPerformed(evt);
+                btnRemoverItemVendaActionPerformed(evt);
             }
         });
 
@@ -1497,12 +1498,14 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtIDIten, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(txtQuantidadeTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtQuantidadeTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtQualidade, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(btnAddItemVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97)
-                .addComponent(btnExcluiItemVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRemoverItemVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(235, 235, 235)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1521,7 +1524,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIDIten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtQuantidadeTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtQuantidadeTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtQualidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel2)))
@@ -1530,7 +1535,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAddItemVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluiItemVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemoverItemVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1589,7 +1594,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 522, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1900,9 +1905,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 }else{
                 
                     emprestimo.setId(Integer.valueOf(txtIdVenda.getText()));
-                    emprestimo.setExcluido(true);
-                    itemEmprestimo.setIdVenda(emprestimo);
-                    itemEmprestimo.setExcluido(true);
+                    emprestimo.setDataDevolucao(new SimpleDateFormat("dd/MM/YYYY").format(new Date(System.currentTimeMillis())));
+                    itemEmprestimo.setIdEmprestimo(emprestimo);
+                    itemEmprestimo.setDevolvido(true);
                     emprestimodao.alterarVendaTrue(emprestimo);
                     itemEmprestimodao.alterarItemVendaTrue(itemEmprestimo);
                     ItensDialog.dispose();
@@ -1924,51 +1929,37 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         tblProdutoDialog.getTableHeader().setReorderingAllowed(false);
     }//GEN-LAST:event_txtprodutoMouseClicked
 
-    private void btnExcluiItemVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluiItemVendaActionPerformed
+    private void btnRemoverItemVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverItemVendaActionPerformed
         if(txtIDIten.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Selecione primeiro um produto! ","erro", JOptionPane.WARNING_MESSAGE);
         }else{
             listaItemEmprestimo.remove(tblItenVenda.getSelectedRow());
             atualizaTabelaItemEmprestimo();
-            lblTOTAL.setText(String.valueOf(totalVenda()));
-            lblTOTAL1.setText(lblTOTAL.getText());
             txtIDIten.setText("");
         }
-    }//GEN-LAST:event_btnExcluiItemVendaActionPerformed
+    }//GEN-LAST:event_btnRemoverItemVendaActionPerformed
 
     private void btnAddItemVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemVendasActionPerformed
         if(txtproduto.getText().isEmpty() || txtIdProduto.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Selecione primeiro um produto! ","erro", JOptionPane.WARNING_MESSAGE);
-        }else if(Integer.valueOf(txtQuantidade.getText()) > Integer.valueOf(txtQuantidadeTotal.getText())){
-            JOptionPane.showMessageDialog(null, "Quantidade ultrapassa o estoque! ","erro", JOptionPane.WARNING_MESSAGE);
-            txtQuantidade.requestFocusInWindow();
         }else if(listaItemEmprestimo.contains(itemEmprestimo)){
             JOptionPane.showMessageDialog(null, "itens repetidos");
             itemEmprestimo = new ItenEmprestimoM();
-            txtQuantidade.setText("");
             txtQuantidadeTotal.setText("");
-            txtUnidade.setText("");
-            txtTotal.setText("");
             txtproduto.setText("");
             txtIdProduto.setText("");
         }else{
             patrimonio.setId(Integer.valueOf(txtIdProduto.getText()));
             itemEmprestimo = new ItenEmprestimoM();
-            itemEmprestimo.setIdProduto(patrimonio);
-            itemEmprestimo.setPreco(Float.valueOf(txtUnidade.getText()));
-            itemEmprestimo.setQuantidade(Integer.valueOf(txtQuantidade.getText()));
-            itemEmprestimo.setTotal(Float.valueOf(txtTotal.getText()));
-            itemEmprestimo.setExcluido(false);
+            itemEmprestimo.setIdPatrimonio(patrimonio);
+            itemEmprestimo.setQualidade(txtQualidade.getText());
+            itemEmprestimo.setDevolvido(false);
             listaItemEmprestimo.add(itemEmprestimo);
             atualizaTabelaItemEmprestimo();
-            lblTOTAL.setText(String.valueOf(totalVenda()));
-            lblTOTAL1.setText(lblTOTAL.getText());
             PreparaVenda();
 
-            txtQuantidade.setText("");
+            txtQualidade.setText("");
             txtQuantidadeTotal.setText("");
-            txtUnidade.setText("");
-            txtTotal.setText("");
             txtproduto.setText("");
             txtIdProduto.setText("");
         }
@@ -1991,9 +1982,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAddItemVendas;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDevolver;
-    private javax.swing.JButton btnExcluiItemVenda;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnRemoverItemVenda;
     private javax.swing.JLabel btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
@@ -2060,6 +2051,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtIdUsuario;
     private javax.swing.JTextField txtIdVenda;
     private javax.swing.JTextField txtProfessor;
+    private javax.swing.JTextField txtQualidade;
     private javax.swing.JTextField txtQuantidadeTotal;
     private javax.swing.JTextField txtproduto;
     // End of variables declaration//GEN-END:variables

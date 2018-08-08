@@ -13,28 +13,27 @@ import java.util.List;
  */
 public class ItemEmprestimoDao {
 
-    RequerenteDao clientedao = new RequerenteDao();
-    PatrimonioDao produtodao = new PatrimonioDao();
-    EmprestimoDao vendadao = new EmprestimoDao();
+    RequerenteDao requerentedao = new RequerenteDao();
+    PatrimonioDao patrimoniodao = new PatrimonioDao();
+    EmprestimoDao emprestimodao = new EmprestimoDao();
     
     public List<ItenEmprestimoM> busca(int idvenda) throws SQLException{
         PreparedStatement pst;
         String sql;
         List<ItenEmprestimoM> listaitens = new ArrayList<>();
-        sql = "select id, idvenda, idproduto, quantidade, preco, total, excluido from itemvenda where idvenda = ?";
+        sql = "select id, idEmprestimo, idPatrimonio, qualidade, quantidade, devolvido from itemvenda where idvenda = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, idvenda);
         pst.execute();
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
-            listaitens.add(new ItenEmprestimoM(
-            rs.getInt("id"),
-            vendadao.busca(rs.getInt("IdVenda")),
-            produtodao.busca(rs.getInt("IdProduto")),
-            rs.getInt("quantidade"),
-            rs.getFloat("preco"),
-            rs.getFloat("total"),
-            rs.getBoolean("excluido")));
+                    listaitens.add(new ItenEmprestimoM(
+                    rs.getInt("id"),
+                    emprestimodao.busca(rs.getInt("idEmprestimo")),
+                    patrimoniodao.busca(rs.getInt("idPatrimonio")),
+                    rs.getString("qualidade"),
+                    rs.getInt("quantidade"),
+                    rs.getBoolean("devolvido")));
         }
         pst.close();
         return listaitens;
@@ -43,13 +42,13 @@ public class ItemEmprestimoDao {
     public void alterarItemVendaTrue(ItenEmprestimoM iten) throws SQLException{
         PreparedStatement pst;
         String sql;
-        sql = "update ItemVenda set "
-                        + "excluido  = ? "
+        sql = "update ItemEmprestimo set "
+                        + "devolvido  = ? "
 
-                        + "where idvenda = ?";
+                        + "where idEmprestimo = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
-        pst.setBoolean(1, iten.getExcluido());
-        pst.setInt(2,iten.getIdVenda().getId());
+        pst.setBoolean(1, iten.getDevolvido());
+        pst.setInt(2,iten.getIdEmprestimo().getId());
         pst.execute();
         pst.close();
     }

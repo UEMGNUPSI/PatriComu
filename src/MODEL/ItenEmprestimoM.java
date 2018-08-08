@@ -10,13 +10,13 @@ public class ItenEmprestimoM {
     private EmprestimoM IdEmprestimo;
     private PatrimonioM IdPatrimonio;
     private String Qualidade;
-    private String Quantidade;
+    private int Quantidade;
     private Boolean Devolvido;
 
     public ItenEmprestimoM() {
     }
 
-    public ItenEmprestimoM(int Id, EmprestimoM IdEmprestimo, PatrimonioM IdPatrimonio, String Qualidade, String Quantidade, Boolean Devolvido) {
+    public ItenEmprestimoM(int Id, EmprestimoM IdEmprestimo, PatrimonioM IdPatrimonio, String Qualidade, int Quantidade, Boolean Devolvido) {
         this.Id = Id;
         this.IdEmprestimo = IdEmprestimo;
         this.IdPatrimonio = IdPatrimonio;
@@ -57,11 +57,11 @@ public class ItenEmprestimoM {
         this.Qualidade = Qualidade;
     }
 
-    public String getQuantidade() {
+    public int getQuantidade() {
         return Quantidade;
     }
 
-    public void setQuantidade(String Quantidade) {
+    public void setQuantidade(int Quantidade) {
         this.Quantidade = Quantidade;
     }
 

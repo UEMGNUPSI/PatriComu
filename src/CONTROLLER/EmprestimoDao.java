@@ -52,21 +52,21 @@ public class EmprestimoDao {
     public void salvarItensEmprestimo (List<ItenEmprestimoM> item, int idEmp) throws SQLException{
         for(ItenEmprestimoM itens : item){
             
-            sql = "insert into itememprestimo values(?,?,?,?,?,?,?)";
+            sql = "insert into itememprestimo values(?,?,?,?,?,?)";
             pst = Conexao.getInstance().prepareStatement(sql);
             pst.setInt(1,0);
             pst.setInt(2, itens.getIdEmprestimo().getId());
             pst.setInt(3, itens.getIdPatrimonio().getId());
             pst.setString(4, itens.getQualidade());
-            pst.setFloat(5, itens.getQuantidade());         // Falta mudar no model para float.
+            pst.setInt(5, itens.getQuantidade());      
             pst.setBoolean(6, itens.getDevolvido());
             pst.execute();
             pst.close();
-            buscaquantidade(itens.getIdPatrimonio().getId(), itens.getQuantidade());
+            //buscaquantidade(itens.getIdPatrimonio().getId(), itens.getQuantidade());
         }
     }
     
-    public void buscaquantidade(int id, float quantidade) throws SQLException{
+    /*public void buscaquantidade(int id, float quantidade) throws SQLException{
         PatrimonioM pat = null;
         int count = 0;          // Contador para saber quantos patrimonios estão disponíveis
         sql = "select * from patrimonio where id = ? and ocupado = 0";
@@ -94,7 +94,7 @@ public class EmprestimoDao {
         }
         
     }
-
+    */
     
     public void atualizaOcupado(int id)throws SQLException{
         sql = "update patrimonio set "
@@ -104,6 +104,20 @@ public class EmprestimoDao {
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, 1);
         pst.setInt(2, id);
+        pst.execute();
+        pst.close();
+    }
+   
+    public void alterarVendaTrue(EmprestimoM venda) throws SQLException{
+        PreparedStatement pst;
+        String sql;
+        sql = "update Emprestimo set "
+                        + "datadevolucao  = ? "
+
+                        + "where id = ?";
+        pst = Conexao.getInstance().prepareStatement(sql);
+        pst.setString(1, venda.getDataDevolucao());
+        pst.setInt(2,venda.getId());
         pst.execute();
         pst.close();
     }
@@ -117,7 +131,7 @@ public class EmprestimoDao {
         pst.close();
     }
     public void excluirItem(EmprestimoM venda) throws SQLException{
-        sql = "delete from ItemVenda where idvenda = ?";
+        sql = "delete from ItemEmprestimo where IdEmprestimo = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, venda.getId());
         pst.execute();
@@ -128,19 +142,22 @@ public class EmprestimoDao {
     
     public List<EmprestimoM> listaTodos() throws SQLException{
         List<EmprestimoM> listavenda = new ArrayList<>();
-        sql = "select id, idcliente, idfuncionario, DATE_FORMAT( data, \"%d/%m/%Y\" ) AS data, totalvenda, formapagamento, excluido from Venda ORDER BY id DESC";
+        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( DataEmprestimo, \"%d/%m/%Y\" ), DATE_FORMAT( DataPrevista, \"%d/%m/%Y\" ),"
+                + " DATE_FORMAT( DataDevolucao, \"%d/%m/%Y\" ) from Emprestimo ORDER BY id DESC";
         pst = Conexao.getInstance().prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
 
         while(rs.next()){
             listavenda.add(new EmprestimoM(
                         rs.getInt("id"),
-                        requerentedao.busca(rs.getInt("idcliente")),
-                        usuariodao.busca(rs.getInt("idfuncionario")),
-                        rs.getString("data"),
-                        rs.getFloat("totalvenda"),
-                        rs.getString("formapagamento"),
-                        rs.getBoolean("excluido")));
+                        requerentedao.busca(rs.getInt("idRequerente")),
+                        usuariodao.busca(rs.getInt("idUsuario")),
+                        rs.getString("professor"),
+                        rs.getString("descricao"),
+                        rs.getString("hora"),
+                        rs.getString("dataemprestimo"),
+                        rs.getString("dataprevista"),
+                        rs.getString("datadevolucao")));
         }
         pst.close();
     return listavenda;
@@ -148,19 +165,22 @@ public class EmprestimoDao {
     
     public EmprestimoM busca(int id) throws SQLException{
         EmprestimoM venda = null;
-        sql = "select id, idcliente, idfuncionario, DATE_FORMAT( data, \"%d/%m/%Y\" ) AS data, totalvenda, formapagamento, excluido from Venda where id = ?";
+        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( DataEmprestimo, \"%d/%m/%Y\" ), DATE_FORMAT( DataPrevista, \"%d/%m/%Y\" ),"
+                + " DATE_FORMAT( DataDevolucao, \"%d/%m/%Y\" ) from Venda where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, id);
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
             venda = new EmprestimoM(
-            rs.getInt("id"),
-            requerentedao.busca(rs.getInt("idcliente")),
-            usuariodao.busca(rs.getInt("idfuncionario")),
-                        rs.getString("data"),
-                        rs.getFloat("totalvenda"),
-                        rs.getString("formapagamento"),
-                        rs.getBoolean("excluido"));
+                        rs.getInt("id"),
+                        requerentedao.busca(rs.getInt("idRequerente")),
+                        usuariodao.busca(rs.getInt("idUsuario")),
+                        rs.getString("professor"),
+                        rs.getString("descricao"),
+                        rs.getString("hora"),
+                        rs.getString("dataemprestimo"),
+                        rs.getString("dataprevista"),
+                        rs.getString("datadevolucao"));
         }
         pst.close();
         return venda;
@@ -169,27 +189,30 @@ public class EmprestimoDao {
     public List<EmprestimoM> buscaNomeLista(int Nome) throws SQLException{
         List<EmprestimoM> listavenda = new ArrayList<>();
         //String name = "%"+Nome+"%";
-        sql = "select id, idcliente, idfuncionario, DATE_FORMAT( data, \"%d/%m/%Y\" ) AS data, totalvenda, formapagamento, excluido from Venda where idcliente like ?";
+        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( DataEmprestimo, \"%d/%m/%Y\" ), DATE_FORMAT( DataPrevista, \"%d/%m/%Y\" ),"
+                + " DATE_FORMAT( DataDevolucao, \"%d/%m/%Y\" ) from Venda where idcliente like ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, Nome);
         pst.execute();
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
             listavenda.add(new EmprestimoM(
-            rs.getInt("id"),
-            requerentedao.busca(rs.getInt("idcliente")),
-            usuariodao.busca(rs.getInt("idfuncionario")),
-                        rs.getString("data"),
-                        rs.getFloat("totalvenda"),
-                        rs.getString("formapagamento"),
-                        rs.getBoolean("excluido")));
+                        rs.getInt("id"),
+                        requerentedao.busca(rs.getInt("idRequerente")),
+                        usuariodao.busca(rs.getInt("idUsuario")),
+                        rs.getString("professor"),
+                        rs.getString("descricao"),
+                        rs.getString("hora"),
+                        rs.getString("dataemprestimo"),
+                        rs.getString("dataprevista"),
+                        rs.getString("datadevolucao")));
         }
 
         pst.close();
         return listavenda;
     }
     
-    public List<EmprestimoM> buscaDataLista(String de, String ate) throws SQLException{
+    /*public List<EmprestimoM> buscaDataLista(String de, String ate) throws SQLException{
         List<EmprestimoM> listavenda = new ArrayList<>();
         //String name = "%"+Nome+"%";
         sql = "select id, idcliente, idfuncionario, DATE_FORMAT( data, \"%d/%m/%Y\" ) AS data, totalvenda, formapagamento, excluido from Venda where Data >= STR_TO_DATE( ?, \"%d/%m/%Y\" ) and Data <= STR_TO_DATE( ?, \"%d/%m/%Y\" ) ";
@@ -211,9 +234,9 @@ public class EmprestimoDao {
 
         pst.close();
         return listavenda;
-    }
+    }*/
     
-    public List<EmprestimoM> buscaClienteLista(String nome) throws SQLException{
+    /*public List<EmprestimoM> buscaClienteLista(String nome) throws SQLException{
         List<EmprestimoM> listavenda = new ArrayList<>();
         String name = "%"+nome+"%";
         sql = "select venda.id, idcliente, idfuncionario, DATE_FORMAT( data, \"%d/%m/%Y\" ) AS data, totalvenda, formapagamento, excluido from Venda, Cliente where Cliente.id = Venda.IdCliente and Cliente.Nome like ?";
@@ -234,19 +257,7 @@ public class EmprestimoDao {
 
         pst.close();
         return listavenda;
-    }
+    }*/
     
-    public void alterarVendaTrue(EmprestimoM venda) throws SQLException{
-        PreparedStatement pst;
-        String sql;
-        sql = "update Venda set "
-                        + "excluido  = ? "
-
-                        + "where id = ?";
-        pst = Conexao.getInstance().prepareStatement(sql);
-        pst.setBoolean(1, venda.getExcluido());
-        pst.setInt(2,venda.getId());
-        pst.execute();
-        pst.close();
-    }
+    
 }

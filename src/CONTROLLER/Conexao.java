@@ -18,11 +18,10 @@ public class Conexao implements Serializable {
 
     private Conexao() {
         
-        usuario = "root";
-        senha = "root";                        // Alterar a senha.
-        
-        // Defina aqui o nome do seu banco de dados
-        url = "jdbc:mysql://localhost:3306/patrimonio_comunicacao";
+        usuario = "patricom";        
+        senha = "Uemg2018";
+
+        url = "jdbc:mysql://10.93.10.10:3306/patrimonio_comunicacao?autoReconnect=true&useSSL=false";    
         
         try {
             Class.forName("com.mysql.jdbc.Driver");

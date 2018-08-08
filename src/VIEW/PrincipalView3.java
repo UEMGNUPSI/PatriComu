@@ -44,9 +44,6 @@ public class PrincipalView3 extends javax.swing.JFrame {
         btnEstoque = new javax.swing.JLabel();
         btnVendedor = new javax.swing.JLabel();
         btnVenda = new javax.swing.JLabel();
-        btnMarcLivre = new javax.swing.JLabel();
-        btnRelatorios = new javax.swing.JLabel();
-        btnSituacao = new javax.swing.JLabel();
         btnCliente = new javax.swing.JLabel();
         pnlPrincipal = new javax.swing.JPanel();
 
@@ -127,78 +124,6 @@ public class PrincipalView3 extends javax.swing.JFrame {
             }
         });
 
-        btnMarcLivre.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnMarcLivre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMarcLivre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Mercado Livre.png"))); // NOI18N
-        btnMarcLivre.setText("Mercado"); // NOI18N
-        btnMarcLivre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMarcLivre.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMarcLivre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMarcLivreMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMarcLivreMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMarcLivreMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnMarcLivreMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnMarcLivreMouseReleased(evt);
-            }
-        });
-
-        btnRelatorios.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnRelatorios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Relatorios.png"))); // NOI18N
-        btnRelatorios.setText("Relatórios");
-        btnRelatorios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnRelatorios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnRelatorios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRelatoriosMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnRelatoriosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnRelatoriosMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnRelatoriosMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnRelatoriosMouseReleased(evt);
-            }
-        });
-
-        btnSituacao.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnSituacao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSituacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Estatisticas.png"))); // NOI18N
-        btnSituacao.setText("Situação");
-        btnSituacao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSituacao.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnSituacao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSituacaoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSituacaoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSituacaoMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnSituacaoMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnSituacaoMouseReleased(evt);
-            }
-        });
-
         btnCliente.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
         btnCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Cliente.png"))); // NOI18N
@@ -228,7 +153,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(103, Short.MAX_VALUE)
                 .addComponent(btnCliente)
                 .addGap(15, 15, 15)
                 .addComponent(btnEstoque)
@@ -236,12 +161,6 @@ public class PrincipalView3 extends javax.swing.JFrame {
                 .addComponent(btnVendedor)
                 .addGap(15, 15, 15)
                 .addComponent(btnVenda)
-                .addGap(15, 15, 15)
-                .addComponent(btnMarcLivre)
-                .addGap(15, 15, 15)
-                .addComponent(btnRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(btnSituacao)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -251,11 +170,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnEstoque, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnRelatorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMarcLivre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVenda, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(btnSituacao, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnVenda, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCliente, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -301,9 +216,6 @@ public class PrincipalView3 extends javax.swing.JFrame {
             btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
             btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
             btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
-            btnMarcLivre.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Mercado livre.png")));
-            btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Relatorios.png")));
-            btnSituacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estatisticas.png")));
     }//GEN-LAST:event_btnVendaMouseClicked
 
     private void btnEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMouseClicked
@@ -316,40 +228,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
             btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
             btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
             btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
-            btnMarcLivre.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Mercado livre.png")));
-            btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Relatorios.png")));
-            btnSituacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estatisticas.png")));
     }//GEN-LAST:event_btnEstoqueMouseClicked
-
-    private void btnMarcLivreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarcLivreMouseClicked
-        VendaViewML VendaMl = new VendaViewML();
-        ((BasicInternalFrameUI)VendaMl.getUI()).setNorthPane(null);
-            pnlPrincipal.removeAll();
-            pnlPrincipal.add(VendaMl);
-            pnlPrincipal.updateUI();
-            btnMarcLivre.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Mercado livre.png")));
-            btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
-            btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
-            btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
-            btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
-            btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Relatorios.png")));
-            btnSituacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estatisticas.png")));
-    }//GEN-LAST:event_btnMarcLivreMouseClicked
-
-    private void btnRelatoriosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatoriosMouseClicked
-        RelatorioView Relatorio = new RelatorioView();
-        ((BasicInternalFrameUI)Relatorio.getUI()).setNorthPane(null);
-            pnlPrincipal.removeAll();
-            pnlPrincipal.add(Relatorio);
-            pnlPrincipal.updateUI();
-            btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Relatorios.png")));
-            btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
-            btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
-            btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
-            btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
-            btnMarcLivre.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Mercado livre.png")));
-            btnSituacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estatisticas.png")));
-    }//GEN-LAST:event_btnRelatoriosMouseClicked
 
     private void btnVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendedorMouseClicked
         UsuarioView Funcionario = new UsuarioView();
@@ -361,9 +240,6 @@ public class PrincipalView3 extends javax.swing.JFrame {
             btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
             btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
             btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
-            btnMarcLivre.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Mercado livre.png")));
-            btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Relatorios.png")));
-            btnSituacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estatisticas.png")));
     }//GEN-LAST:event_btnVendedorMouseClicked
 
     private void btnEstoqueMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMouseEntered
@@ -414,69 +290,6 @@ public class PrincipalView3 extends javax.swing.JFrame {
     btnVenda.setForeground(Color.yellow);
     }//GEN-LAST:event_btnVendaMouseReleased
 
-    private void btnMarcLivreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarcLivreMouseEntered
-    btnMarcLivre.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnMarcLivreMouseEntered
-
-    private void btnMarcLivreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarcLivreMouseExited
-    btnMarcLivre.setForeground(Color.black);
-    }//GEN-LAST:event_btnMarcLivreMouseExited
-
-    private void btnMarcLivreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarcLivreMousePressed
-    btnMarcLivre.setForeground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_btnMarcLivreMousePressed
-
-    private void btnMarcLivreMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarcLivreMouseReleased
-    btnMarcLivre.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnMarcLivreMouseReleased
-
-    private void btnRelatoriosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatoriosMouseEntered
-    btnRelatorios.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnRelatoriosMouseEntered
-
-    private void btnRelatoriosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatoriosMouseExited
-    btnRelatorios.setForeground(Color.black);
-    }//GEN-LAST:event_btnRelatoriosMouseExited
-
-    private void btnRelatoriosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatoriosMousePressed
-    btnRelatorios.setForeground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_btnRelatoriosMousePressed
-
-    private void btnRelatoriosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatoriosMouseReleased
-    btnRelatorios.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnRelatoriosMouseReleased
-
-    private void btnSituacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSituacaoMouseClicked
-        SituacaoDaEmpresa situ = new SituacaoDaEmpresa();
-        ((BasicInternalFrameUI)situ.getUI()).setNorthPane(null);
-        pnlPrincipal.removeAll();
-        pnlPrincipal.add(situ);
-        pnlPrincipal.updateUI();
-        btnSituacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Estatisticas.png")));
-        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
-        btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
-        btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
-        btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
-        btnMarcLivre.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Mercado livre.png")));
-        btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Relatorios.png")));
-    }//GEN-LAST:event_btnSituacaoMouseClicked
-
-    private void btnSituacaoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSituacaoMouseEntered
-    btnSituacao.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnSituacaoMouseEntered
-
-    private void btnSituacaoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSituacaoMouseExited
-    btnSituacao.setForeground(Color.black);
-    }//GEN-LAST:event_btnSituacaoMouseExited
-
-    private void btnSituacaoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSituacaoMousePressed
-    btnSituacao.setForeground(Color.white);
-    }//GEN-LAST:event_btnSituacaoMousePressed
-
-    private void btnSituacaoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSituacaoMouseReleased
-    btnSituacao.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnSituacaoMouseReleased
-
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
         RequerenteView cliente = new RequerenteView();
         ((BasicInternalFrameUI)cliente.getUI()).setNorthPane(null);
@@ -487,9 +300,6 @@ public class PrincipalView3 extends javax.swing.JFrame {
         btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
         btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
         btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
-        btnMarcLivre.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Mercado livre.png")));
-        btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Relatorios.png")));
-        btnSituacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estatisticas.png")));
     }//GEN-LAST:event_btnClienteMouseClicked
 
     private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
@@ -512,9 +322,6 @@ public class PrincipalView3 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnCliente;
     private javax.swing.JLabel btnEstoque;
-    private javax.swing.JLabel btnMarcLivre;
-    private javax.swing.JLabel btnRelatorios;
-    private javax.swing.JLabel btnSituacao;
     private javax.swing.JLabel btnVenda;
     private javax.swing.JLabel btnVendedor;
     private javax.swing.JPanel jPanel1;

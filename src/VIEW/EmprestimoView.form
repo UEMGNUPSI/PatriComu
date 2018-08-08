@@ -1576,12 +1576,14 @@
                               <Component id="txtIDIten" min="-2" pref="36" max="-2" attributes="0"/>
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Component id="txtQuantidadeTotal" min="-2" pref="36" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txtQualidade" min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
                               <Component id="btnAddItemVendas" min="-2" pref="161" max="-2" attributes="0"/>
                               <EmptySpace min="97" pref="97" max="-2" attributes="0"/>
-                              <Component id="btnExcluiItemVenda" min="-2" pref="148" max="-2" attributes="0"/>
+                              <Component id="btnRemoverItemVenda" min="-2" pref="148" max="-2" attributes="0"/>
                               <EmptySpace min="235" pref="235" max="-2" attributes="0"/>
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1604,7 +1606,10 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtIdProduto" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtIDIten" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtQuantidadeTotal" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtQuantidadeTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtQualidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -1615,7 +1620,7 @@
                               <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnAddItemVendas" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="btnExcluiItemVenda" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="btnRemoverItemVenda" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1680,7 +1685,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddItemVendasActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnExcluiItemVenda">
+                    <Component class="javax.swing.JButton" name="btnRemoverItemVenda">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1698,7 +1703,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluiItemVendaActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoverItemVendaActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtproduto">
@@ -1750,6 +1755,8 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtQuantidadeTotal">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtQualidade">
                     </Component>
                   </SubComponents>
                 </Container>
