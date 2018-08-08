@@ -18,91 +18,98 @@ public class EmprestimoDao {
     
     PreparedStatement pst;
     String sql;
-    RequerenteDao clientedao = new RequerenteDao();
-    UsuarioDao funcionariodao = new UsuarioDao();
-    CategoriaDao categoriadao = new CategoriaDao();
-    MarcaDao marcadao = new MarcaDao();
-    ModeloDao modelodao = new ModeloDao();
-    
-    public void salvar (EmprestimoM venda,List<ItenEmprestimoM> item ) throws SQLException{
+    RequerenteDao requerentedao = new RequerenteDao();
+    PatrimonioDao patrimoniodao = new PatrimonioDao();
+    UsuarioDao usuariodao = new UsuarioDao();
+    ItemEmprestimoDao itememprestimodao = new ItemEmprestimoDao();
+        
+    public void salvar (EmprestimoM emp,List<ItenEmprestimoM> item ) throws SQLException{
 
-        int idvenda = 0;
-        sql = "insert into Venda set id = ?, idcliente = ?, idfuncionario = ?, Data = STR_TO_DATE( ?, \"%d/%m/%Y\" ), totalvenda = ?, formapagamento = ?, Excluido = ?";
+        int idEmp = 0;
+        sql = "insert into emprestimo set id = ?, IdRequerente = ?, IdUsuario = ?, Professor = ?, Descricao = ?, Hora = ?,"
+                + " DataEmprestimo = STR_TO_DATE( ?, \"%d/%m/%Y\" ), DataPrevista = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
+                + " DataDevolucao = STR_TO_DATE( ?, \"%d/%m/%Y\" )";
         pst = Conexao.getInstance().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         pst.setInt(1,0);
-        pst.setInt(2, venda.getIdCliente().getId());
-        pst.setInt(3, venda.getIdFuncionario().getId());
-        pst.setString(4, venda.getData());
-        pst.setFloat(5, venda.getTotalVendas());
-        pst.setString(6, venda.getFormaPagamento());
-        pst.setBoolean(7, venda.getExcluido());
+        pst.setInt(2, emp.getIdRequerente().getId());
+        pst.setInt(3, emp.getIdUsuario().getId());
+        pst.setString(4, emp.getProfessor());
+        pst.setString(5, emp.getDescricao());
+        pst.setString(6, emp.getHora());
+        pst.setString(7, emp.getDataEmprestimo());
+        pst.setString(8, emp.getDataPrevista());
+        pst.setString(9, emp.getDataDevolucao());
         pst.executeUpdate();
         ResultSet rs = pst.getGeneratedKeys();
         while (rs.next()) {
-            idvenda = rs.getInt(1);
+            idEmp = rs.getInt(1);
         }
         pst.close();
-        salvarItensVenda((List<ItenEmprestimoM>) item, idvenda);
+        salvarItensEmprestimo((List<ItenEmprestimoM>) item, idEmp);
         
     }
     
-    public void salvarItensVenda (List<ItenEmprestimoM> item, int idVenda) throws SQLException{
+    public void salvarItensEmprestimo (List<ItenEmprestimoM> item, int idEmp) throws SQLException{
         for(ItenEmprestimoM itens : item){
             
-            sql = "insert into ItemVenda values(?,?,?,?,?,?,?)";
+            sql = "insert into itememprestimo values(?,?,?,?,?,?,?)";
             pst = Conexao.getInstance().prepareStatement(sql);
             pst.setInt(1,0);
-            pst.setInt(2, idVenda);
-            pst.setInt(3, itens.getIdProduto().getId());
-            pst.setInt(4, itens.getQuantidade());
-            pst.setFloat(5, itens.getPreco());
-            pst.setFloat(6, itens.getTotal());
-            pst.setBoolean(7, itens.getExcluido());
+            pst.setInt(2, itens.getIdEmprestimo().getId());
+            pst.setInt(3, itens.getIdPatrimonio().getId());
+            pst.setString(4, itens.getQualidade());
+            pst.setFloat(5, itens.getQuantidade());         // Falta mudar no model para float.
+            pst.setBoolean(6, itens.getDevolvido());
             pst.execute();
             pst.close();
-            buscaquantidade(itens.getIdProduto().getId(), itens.getQuantidade());
+            buscaquantidade(itens.getIdPatrimonio().getId(), itens.getQuantidade());
         }
     }
     
-    public void buscaquantidade(int id, int quantidade) throws SQLException{
-        PatrimonioM produto = null;        
-        sql = "select * from Produto where id = ?";
+    public void buscaquantidade(int id, float quantidade) throws SQLException{
+        PatrimonioM pat = null;
+        int count = 0;          // Contador para saber quantos patrimonios estão disponíveis
+        sql = "select * from patrimonio where id = ? and ocupado = 0";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, id);
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
-            produto = new PatrimonioM(
+            pat = new PatrimonioM(
                             rs.getInt("id"),
-                            categoriadao.busca(rs.getInt("idcategoria")),
-                            marcadao.busca(rs.getInt("idmarca")),
-                            modelodao.busca(rs.getInt("idmodelo")),
-                            rs.getString("nome"),
-                            rs.getFloat("valorcusto"),
-                            rs.getFloat("valormax"),
-                            rs.getFloat("valormini"),
-                            rs.getString("codigo"),
-                            rs.getInt("quantidade"));
+                            itememprestimodao.busca(rs.getInt("idcategoria")),
+                            patrimoniodao.busca(rs.getInt("idmarca")),
+                            rs.getString("Nome"),
+                            rs.getString("Numero"),
+                            rs.getString("Qualidade"),
+                            rs.getBoolean("Ocupado"));
+            count++;
         }
+        
         pst.close();
-        quantidade = produto.getQuantidade() - quantidade;
-        atualizaQuantidade(quantidade, produto.getId());
+        if(count >= quantidade){
+            atualizaOcupado(pat.getId());
+        }
+        else{
+            // Não possuí itens suficiente (FAZER TRATATIVA)
+        }
+        
     }
 
     
-    public void atualizaQuantidade(int quantidade, int id)throws SQLException{
-        sql = "update Produto set "
-                        + "quantidade  = ? "
+    public void atualizaOcupado(int id)throws SQLException{
+        sql = "update patrimonio set "
+                        + "ocupado  = ? "
 
                         + "where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
-        pst.setInt(1, quantidade);
+        pst.setInt(1, 1);
         pst.setInt(2, id);
         pst.execute();
         pst.close();
     }
     
     public void excluir(EmprestimoM venda) throws SQLException{
-        sql = "delete from Venda where id = ?";
+        sql = "delete from emprestimo where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, venda.getId());
         pst.execute();
@@ -128,8 +135,8 @@ public class EmprestimoDao {
         while(rs.next()){
             listavenda.add(new EmprestimoM(
                         rs.getInt("id"),
-                        clientedao.busca(rs.getInt("idcliente")),
-                        funcionariodao.busca(rs.getInt("idfuncionario")),
+                        requerentedao.busca(rs.getInt("idcliente")),
+                        usuariodao.busca(rs.getInt("idfuncionario")),
                         rs.getString("data"),
                         rs.getFloat("totalvenda"),
                         rs.getString("formapagamento"),
@@ -148,8 +155,8 @@ public class EmprestimoDao {
         while(rs.next()){
             venda = new EmprestimoM(
             rs.getInt("id"),
-            clientedao.busca(rs.getInt("idcliente")),
-            funcionariodao.busca(rs.getInt("idfuncionario")),
+            requerentedao.busca(rs.getInt("idcliente")),
+            usuariodao.busca(rs.getInt("idfuncionario")),
                         rs.getString("data"),
                         rs.getFloat("totalvenda"),
                         rs.getString("formapagamento"),
@@ -170,8 +177,8 @@ public class EmprestimoDao {
         while(rs.next()){
             listavenda.add(new EmprestimoM(
             rs.getInt("id"),
-            clientedao.busca(rs.getInt("idcliente")),
-            funcionariodao.busca(rs.getInt("idfuncionario")),
+            requerentedao.busca(rs.getInt("idcliente")),
+            usuariodao.busca(rs.getInt("idfuncionario")),
                         rs.getString("data"),
                         rs.getFloat("totalvenda"),
                         rs.getString("formapagamento"),
@@ -194,8 +201,8 @@ public class EmprestimoDao {
         while(rs.next()){
             listavenda.add(new EmprestimoM(
             rs.getInt("id"),
-            clientedao.busca(rs.getInt("idcliente")),
-            funcionariodao.busca(rs.getInt("idfuncionario")),
+            requerentedao.busca(rs.getInt("idcliente")),
+            usuariodao.busca(rs.getInt("idfuncionario")),
                         rs.getString("data"),
                         rs.getFloat("totalvenda"),
                         rs.getString("formapagamento"),
@@ -217,8 +224,8 @@ public class EmprestimoDao {
         while(rs.next()){
             listavenda.add(new EmprestimoM(
             rs.getInt("id"),
-            clientedao.busca(rs.getInt("idcliente")),
-            funcionariodao.busca(rs.getInt("idfuncionario")),
+            requerentedao.busca(rs.getInt("idcliente")),
+            usuariodao.busca(rs.getInt("idfuncionario")),
                         rs.getString("data"),
                         rs.getFloat("totalvenda"),
                         rs.getString("formapagamento"),
