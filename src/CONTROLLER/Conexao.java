@@ -17,22 +17,19 @@ public class Conexao implements Serializable {
     private String url;
 
     private Conexao() {
-        // Altere o usuário e senha de acordo com o banco de dados instalado
-        usuario = "root";               //for Workbench Notebook
-        //usuario = "energysom";         //for Xampp Nupsi
-        //usuario = "energysom2";       //for Xampp Loja
-        senha = "root";
+        
+        usuario = "root";
+        senha = "root";                        // Alterar a senha.
         
         // Defina aqui o nome do seu banco de dados
-        url = "jdbc:mysql://localhost:3306/energysom";     //for Workbench Notebook
-        //url = "jdbc:mysql://192.168.100.5/energysom";     //for Xampp Loja
-        //url = "jdbc:mysql://192.168.0.107/energysom";      //for Xampp NUPSI
+        url = "jdbc:mysql://localhost:3306/patrimonio_comunicacao";
+        
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, usuario, senha);
         } catch (ClassNotFoundException e) {
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Sem conexão com o Banco de Dados!\nSolicite seu Programador!");
+            JOptionPane.showMessageDialog(null, "Sem conexão com o Banco de Dados!\nEntre em contato com o NUPSI!");
             System.exit(0);
         }
     }
