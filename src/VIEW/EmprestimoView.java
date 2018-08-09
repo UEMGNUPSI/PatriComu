@@ -903,7 +903,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Iniciais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Champagne & Limousines", 0, 14), new java.awt.Color(30, 30, 30))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
-        jLabel9.setText("Usuario:");
+        jLabel9.setText("Administrador(a):");
 
         txtFuncionario.setBackground(new java.awt.Color(245, 245, 245));
         txtFuncionario.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
@@ -946,7 +946,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Requerente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Champagne & Limousines", 0, 14), new java.awt.Color(30, 30, 30))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
-        jLabel1.setText("Requerente:");
+        jLabel1.setText("Aluno(a):");
 
         txtCliente.setBackground(new java.awt.Color(245, 245, 245));
         txtCliente.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
@@ -1016,7 +1016,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         });
 
         jLabel11.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
-        jLabel11.setText("Professor:");
+        jLabel11.setText("Professor(a):");
 
         jLabel12.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
         jLabel12.setText("Justificativa do Emprestimo:");
@@ -1410,7 +1410,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(157, 157, 157)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1594,7 +1594,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 522, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1603,11 +1603,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24))
         );
 
-        jTabbedPane1.addTab("Venda", jPanel6);
+        jTabbedPane1.addTab("Emprestimo", jPanel6);
 
         jLabel15.setFont(new java.awt.Font("Champagne & Limousines", 0, 20)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Venda");
+        jLabel15.setText("Emprestimo");
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Fechar.png"))); // NOI18N
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {

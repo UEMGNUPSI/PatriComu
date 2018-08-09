@@ -54,7 +54,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
         btnEstoque.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
         btnEstoque.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Estoque.png"))); // NOI18N
-        btnEstoque.setText("Estoque");
+        btnEstoque.setText("Patrimônio");
         btnEstoque.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEstoque.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnEstoque.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -78,7 +78,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
         btnVendedor.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
         btnVendedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Funcionario.png"))); // NOI18N
-        btnVendedor.setText("Funcionario");
+        btnVendedor.setText("Administradores");
         btnVendedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVendedor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnVendedor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,7 +103,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
         btnVenda.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
         btnVenda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Vendas.png"))); // NOI18N
-        btnVenda.setText("Venda");
+        btnVenda.setText("Emprestimo");
         btnVenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVenda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnVenda.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -127,7 +127,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
         btnCliente.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
         btnCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Cliente.png"))); // NOI18N
-        btnCliente.setText("Cliente");
+        btnCliente.setText("Alunos");
         btnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnCliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -153,7 +153,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addComponent(btnCliente)
                 .addGap(15, 15, 15)
                 .addComponent(btnEstoque)
@@ -161,7 +161,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
                 .addComponent(btnVendedor)
                 .addGap(15, 15, 15)
                 .addComponent(btnVenda)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +181,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

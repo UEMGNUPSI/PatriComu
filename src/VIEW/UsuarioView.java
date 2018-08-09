@@ -648,12 +648,12 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Funcionarios", jPanel6);
+        jTabbedPane1.addTab("Administradores", jPanel6);
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Champagne & Limousines", 0, 20)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Funcionario");
+        jLabel15.setText("Administradores");
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Fechar.png"))); // NOI18N
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {

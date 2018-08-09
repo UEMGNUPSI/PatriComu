@@ -29,6 +29,7 @@ public class LoginView extends javax.swing.JFrame {
     public LoginView() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
         lblErro.setVisible(false);
         txtUser.setDocument(new LimiteDigitos(45));
         txtSenha.setDocument(new LimiteDigitos(45));
@@ -55,6 +56,7 @@ public class LoginView extends javax.swing.JFrame {
         txtUser = new javax.swing.JTextField();
         lblversão = new javax.swing.JLabel();
         lblErro = new javax.swing.JLabel();
+        btnSair = new javax.swing.JLabel();
         BackGround = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,7 +110,7 @@ public class LoginView extends javax.swing.JFrame {
 
         lblversão.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
         lblversão.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblversão.setText("Patrimônio Comunicação 0.3 Beta");
+        lblversão.setText("Patrimônio Comunicação 0.8 Beta");
         getContentPane().add(lblversão, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 246, -1));
 
         lblErro.setFont(new java.awt.Font("Champagne & Limousines", 1, 24)); // NOI18N
@@ -116,7 +118,21 @@ public class LoginView extends javax.swing.JFrame {
         lblErro.setText("Senha ou usuário incorretos!");
         getContentPane().add(lblErro, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 730, -1, -1));
 
-        BackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/tela iniciar login.png"))); // NOI18N
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Fechar.png"))); // NOI18N
+        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSairMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSairMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSairMouseExited(evt);
+            }
+        });
+        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1340, 0, -1, -1));
+
+        BackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/tela iniciar login - Copia.png"))); // NOI18N
         getContentPane().add(BackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -205,6 +221,18 @@ public class LoginView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtUserKeyPressed
 
+    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnSairMouseClicked
+
+    private void btnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseEntered
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
+    }//GEN-LAST:event_btnSairMouseEntered
+
+    private void btnSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseExited
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
+    }//GEN-LAST:event_btnSairMouseExited
+
     /**
      * @param args the command line arguments
      
@@ -244,6 +272,7 @@ public class LoginView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BackGround;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel btnSair;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator2;

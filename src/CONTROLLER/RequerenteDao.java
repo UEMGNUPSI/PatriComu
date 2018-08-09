@@ -86,7 +86,7 @@ public class RequerenteDao {
         PreparedStatement pst;
         String sql;
         List<RequerenteM> listaRequerente = new ArrayList<>();
-        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
+        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( Nascimento, \"%d/%m/%Y\" ),"
                 + "ra, rg, cpf, curso, bloqueio, senha  from Requerente order by nome";
         pst = Conexao.getInstance().prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
@@ -115,7 +115,7 @@ public class RequerenteDao {
         PreparedStatement pst;
         String sql;
         RequerenteM requerente = null;        
-        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
+        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( Nascimento, \"%d/%m/%Y\" ),"
                 + "ra, rg, cpf, curso, bloqueio, senha from Requerente where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, id);
@@ -145,7 +145,7 @@ public class RequerenteDao {
         String sql;
         List<RequerenteM> listaRequerente = new ArrayList<>();
         String name = "%"+Nome+"%";
-        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
+        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( Nascimento, \"%d/%m/%Y\" ),"
                 + "ra, rg, cpf, curso, bloqueio, senha from Requerente where nome like ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setString(1, name);
@@ -177,7 +177,7 @@ public class RequerenteDao {
         String sql;
         RequerenteM requerente = new RequerenteM();
         String name = "%"+Nome+"%";
-        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( ?, \"%d/%m/%Y\" ),"
+        sql = "select id, nome, endereco, cidade, telefone, email, Nascimento = STR_TO_DATE( Nascimento, \"%d/%m/%Y\" ),"
                 + "ra, rg, cpf, curso, bloqueio, senha from Requerente where nome like ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setString(1, name);

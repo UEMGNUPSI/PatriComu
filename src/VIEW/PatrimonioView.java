@@ -503,12 +503,12 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24))
         );
 
-        jTabbedPane1.addTab("Produtos", jPanel6);
+        jTabbedPane1.addTab("Patrimônios", jPanel6);
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Champagne & Limousines", 0, 20)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Produto");
+        jLabel15.setText("Patrimônios");
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Fechar.png"))); // NOI18N
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -534,7 +534,7 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(560, 560, 560)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(545, Short.MAX_VALUE))
+                .addContainerGap(530, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
