@@ -1,9 +1,7 @@
 package CONTROLLER;
 
-import MODEL.RequerenteM;
 import MODEL.EmprestimoM;
 import MODEL.ItenEmprestimoM;
-import MODEL.PatrimonioM;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +19,6 @@ public class EmprestimoDao {
     RequerenteDao requerentedao = new RequerenteDao();
     PatrimonioDao patrimoniodao = new PatrimonioDao();
     UsuarioDao usuariodao = new UsuarioDao();
-    ItemEmprestimoDao itememprestimodao = new ItemEmprestimoDao();
         
     public void salvar (EmprestimoM emp,List<ItenEmprestimoM> item ) throws SQLException{
 
