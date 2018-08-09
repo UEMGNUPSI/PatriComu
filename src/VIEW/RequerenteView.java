@@ -602,7 +602,6 @@ public class RequerenteView extends javax.swing.JInternalFrame {
 
         txtSenha.setBackground(new java.awt.Color(245, 245, 245));
         txtSenha.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        txtSenha.setText("jPasswordField1");
         txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -798,7 +797,9 @@ public class RequerenteView extends javax.swing.JInternalFrame {
             requerente.setRA(txtRA.getText());
             requerente.setRg(txtRg.getText());
             requerente.setCpf(txtCpf.getText());
+            requerente.setCurso(txtCurso.getText());
             requerente.setBloqueio(auxbloq);
+            requerente.setSenha(txtSenha.getText());
             try{
                 requerentedao.salvar(requerente);
                 JOptionPane.showMessageDialog(null, "Gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
@@ -822,7 +823,9 @@ public class RequerenteView extends javax.swing.JInternalFrame {
             requerente.setRA(txtRA.getText());
             requerente.setRg(txtRg.getText());
             requerente.setCpf(txtCpf.getText());
+            requerente.setCurso(txtCurso.getText());
             requerente.setBloqueio(auxbloq);
+            requerente.setSenha(txtSenha.getText());
         try{
             requerentedao.alterar(requerente);
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);       

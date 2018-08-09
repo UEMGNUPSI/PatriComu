@@ -142,8 +142,8 @@ public class EmprestimoDao {
     
     public List<EmprestimoM> listaTodos() throws SQLException{
         List<EmprestimoM> listavenda = new ArrayList<>();
-        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DataEmprestimo = DATE_FORMAT( DataEmprestimo, \"%d/%m/%Y\" ), DATE_FORMAT( DataPrevista, \"%d/%m/%Y\" ),"
-                + " DATE_FORMAT( DataDevolucao, \"%d/%m/%Y\" ) from Emprestimo ORDER BY id DESC";
+        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( dataemprestimo, \"%d/%m/%Y\" ) AS DataEmprestimo, DATE_FORMAT( datapresvista, \"%d/%m/%Y\" ) AS DataPrevista,"
+                + " DATE_FORMAT( datadevolucao, \"%d/%m/%Y\" ) AS DataDevolucao from Emprestimo ORDER BY id DESC";
         pst = Conexao.getInstance().prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
 
@@ -165,8 +165,8 @@ public class EmprestimoDao {
     
     public EmprestimoM busca(int id) throws SQLException{
         EmprestimoM venda = null;
-        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DataEmprestimo = DATE_FORMAT( DataEmprestimo, \"%d/%m/%Y\" ), DATE_FORMAT( DataPrevista, \"%d/%m/%Y\" ),"
-                + " DATE_FORMAT( DataDevolucao, \"%d/%m/%Y\" ) from Venda where id = ?";
+        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( dataemprestimo, \"%d/%m/%Y\" ) AS DataEmprestimo, DATE_FORMAT( datapresvista, \"%d/%m/%Y\" ) AS DataPrevista,"
+                + " DATE_FORMAT( datadevolucao, \"%d/%m/%Y\" ) AS DataDevolucao from Venda where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, id);
         ResultSet rs = pst.executeQuery();
@@ -189,8 +189,8 @@ public class EmprestimoDao {
     public List<EmprestimoM> buscaNomeLista(int Nome) throws SQLException{
         List<EmprestimoM> listavenda = new ArrayList<>();
         //String name = "%"+Nome+"%";
-        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DataEmprestimo = DATE_FORMAT( DataEmprestimo, \"%d/%m/%Y\" ), DATE_FORMAT( DataPrevista, \"%d/%m/%Y\" ),"
-                + " DATE_FORMAT( DataDevolucao, \"%d/%m/%Y\" ) from Venda where idcliente like ?";
+        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( dataemprestimo, \"%d/%m/%Y\" ) AS DataEmprestimo, DATE_FORMAT( datapresvista, \"%d/%m/%Y\" ) AS DataPrevista,"
+                + " DATE_FORMAT( datadevolucao, \"%d/%m/%Y\" ) AS DataDevolucao from Venda where idcliente like ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, Nome);
         pst.execute();
