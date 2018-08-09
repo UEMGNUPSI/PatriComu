@@ -83,6 +83,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         tblProdutoDialog.getTableHeader().setReorderingAllowed(false);
         tblVenda.getTableHeader().setUI(new WindowsTableHeaderUI());
         tblVenda.getTableHeader().setReorderingAllowed(false);
+        
+        
         txtDataAtual.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
         txtIdVenda.setVisible(false);
         txtIdProduto.setVisible(false);
@@ -90,6 +92,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         txtQuantidadeTotal.setVisible(false);
         txtIdUsuario.setVisible(false);
         txtIdRequerente.setVisible(false);
+        txtQualidade.setVisible(false);
         
         RequerenteDialog.setSize(525, 490);
         PatrimonioDialog.setSize(535, 500);
@@ -1074,7 +1077,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         txtHora.setBackground(new java.awt.Color(245, 245, 245));
         txtHora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
-        txtHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        txtHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         txtHora.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N

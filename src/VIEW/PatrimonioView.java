@@ -70,7 +70,11 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                 dados[i][1] = produto.getNome();
                 dados[i][2] = produto.getNumero();
                 dados[i][3] = produto.getQualidade();
-                dados[i][4] = String.valueOf(produto.getOcupado());
+                if(produto.getOcupado() == false){
+                    dados[i][4] = "Disponivel";
+                }else{
+                    dados[i][4] = "Ocupado";
+                }
 
                 i++;
             }
@@ -92,10 +96,11 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             tblProduto.getColumnModel().getColumn(0).setPreferredWidth(0);
             tblProduto.getColumnModel().getColumn(1).setPreferredWidth(200);
             tblProduto.getColumnModel().getColumn(2).setPreferredWidth(100);
-            
+
             DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
             centralizado.setHorizontalAlignment(SwingConstants.CENTER);
             tblProduto.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+            tblProduto.getColumnModel().getColumn(4).setCellRenderer(centralizado);
             tblProduto.setRowHeight(35);
             tblProduto.updateUI();
     }
@@ -111,7 +116,11 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                 dados[i][1] = produto.getNome();
                 dados[i][2] = produto.getNumero();
                 dados[i][3] = produto.getQualidade();
-                dados[i][4] = String.valueOf(produto.getOcupado());
+                if(produto.getOcupado() == false){
+                    dados[i][4] = "Disponivel";
+                }else{
+                    dados[i][4] = "Ocupado";
+                }
 
                 i++;
             }
@@ -133,10 +142,11 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             tblProduto.getColumnModel().getColumn(0).setPreferredWidth(0);
             tblProduto.getColumnModel().getColumn(1).setPreferredWidth(200);
             tblProduto.getColumnModel().getColumn(2).setPreferredWidth(100);
-            
+
             DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
             centralizado.setHorizontalAlignment(SwingConstants.CENTER);
             tblProduto.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+            tblProduto.getColumnModel().getColumn(4).setCellRenderer(centralizado);
             tblProduto.setRowHeight(35);
             tblProduto.updateUI();
     }
@@ -386,7 +396,7 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
 
         txtQualidade.setBackground(new java.awt.Color(245, 245, 245));
         txtQualidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
-        txtQualidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        txtQualidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtQualidade.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
 
         jLabel29.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
