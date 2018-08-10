@@ -790,8 +790,8 @@ public class RequerenteView extends javax.swing.JInternalFrame {
             auxbloq = false;
         }
         
-        if(txtNome.getText().isEmpty() || txtNascimento.getValue().equals("")){
-            JOptionPane.showMessageDialog(null, "Preencha o Nome e Data de Nascimento!", "erro", JOptionPane.WARNING_MESSAGE);
+        if(txtNome.getText().isEmpty() || txtNascimento.getValue().equals("") || txtSenha.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha o Nome , Data de Nascimento e Senha!", "erro", JOptionPane.WARNING_MESSAGE);
             txtNome.requestFocusInWindow();       
         }
         else if(txtId.getText().isEmpty()){
