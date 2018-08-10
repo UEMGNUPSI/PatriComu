@@ -139,8 +139,8 @@ public class EmprestimoDao {
     
     public List<EmprestimoM> listaTodos() throws SQLException{
         List<EmprestimoM> listavenda = new ArrayList<>();
-        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( dataemprestimo, \"%d/%m/%Y\" ) AS DataEmprestimo, DATE_FORMAT( datapresvista, \"%d/%m/%Y\" ) AS DataPrevista,"
-                + " DATE_FORMAT( datadevolucao, \"%d/%m/%Y\" ) AS DataDevolucao from Emprestimo ORDER BY id DESC";
+        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( dataemprestimo, \"%d/%m/%Y\" ) AS DataEmprestimo,"
+                + " DATE_FORMAT( dataprevista, \"%d/%m/%Y\" ) AS dataprevista, DATE_FORMAT( datadevolucao, \"%d/%m/%Y\" ) AS DataDevolucao from Emprestimo ORDER BY id DESC";
         pst = Conexao.getInstance().prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
 

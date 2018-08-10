@@ -24,7 +24,6 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import util.ColorirVenda;
 
 /**
  *
@@ -159,7 +158,6 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
             centralizado.setHorizontalAlignment(SwingConstants.CENTER);
             tblVenda.getColumnModel().getColumn(0).setCellRenderer(centralizado);
-            tblVenda.setDefaultRenderer(Object.class, new ColorirVenda());
             tblVenda.setRowHeight(35);
             tblVenda.updateUI();
     }
@@ -208,7 +206,6 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
             centralizado.setHorizontalAlignment(SwingConstants.CENTER);
             tblVenda.getColumnModel().getColumn(0).setCellRenderer(centralizado);
-            tblVenda.setDefaultRenderer(Object.class, new ColorirVenda());
             tblVenda.setRowHeight(35);
             tblVenda.updateUI();
     }
@@ -643,6 +640,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         RequerenteDialog = new javax.swing.JDialog();
         jPanel34 = new javax.swing.JPanel();
+        btnSair1 = new javax.swing.JLabel();
         jLabel68 = new javax.swing.JLabel();
         txtBuscaClienteDialog = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
@@ -655,6 +653,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jScrollPane11 = new javax.swing.JScrollPane();
         tblProdutoDialog = new javax.swing.JTable();
+        btnSair2 = new javax.swing.JLabel();
         FinalizaDialog = new javax.swing.JDialog();
         jPanel10 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -686,6 +685,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jSeparator7 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblFuncionarioDialog = new javax.swing.JTable();
+        btnSair3 = new javax.swing.JLabel();
         ItensDialog = new javax.swing.JDialog();
         jPanel37 = new javax.swing.JPanel();
         jSeparator8 = new javax.swing.JSeparator();
@@ -694,6 +694,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jSeparator9 = new javax.swing.JSeparator();
         btnDevolver = new javax.swing.JButton();
         txtIdVenda = new javax.swing.JTextField();
+        btnSair4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
@@ -727,6 +728,19 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         RequerenteDialog.setResizable(false);
 
         jPanel34.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Fechar.png"))); // NOI18N
+        btnSair1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSair1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSair1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSair1MouseExited(evt);
+            }
+        });
 
         jLabel68.setFont(new java.awt.Font("Champagne & Limousines", 0, 14)); // NOI18N
         jLabel68.setForeground(new java.awt.Color(26, 26, 26));
@@ -783,13 +797,17 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscaClienteDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSair1))
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel34Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSair1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtBuscaClienteDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
@@ -852,6 +870,19 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         });
         jScrollPane11.setViewportView(tblProdutoDialog);
 
+        btnSair2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Fechar.png"))); // NOI18N
+        btnSair2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSair2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSair2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSair2MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
         jPanel35Layout.setHorizontalGroup(
@@ -870,6 +901,10 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                             .addComponent(txtBuscaProdutoDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel35Layout.createSequentialGroup()
+                    .addGap(0, 546, Short.MAX_VALUE)
+                    .addComponent(btnSair2)))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -883,6 +918,10 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel35Layout.createSequentialGroup()
+                    .addComponent(btnSair2)
+                    .addGap(0, 467, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout PatrimonioDialogLayout = new javax.swing.GroupLayout(PatrimonioDialog.getContentPane());
@@ -989,7 +1028,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnSalvar.setBackground(new java.awt.Color(255, 255, 255));
         btnSalvar.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
         btnSalvar.setText("Finalizar");
-        btnSalvar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 51)));
+        btnSalvar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -999,7 +1038,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnVoltar.setBackground(new java.awt.Color(255, 255, 255));
         btnVoltar.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
         btnVoltar.setText("Voltar");
-        btnVoltar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 51)));
+        btnVoltar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -1012,11 +1051,6 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         txtProfessor.setBackground(new java.awt.Color(245, 245, 245));
         txtProfessor.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
         txtProfessor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
-        txtProfessor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtProfessorMouseClicked(evt);
-            }
-        });
 
         jLabel11.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
         jLabel11.setText("Professor(a):");
@@ -1196,6 +1230,19 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         });
         jScrollPane5.setViewportView(tblFuncionarioDialog);
 
+        btnSair3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Fechar.png"))); // NOI18N
+        btnSair3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSair3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSair3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSair3MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
         jPanel36.setLayout(jPanel36Layout);
         jPanel36Layout.setHorizontalGroup(
@@ -1215,6 +1262,10 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                     .addComponent(txtBuscaFuncionarioDialog)
                     .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
+                    .addGap(0, 546, Short.MAX_VALUE)
+                    .addComponent(btnSair3)))
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1228,6 +1279,10 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
+            .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel36Layout.createSequentialGroup()
+                    .addComponent(btnSair3)
+                    .addGap(0, 467, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout UsuarioDialogLayout = new javax.swing.GroupLayout(UsuarioDialog.getContentPane());
@@ -1273,10 +1328,23 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnDevolver.setBackground(new java.awt.Color(255, 255, 255));
         btnDevolver.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
         btnDevolver.setText("Devolver Itens");
-        btnDevolver.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 51)));
+        btnDevolver.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDevolverActionPerformed(evt);
+            }
+        });
+
+        btnSair4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Fechar.png"))); // NOI18N
+        btnSair4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSair4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSair4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSair4MouseExited(evt);
             }
         });
 
@@ -1284,12 +1352,12 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel37.setLayout(jPanel37Layout);
         jPanel37Layout.setHorizontalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSair4))
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator8)
-                    .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1299,10 +1367,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(btnSair4)
+                .addGap(8, 8, 8)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1971,9 +2040,53 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         txtIDIten.setText(tblItenVenda.getValueAt(tblItenVenda.getSelectedRow(), 0).toString());
     }//GEN-LAST:event_tblItenVendaMouseClicked
 
-    private void txtProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtProfessorMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProfessorMouseClicked
+    private void btnSair1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseClicked
+        RequerenteDialog.dispose();
+    }//GEN-LAST:event_btnSair1MouseClicked
+
+    private void btnSair1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseEntered
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
+    }//GEN-LAST:event_btnSair1MouseEntered
+
+    private void btnSair1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseExited
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
+    }//GEN-LAST:event_btnSair1MouseExited
+
+    private void btnSair2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair2MouseClicked
+        PatrimonioDialog.dispose();
+    }//GEN-LAST:event_btnSair2MouseClicked
+
+    private void btnSair2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair2MouseEntered
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
+    }//GEN-LAST:event_btnSair2MouseEntered
+
+    private void btnSair2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair2MouseExited
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
+    }//GEN-LAST:event_btnSair2MouseExited
+
+    private void btnSair3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair3MouseClicked
+        UsuarioDialog.dispose();
+    }//GEN-LAST:event_btnSair3MouseClicked
+
+    private void btnSair3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair3MouseEntered
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
+    }//GEN-LAST:event_btnSair3MouseEntered
+
+    private void btnSair3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair3MouseExited
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
+    }//GEN-LAST:event_btnSair3MouseExited
+
+    private void btnSair4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair4MouseClicked
+        ItensDialog.dispose();
+    }//GEN-LAST:event_btnSair4MouseClicked
+
+    private void btnSair4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair4MouseEntered
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
+    }//GEN-LAST:event_btnSair4MouseEntered
+
+    private void btnSair4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair4MouseExited
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
+    }//GEN-LAST:event_btnSair4MouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog FinalizaDialog;
@@ -1988,6 +2101,10 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnRemoverItemVenda;
     private javax.swing.JLabel btnSair;
+    private javax.swing.JLabel btnSair1;
+    private javax.swing.JLabel btnSair2;
+    private javax.swing.JLabel btnSair3;
+    private javax.swing.JLabel btnSair4;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
