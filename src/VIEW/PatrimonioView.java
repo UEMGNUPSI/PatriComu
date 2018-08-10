@@ -256,16 +256,18 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTabbedPane1.setForeground(new java.awt.Color(32, 33, 41));
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFocusable(false);
-        jTabbedPane1.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         tblProduto.setBackground(new java.awt.Color(248, 248, 248));
         tblProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(210, 210, 210)));
-        tblProduto.setFont(new java.awt.Font("Champagne & Limousines", 0, 12)); // NOI18N
+        tblProduto.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tblProduto.setForeground(new java.awt.Color(32, 33, 41));
         tblProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -282,10 +284,11 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         jScrollPane3.setViewportView(tblProduto);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Busca", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Champagne & Limousines", 0, 14), new java.awt.Color(30, 30, 30))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Busca", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(32, 33, 41))); // NOI18N
 
         txtBusca.setBackground(new java.awt.Color(245, 245, 245));
-        txtBusca.setFont(new java.awt.Font("Champagne & Limousines", 0, 14)); // NOI18N
+        txtBusca.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtBusca.setForeground(new java.awt.Color(32, 33, 41));
         txtBusca.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
         txtBusca.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -293,7 +296,8 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(32, 33, 41));
         jLabel13.setText("Nome:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -304,7 +308,7 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+                .addComponent(txtBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -318,8 +322,9 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         );
 
         btnAlterar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAlterar.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnAlterar.setText("Alterar");
+        btnAlterar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnAlterar.setForeground(new java.awt.Color(32, 33, 41));
+        btnAlterar.setText("ALTERAR");
         btnAlterar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,8 +333,10 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         });
 
         btnExcluir.setBackground(new java.awt.Color(255, 255, 255));
-        btnExcluir.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnExcluir.setText("Excluir");
+        btnExcluir.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnExcluir.setForeground(new java.awt.Color(32, 33, 41));
+        btnExcluir.setText("EXCLUIR");
+        btnExcluir.setToolTipText("");
         btnExcluir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,14 +354,14 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,9 +371,9 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -375,34 +382,44 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Iniciais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Champagne & Limousines", 0, 14), new java.awt.Color(30, 30, 30))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Iniciais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(32, 33, 41))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(32, 33, 41));
         jLabel1.setText("Nome do Produto:");
 
         txtNome.setBackground(new java.awt.Color(245, 245, 245));
-        txtNome.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNome.setForeground(new java.awt.Color(32, 33, 41));
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
+
+        txtId.setForeground(new java.awt.Color(32, 33, 41));
 
         txtNumero.setBackground(new java.awt.Color(245, 245, 245));
         txtNumero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
-        txtNumero.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtNumero.setForeground(new java.awt.Color(32, 33, 41));
+        txtNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
-        jLabel6.setText("Numero de Patrimônio:");
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(32, 33, 41));
+        jLabel6.setText("Número de Patrimônio:");
 
-        jLabel18.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(32, 33, 41));
         jLabel18.setText("Qualidade:");
 
         txtQualidade.setBackground(new java.awt.Color(245, 245, 245));
         txtQualidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
+        txtQualidade.setForeground(new java.awt.Color(32, 33, 41));
         txtQualidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        txtQualidade.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtQualidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jLabel29.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(32, 33, 41));
         jLabel29.setText("Status:");
 
-        txtStatus.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        txtStatus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtStatus.setForeground(new java.awt.Color(32, 33, 41));
         txtStatus.setText("...");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -419,12 +436,12 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtQualidade, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel29)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -452,8 +469,9 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         );
 
         btnSalvar.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalvar.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnSalvar.setText("Salvar");
+        btnSalvar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(32, 33, 41));
+        btnSalvar.setText("SALVAR");
         btnSalvar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -462,8 +480,9 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         });
 
         btnNovo.setBackground(new java.awt.Color(255, 255, 255));
-        btnNovo.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnNovo.setText("Novo");
+        btnNovo.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnNovo.setForeground(new java.awt.Color(32, 33, 41));
+        btnNovo.setText("NOVO");
         btnNovo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -472,8 +491,9 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         });
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(32, 33, 41));
+        btnCancelar.setText("CANCELAR");
         btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -492,11 +512,11 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -504,18 +524,19 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
 
         jTabbedPane1.addTab("Patrimônios", jPanel6);
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel15.setFont(new java.awt.Font("Champagne & Limousines", 0, 20)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(88, 145, 193));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Patrimônios");
 
@@ -543,7 +564,7 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(560, 560, 560)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(530, Short.MAX_VALUE))
+                .addContainerGap(529, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
