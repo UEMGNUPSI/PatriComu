@@ -31,6 +31,7 @@ public class RequerenteView extends javax.swing.JInternalFrame {
     public RequerenteView() {
         initComponents();
         //tblCliente.setUI(new Basic);
+        btnAlterar.setEnabled(false);
         this.setVisible(true);
         atualizaTabelaRequerente();
         jTabbedPane1.setUI(new BasicTabbedPaneUI());
@@ -212,7 +213,7 @@ public class RequerenteView extends javax.swing.JInternalFrame {
    
     public void prepararSalvareCancelar() {
        btnNovo.setEnabled(true);
-       btnAlterar.setEnabled(true);
+       btnAlterar.setEnabled(false);
        btnExcluir.setEnabled(true);
        btnSalvar.setEnabled(false);
        btnCancelar.setEnabled(false);
@@ -362,6 +363,7 @@ public class RequerenteView extends javax.swing.JInternalFrame {
         btnAlterar.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        btnAlterar.setEnabled(false);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
@@ -452,6 +454,11 @@ public class RequerenteView extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         txtNascimento.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNascimentoActionPerformed(evt);
+            }
+        });
 
         txtRg.setBackground(new java.awt.Color(245, 245, 245));
         txtRg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
@@ -783,7 +790,7 @@ public class RequerenteView extends javax.swing.JInternalFrame {
             auxbloq = false;
         }
         
-        if(txtNome.getText().isEmpty()){
+        if(txtNome.getText().isEmpty() || txtNascimento.getValue().equals("")){
             JOptionPane.showMessageDialog(null, "Preencha o Nome e Data de Nascimento!", "erro", JOptionPane.WARNING_MESSAGE);
             txtNome.requestFocusInWindow();       
         }
@@ -954,6 +961,10 @@ public class RequerenteView extends javax.swing.JInternalFrame {
     private void btnSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseExited
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
     }//GEN-LAST:event_btnSairMouseExited
+
+    private void txtNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNascimentoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton RadioNao;
