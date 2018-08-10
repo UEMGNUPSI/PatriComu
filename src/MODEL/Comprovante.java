@@ -11,7 +11,7 @@ package MODEL;
  */
 public class Comprovante {
     
-    private String Requerente
+    //private String Requerente
     
     
 }
