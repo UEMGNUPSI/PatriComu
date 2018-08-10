@@ -20,7 +20,7 @@ public class EmprestimoDao {
     PatrimonioDao patrimoniodao = new PatrimonioDao();
     UsuarioDao usuariodao = new UsuarioDao();
         
-    public void salvar (EmprestimoM emp,List<ItenEmprestimoM> item ) throws SQLException{
+    public int salvar (EmprestimoM emp,List<ItenEmprestimoM> item ) throws SQLException{
 
         int idEmp = 0;
         sql = "insert into emprestimo set id = ?, IdRequerente = ?, IdUsuario = ?, Professor = ?, Descricao = ?, Hora = ?,"
@@ -43,6 +43,12 @@ public class EmprestimoDao {
         }
         pst.close();
         salvarItensEmprestimo((List<ItenEmprestimoM>) item, idEmp);
+        
+        if(idEmp == 0){
+            return 0;
+        }else{
+            return 1;
+        }
         
     }
     

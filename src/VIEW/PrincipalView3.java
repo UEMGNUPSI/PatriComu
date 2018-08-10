@@ -207,10 +207,10 @@ public class PrincipalView3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMouseClicked
-        EmprestimoView venda = new EmprestimoView();
-        ((BasicInternalFrameUI)venda.getUI()).setNorthPane(null);
+        EmprestimoView vendae = new EmprestimoView();
+        ((BasicInternalFrameUI)vendae.getUI()).setNorthPane(null);
             pnlPrincipal.removeAll();
-            pnlPrincipal.add(venda);
+            pnlPrincipal.add(vendae);
             pnlPrincipal.updateUI();
             btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Vendas.png")));
             btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
