@@ -856,6 +856,7 @@ public class RequerenteView extends javax.swing.JInternalFrame {
     prepararAlterar();
     ativarCampos();
     jTabbedPane1.setSelectedIndex(1);
+    txtNascimento.requestFocusInWindow();
     txtNome.requestFocusInWindow(); 
     }//GEN-LAST:event_btnAlterarActionPerformed
 
