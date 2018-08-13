@@ -37,6 +37,7 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         atualizaTabelaProduto();
         
         jTabbedPane1.setUI(new BasicTabbedPaneUI());
+        tblProduto.getTableHeader().setFont(new java.awt.Font("Segoe UI", 0, 18));
         tblProduto.getTableHeader().setUI(new WindowsTableHeaderUI());
         tblProduto.getTableHeader().setReorderingAllowed(false);
         txtId.setVisible(false);

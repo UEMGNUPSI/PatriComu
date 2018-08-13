@@ -144,7 +144,7 @@
                           <Component id="jScrollPane3" min="-2" pref="547" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnAlterar" pref="43" max="32767" attributes="0"/>
+                              <Component id="btnAlterar" max="32767" attributes="0"/>
                               <Component id="btnExcluir" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -461,9 +461,6 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f5" green="f5" red="f5" type="rgb"/>
                         </Property>
-                        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
-                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="0"/>
                         </Property>
@@ -481,9 +478,6 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtId">
                       <Properties>
-                        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
-                        </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="29" green="21" red="20" type="rgb"/>
                         </Property>
@@ -500,9 +494,6 @@
                               <Color PropertyName="color" blue="e1" green="e1" red="e1" type="rgb"/>
                             </LineBorder>
                           </Border>
-                        </Property>
-                        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="29" green="21" red="20" type="rgb"/>
@@ -545,9 +536,6 @@
                               <Color PropertyName="color" blue="e1" green="e1" red="e1" type="rgb"/>
                             </LineBorder>
                           </Border>
-                        </Property>
-                        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="29" green="21" red="20" type="rgb"/>
