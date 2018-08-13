@@ -58,7 +58,7 @@ public class EmprestimoDao {
             sql = "insert into itememprestimo values(?,?,?,?,?,?)";
             pst = Conexao.getInstance().prepareStatement(sql);
             pst.setInt(1,0);
-            pst.setInt(2, itens.getIdEmprestimo().getId());
+            pst.setInt(2, idEmp);
             pst.setInt(3, itens.getIdPatrimonio().getId());
             pst.setString(4, itens.getQualidade());
             pst.setInt(5, itens.getQuantidade());      
@@ -168,8 +168,8 @@ public class EmprestimoDao {
     
     public EmprestimoM busca(int id) throws SQLException{
         EmprestimoM venda = null;
-        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( dataemprestimo, \"%d/%m/%Y\" ) AS DataEmprestimo, DATE_FORMAT( datapresvista, \"%d/%m/%Y\" ) AS DataPrevista,"
-                + " DATE_FORMAT( datadevolucao, \"%d/%m/%Y\" ) AS DataDevolucao from Venda where id = ?";
+        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( dataemprestimo, \"%d/%m/%Y\" ) AS DataEmprestimo, DATE_FORMAT( dataprevista, \"%d/%m/%Y\" ) AS DataPrevista,"
+                + " DATE_FORMAT( datadevolucao, \"%d/%m/%Y\" ) AS DataDevolucao from Emprestimo where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, id);
         ResultSet rs = pst.executeQuery();
@@ -182,7 +182,7 @@ public class EmprestimoDao {
                         rs.getString("descricao"),
                         rs.getString("hora"),
                         rs.getString("dataemprestimo"),
-                        rs.getString("dataprevista"),
+                        rs.getString("DataPrevista"),
                         rs.getString("datadevolucao"));
         }
         pst.close();

@@ -37,8 +37,10 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.MaskFormatter;
 /**
  *
  * @author Danilo-NOTE
@@ -88,7 +90,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         atualizaTabelaEmprestimo();
         atualizaTabelaItemEmprestimo();
         jTabbedPane1.setUI(new BasicTabbedPaneUI());
-        tblVenda.getTableHeader().setFont(new java.awt.Font("Segoe UI", 0, 18));
+        tblEmprestimo.getTableHeader().setFont(new java.awt.Font("Segoe UI", 0, 18));
         tblItenVenda.getTableHeader().setFont(new java.awt.Font("Segoe UI", 0, 18));
         tblClienteDialog.getTableHeader().setUI(new WindowsTableHeaderUI());
         tblClienteDialog.getTableHeader().setReorderingAllowed(false);
@@ -100,8 +102,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         tblItensDialog.getTableHeader().setReorderingAllowed(false);
         tblProdutoDialog.getTableHeader().setUI(new WindowsTableHeaderUI());
         tblProdutoDialog.getTableHeader().setReorderingAllowed(false);
-        tblVenda.getTableHeader().setUI(new WindowsTableHeaderUI());
-        tblVenda.getTableHeader().setReorderingAllowed(false);
+        tblEmprestimo.getTableHeader().setUI(new WindowsTableHeaderUI());
+        tblEmprestimo.getTableHeader().setReorderingAllowed(false);
         
         
         txtDataAtual.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
@@ -116,8 +118,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         RequerenteDialog.setSize(525, 490);
         PatrimonioDialog.setSize(535, 500);
         UsuarioDialog.setSize(525, 490);
-        ItensDialog.setSize(535, 500);
-        FinalizaDialog.setSize(825, 365);
+        ItensDialog.setSize(550, 500);
+        FinalizaDialog.setSize(860, 365);
         btnAddItemVendas.setUI(new BasicButtonUI());
         btnCancelar.setUI(new BasicButtonUI());
         btnRemoverItemVenda.setUI(new BasicButtonUI());
@@ -155,7 +157,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             String tituloColuna[] = {"ID", "Requerente", "Data Emprestimo","Data Prevista","Devolução"};
             DefaultTableModel tabelaCliente = new DefaultTableModel();
             tabelaCliente.setDataVector(dados, tituloColuna);
-            tblVenda.setModel(new DefaultTableModel(dados, tituloColuna) {
+            tblEmprestimo.setModel(new DefaultTableModel(dados, tituloColuna) {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
@@ -165,21 +167,21 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 }
             });
 
-            tblVenda.getColumnModel().getColumn(0).setMaxWidth(0);
-            tblVenda.getColumnModel().getColumn(0).setMinWidth(0);
-            tblVenda.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tblVenda.getColumnModel().getColumn(1).setPreferredWidth(200);
-            tblVenda.getColumnModel().getColumn(2).setPreferredWidth(100);
+            //tblVenda.getColumnModel().getColumn(0).setMaxWidth(0);
+            //tblVenda.getColumnModel().getColumn(0).setMinWidth(0);
+            //tblVenda.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tblEmprestimo.getColumnModel().getColumn(2).setPreferredWidth(100);
             
-            tblVenda.getColumnModel().getColumn(4).setMaxWidth(0);
-            tblVenda.getColumnModel().getColumn(4).setMinWidth(0);
-            tblVenda.getColumnModel().getColumn(4).setPreferredWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(4).setMaxWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(4).setMinWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(4).setPreferredWidth(0);
             
             DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
             centralizado.setHorizontalAlignment(SwingConstants.CENTER);
-            tblVenda.getColumnModel().getColumn(0).setCellRenderer(centralizado);
-            tblVenda.setRowHeight(35);
-            tblVenda.updateUI();
+            tblEmprestimo.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+            tblEmprestimo.setRowHeight(35);
+            tblEmprestimo.updateUI();
     }
     
     public void atualizaTabelaVendabusca(){
@@ -203,7 +205,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             String tituloColuna[] = {"ID", "Requerente", "Data Emprestimo","Data Prevista","Devolução"};
             DefaultTableModel tabelaCliente = new DefaultTableModel();
             tabelaCliente.setDataVector(dados, tituloColuna);
-            tblVenda.setModel(new DefaultTableModel(dados, tituloColuna) {
+            tblEmprestimo.setModel(new DefaultTableModel(dados, tituloColuna) {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
@@ -213,21 +215,21 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 }
             });
 
-            tblVenda.getColumnModel().getColumn(0).setMaxWidth(0);
-            tblVenda.getColumnModel().getColumn(0).setMinWidth(0);
-            tblVenda.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tblVenda.getColumnModel().getColumn(1).setPreferredWidth(200);
-            tblVenda.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tblEmprestimo.getColumnModel().getColumn(0).setMaxWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(0).setMinWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tblEmprestimo.getColumnModel().getColumn(2).setPreferredWidth(100);
             
-            tblVenda.getColumnModel().getColumn(4).setMaxWidth(0);
-            tblVenda.getColumnModel().getColumn(4).setMinWidth(0);
-            tblVenda.getColumnModel().getColumn(4).setPreferredWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(4).setMaxWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(4).setMinWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(4).setPreferredWidth(0);
             
             DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
             centralizado.setHorizontalAlignment(SwingConstants.CENTER);
-            tblVenda.getColumnModel().getColumn(0).setCellRenderer(centralizado);
-            tblVenda.setRowHeight(35);
-            tblVenda.updateUI();
+            tblEmprestimo.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+            tblEmprestimo.setRowHeight(35);
+            tblEmprestimo.updateUI();
     }
     
     //Atualiza Busca
@@ -410,9 +412,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 dados[i][3] = produto.getQualidade();
                     
                 if(produto.getOcupado() == true){
-                    dados[i][3] = "Ocupado";
+                    dados[i][4] = "Ocupado";
                 }else{
-                    dados[i][3] = "Disponível";
+                    dados[i][4] = "Disponível";
                 }
                 i++;
             }
@@ -460,9 +462,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 dados[i][3] = produto.getQualidade();
                     
                 if(produto.getOcupado() == true){
-                    dados[i][3] = "Ocupado";
+                    dados[i][4] = "Ocupado";
                 }else{
-                    dados[i][3] = "Disponível";
+                    dados[i][4] = "Disponível";
                 }
                 i++;
             }
@@ -568,8 +570,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         
     }
     
-    public void atualizaTabelaItensDialog(){
-
+    public void atualizaTabelaItensDialogo(){
+        
         String dados[][] = new String[listaItemEmprestimo.size()][4];
             int i = 0;
             for(ItenEmprestimoM iv : listaItemEmprestimo){
@@ -584,7 +586,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         tabelaItens.setDataVector(dados, tituloColuna);
         tblItenVenda.setModel(new DefaultTableModel(dados, tituloColuna) {
                 boolean[] canEdit = new boolean[]{
-                    false, false, false, false, false
+                    false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -592,12 +594,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 }
             });
 
-            tblItensDialog.getColumnModel().getColumn(0).setMaxWidth(0);
-            tblItensDialog.getColumnModel().getColumn(0).setMinWidth(0);
-            tblItensDialog.getColumnModel().getColumn(0).setPreferredWidth(0);
+            //tblItensDialog.getColumnModel().getColumn(0).setMaxWidth(0);
+            //tblItensDialog.getColumnModel().getColumn(0).setMinWidth(0);
+            //tblItensDialog.getColumnModel().getColumn(0).setPreferredWidth(0);
             tblItensDialog.getColumnModel().getColumn(1).setPreferredWidth(200);
             tblItensDialog.getColumnModel().getColumn(2).setPreferredWidth(70);
-            tblItensDialog.getColumnModel().getColumn(3).setPreferredWidth(70);
             
             DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
             centralizado.setHorizontalAlignment(SwingConstants.CENTER);
@@ -615,12 +616,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
     // DECLARAÇÃO DE MÉTODOS DE CONTROLE DE BOTÕES
     public void limparCampos(){
-        lblTOTAL.setText("");
         txtIDIten.setText("");
         txtIdRequerente.setText("");
         txtCliente.setText("");
         txtDataAtual.setText("");
-        txtDataPrevista.setText("");
+        txtDataPrev.setText("");
         txtHora.setText("");
     }
    
@@ -641,15 +641,15 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
        btnNovo.setEnabled(false);
        btnFinalizar.setEnabled(true);
        btnCancelar.setEnabled(true);
-       tblVenda.setEnabled(false);
-       tblVenda.clearSelection();
+       tblEmprestimo.setEnabled(false);
+       tblEmprestimo.clearSelection();
     }
    
     public void prepararSalvareCancelar() {
        btnNovo.setEnabled(true);
        btnFinalizar.setEnabled(false);
        btnCancelar.setEnabled(false);
-       tblVenda.setEnabled(true);
+       tblEmprestimo.setEnabled(true);
     }
    
     public void prepararSelecaoTabela(){
@@ -660,8 +660,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
        btnNovo.setEnabled(false);
        btnFinalizar.setEnabled(true);
        btnCancelar.setEnabled(true);
-       tblVenda.setEnabled(false);
-       tblVenda.clearSelection();
+       tblEmprestimo.setEnabled(false);
+       tblEmprestimo.clearSelection();
     }
   
     @SuppressWarnings("unchecked")
@@ -704,10 +704,10 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         txtDescricao = new javax.swing.JTextArea();
         txtDataAtual = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtDataPrevista = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
         txtHora = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
+        txtDataPrev = new javax.swing.JFormattedTextField();
         UsuarioDialog = new javax.swing.JDialog();
         jPanel36 = new javax.swing.JPanel();
         jLabel70 = new javax.swing.JLabel();
@@ -729,7 +729,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblVenda = new javax.swing.JTable();
+        tblEmprestimo = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         txtBusca = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -743,8 +743,6 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtIdProduto = new javax.swing.JTextField();
         txtIDIten = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        lblTOTAL = new javax.swing.JLabel();
         txtQuantidadeTotal = new javax.swing.JTextField();
         txtQualidade = new javax.swing.JTextField();
         btnFinalizar = new javax.swing.JButton();
@@ -1131,11 +1129,6 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
         jLabel3.setText("Data:");
 
-        txtDataPrevista.setBackground(new java.awt.Color(245, 245, 245));
-        txtDataPrevista.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
-        txtDataPrevista.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        txtDataPrevista.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
-
         jLabel4.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
         jLabel4.setText("Entrega Prevista:");
 
@@ -1146,6 +1139,14 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         jLabel10.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
         jLabel10.setText("Hora:");
+
+        txtDataPrev.setBackground(new java.awt.Color(245, 245, 245));
+        txtDataPrev.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
+        try {
+            txtDataPrev.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1163,9 +1164,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                             .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(txtDataPrevista, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDataPrev))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1199,10 +1200,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDataPrevista, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDataPrev))))
                 .addContainerGap())
         );
 
@@ -1444,30 +1446,24 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblVenda.setBackground(new java.awt.Color(248, 248, 248));
-        tblVenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(210, 210, 210)));
-        tblVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tblVenda.setForeground(new java.awt.Color(32, 33, 41));
-        tblVenda.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmprestimo.setBackground(new java.awt.Color(248, 248, 248));
+        tblEmprestimo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(210, 210, 210)));
+        tblEmprestimo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblEmprestimo.setForeground(new java.awt.Color(32, 33, 41));
+        tblEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Danilo Vieira Bernardes", "(34)3423-5123", "06/06/1997", "Frutal"},
-                {"Leandro Matias Baldo", "(34)3421-4123", "05/02/1996", "Frutal"},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nome", "Telefone", "Nascimento", "Cidade"
+
             }
         ));
-        tblVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblEmprestimo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblVendaMouseClicked(evt);
+                tblEmprestimoMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tblVenda);
-        if (tblVenda.getColumnModel().getColumnCount() > 0) {
-            tblVenda.getColumnModel().getColumn(0).setMinWidth(20);
-        }
+        jScrollPane3.setViewportView(tblEmprestimo);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Busca", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(32, 33, 41))); // NOI18N
@@ -1562,7 +1558,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnAddItemVendas.setBackground(new java.awt.Color(255, 255, 255));
         btnAddItemVendas.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnAddItemVendas.setForeground(new java.awt.Color(32, 33, 41));
-        btnAddItemVendas.setText("+ NOVO EMPRESTIMO");
+        btnAddItemVendas.setText("+ ADICIONAR ");
         btnAddItemVendas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnAddItemVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1582,7 +1578,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         });
 
         txtproduto.setBackground(new java.awt.Color(245, 245, 245));
-        txtproduto.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtproduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtproduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
         txtproduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1592,21 +1588,13 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(32, 33, 41));
-        jLabel2.setText("Produto:");
+        jLabel2.setText("Patrimônio:");
 
         txtIdProduto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtIdProduto.setForeground(new java.awt.Color(32, 33, 41));
 
         txtIDIten.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtIDIten.setForeground(new java.awt.Color(32, 33, 41));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(32, 33, 41));
-        jLabel8.setText("Total: R$");
-
-        lblTOTAL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTOTAL.setForeground(new java.awt.Color(32, 33, 41));
-        lblTOTAL.setText("..");
 
         txtQuantidadeTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtQuantidadeTotal.setForeground(new java.awt.Color(32, 33, 41));
@@ -1621,9 +1609,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtIDIten, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1636,18 +1624,13 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                         .addComponent(txtproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 822, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 822, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(btnAddItemVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRemoverItemVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(btnAddItemVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btnRemoverItemVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1661,17 +1644,10 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                     .addComponent(txtQualidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(txtproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(lblTOTAL)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRemoverItemVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAddItemVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddItemVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemoverItemVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -1725,7 +1701,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addGap(74, 74, 74))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -1734,10 +1710,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNovo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
 
@@ -1801,19 +1778,6 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVendaMouseClicked
-        try{
-            listaItemEmprestimo = itemEmprestimodao.busca(Integer.parseInt(tblVenda.getValueAt(tblVenda.getSelectedRow(),0).toString()));
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
-        }
-        ItensDialog.setVisible(true);
-        txtIdVenda.setText(tblVenda.getValueAt(tblVenda.getSelectedRow(),0).toString());
-        ItensDialog.setLocationRelativeTo(null);
-        tblItensDialog.getTableHeader().setReorderingAllowed(false);
-        atualizaTabelaItensDialog();
-    }//GEN-LAST:event_tblVendaMouseClicked
-
     private void txtBuscaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtBuscaCaretUpdate
         listaEmprestimo = null;
         listaRequerente = null;
@@ -1858,6 +1822,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             FinalizaDialog.setVisible(true);
             FinalizaDialog.setLocationRelativeTo(null);
             txtDataAtual.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
+            txtHora.setText(new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis())));
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void txtBuscaClienteDialogCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtBuscaClienteDialogCaretUpdate
@@ -1921,8 +1886,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             emprestimo.setDescricao(txtDescricao.getText());
             emprestimo.setHora(txtHora.getText());
             emprestimo.setDataEmprestimo(txtDataAtual.getText());
-            emprestimo.setDataPrevista(txtDataPrevista.getText());
-            emprestimo.setDataPrevista("");
+            emprestimo.setDataPrevista(txtDataPrev.getText());
             try{
                 int auxback = emprestimodao.salvar(emprestimo,listaItemEmprestimo);
                 JOptionPane.showMessageDialog(null, "Gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
@@ -2171,6 +2135,20 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
     }//GEN-LAST:event_btnSair4MouseExited
 
+    private void tblEmprestimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEmprestimoMouseClicked
+        try{
+            listaItemEmprestimo = itemEmprestimodao.busca(Integer.parseInt(tblEmprestimo.getValueAt(tblEmprestimo.getSelectedRow(),0).toString()));
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
+        }
+
+        ItensDialog.setVisible(true);
+        txtIdVenda.setText(tblEmprestimo.getValueAt(tblEmprestimo.getSelectedRow(),0).toString());
+        ItensDialog.setLocationRelativeTo(null);
+        tblItensDialog.getTableHeader().setReorderingAllowed(false);
+        atualizaTabelaItensDialogo();
+    }//GEN-LAST:event_tblEmprestimoMouseClicked
+
     
     public void gerarDocumento(RequerenteM requerente, UsuarioM usuario, EmprestimoM emprestimo, List<ItenEmprestimoM> listaItemEmprestimoCompro) throws IOException, DocumentException{
     /*  
@@ -2303,10 +2281,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         doc.close();*/
     }
-    
-    
-    
-    
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog FinalizaDialog;
@@ -2339,7 +2314,6 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -2367,20 +2341,19 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lblTOTAL;
     private javax.swing.JTable tblClienteDialog;
+    private javax.swing.JTable tblEmprestimo;
     private javax.swing.JTable tblFuncionarioDialog;
     private javax.swing.JTable tblItenVenda;
     private javax.swing.JTable tblItensDialog;
     private javax.swing.JTable tblProdutoDialog;
-    private javax.swing.JTable tblVenda;
     private javax.swing.JTextField txtBusca;
     private javax.swing.JTextField txtBuscaClienteDialog;
     private javax.swing.JTextField txtBuscaFuncionarioDialog;
     private javax.swing.JTextField txtBuscaProdutoDialog;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JFormattedTextField txtDataAtual;
-    private javax.swing.JFormattedTextField txtDataPrevista;
+    private javax.swing.JFormattedTextField txtDataPrev;
     private javax.swing.JTextArea txtDescricao;
     private javax.swing.JTextField txtFuncionario;
     private javax.swing.JFormattedTextField txtHora;

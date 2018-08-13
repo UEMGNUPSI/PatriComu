@@ -21,7 +21,7 @@ public class ItemEmprestimoDao {
         PreparedStatement pst;
         String sql;
         List<ItenEmprestimoM> listaitens = new ArrayList<>();
-        sql = "select id, idEmprestimo, idPatrimonio, qualidade, quantidade, devolvido from itemvenda where idvenda = ?";
+        sql = "select id, idEmprestimo, idPatrimonio, qualidade, quantidade, devolvido from ItemEmprestimo where idEmprestimo = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, idvenda);
         pst.execute();
