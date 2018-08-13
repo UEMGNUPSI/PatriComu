@@ -1,8 +1,10 @@
 package VIEW;
 
+import CONTROLLER.LogDAO;
 import CONTROLLER.UsuarioDao;
 import MODEL.UsuarioM;
 import MODEL.LogM;
+import MODEL.RequerenteM;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -25,6 +27,12 @@ public class LoginView extends javax.swing.JFrame {
 
     UsuarioM usuario = new UsuarioM();
     UsuarioDao usuariodao = new UsuarioDao();
+    
+    RequerenteM requerente = new RequerenteM();
+    //Log
+    LogM log = new LogM();
+    LogDAO logdao = new LogDAO();
+    UsuarioM usulog = new UsuarioM();
 
     public LoginView() {
         initComponents();
@@ -173,6 +181,12 @@ public class LoginView extends javax.swing.JFrame {
                 }else{
        
                     PrincipalView3 principal = new PrincipalView3(usuario);
+                    //Log
+                    log.setUsuario(usulog);
+                    log.setRequerente(requerente);            
+                    log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new java.sql.Date(System.currentTimeMillis())));
+                    log.setHora(new SimpleDateFormat("HH:mm").format(new java.sql.Date(System.currentTimeMillis())));
+                    log.setAcao("Salvando Usuário: "+usuario.getNome());
                     this.dispose();
                     
                 }
@@ -212,6 +226,12 @@ public class LoginView extends javax.swing.JFrame {
                 }else{
        
                     PrincipalView3 principal = new PrincipalView3(usuario);
+                    //Log
+                    log.setUsuario(usulog);
+                    log.setRequerente(requerente);            
+                    log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new java.sql.Date(System.currentTimeMillis())));
+                    log.setHora(new SimpleDateFormat("HH:mm").format(new java.sql.Date(System.currentTimeMillis())));
+                    log.setAcao("Salvando Usuário: "+usuario.getNome());
                     this.dispose();
                     
                 }

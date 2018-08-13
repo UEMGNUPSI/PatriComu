@@ -1137,13 +1137,18 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jScrollPane13" pref="540" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                           <Component id="jSeparator8" max="32767" attributes="0"/>
-                          <Component id="jScrollPane13" pref="550" max="32767" attributes="0"/>
                           <Component id="jSeparator9" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnDevolver" min="-2" pref="146" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtIdVenda" min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="txtIdItemDevolu" min="-2" pref="39" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="txtIdEmprestimo" min="-2" pref="62" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1160,7 +1165,10 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="btnDevolver" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="txtIdVenda" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtIdEmprestimo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtIdItemDevolu" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator9" min="-2" pref="10" max="-2" attributes="0"/>
@@ -1246,7 +1254,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Champagne &amp; Limousines" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Devolver Itens"/>
+                <Property name="text" type="java.lang.String" value="Devolver Item"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
@@ -1254,12 +1262,13 @@
                     </LineBorder>
                   </Border>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDevolverActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtIdVenda">
+            <Component class="javax.swing.JTextField" name="txtIdEmprestimo">
             </Component>
             <Component class="javax.swing.JLabel" name="btnSair4">
               <Properties>
@@ -1272,6 +1281,8 @@
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSair4MouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSair4MouseExited"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtIdItemDevolu">
             </Component>
           </SubComponents>
         </Container>

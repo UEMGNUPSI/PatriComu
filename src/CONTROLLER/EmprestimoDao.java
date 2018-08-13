@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -65,47 +66,30 @@ public class EmprestimoDao {
             pst.setBoolean(6, itens.getDevolvido());
             pst.execute();
             pst.close();
-            //buscaquantidade(itens.getIdPatrimonio().getId(), itens.getQuantidade());
+            atualizaOcupado(itens.getIdPatrimonio().getId());
         }
     }
     
-    /*public void buscaquantidade(int id, float quantidade) throws SQLException{
-        PatrimonioM pat = null;
-        int count = 0;          // Contador para saber quantos patrimonios estão disponíveis
-        sql = "select * from patrimonio where id = ? and ocupado = 0";
-        pst = Conexao.getInstance().prepareStatement(sql);
-        pst.setInt(1, id);
-        ResultSet rs = pst.executeQuery();
-        while(rs.next()){
-            pat = new PatrimonioM(
-                            rs.getInt("id"),
-                            itememprestimodao.busca(rs.getInt("idcategoria")),
-                            patrimoniodao.busca(rs.getInt("idmarca")),
-                            rs.getString("Nome"),
-                            rs.getString("Numero"),
-                            rs.getString("Qualidade"),
-                            rs.getBoolean("Ocupado"));
-            count++;
-        }
-        
-        pst.close();
-        if(count >= quantidade){
-            atualizaOcupado(pat.getId());
-        }
-        else{
-            // Não possuí itens suficiente (FAZER TRATATIVA)
-        }
-        
-    }
-    */
     
     public void atualizaOcupado(int id)throws SQLException{
         sql = "update patrimonio set "
-                        + "ocupado  = ? "
+                        + "Ocupado  = ? "
 
                         + "where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, 1);
+        pst.setInt(2, id);
+        pst.execute();
+        pst.close();
+    }
+    
+    public void atualizaDisponivel(int id)throws SQLException{
+        sql = "update patrimonio set "
+                        + "Ocupado  = ? "
+
+                        + "where id = ?";
+        pst = Conexao.getInstance().prepareStatement(sql);
+        pst.setInt(1, 0);
         pst.setInt(2, id);
         pst.execute();
         pst.close();
@@ -115,7 +99,7 @@ public class EmprestimoDao {
         PreparedStatement pst;
         String sql;
         sql = "update Emprestimo set "
-                        + "datadevolucao  = ? "
+                        + "datadevolucao  = STR_TO_DATE( ?, \"%d/%m/%Y\" ) "
 
                         + "where id = ?";
         pst = Conexao.getInstance().prepareStatement(sql);

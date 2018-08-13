@@ -107,13 +107,14 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         
         
         txtDataAtual.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
-        txtIdVenda.setVisible(false);
+        txtIdEmprestimo.setVisible(false);
         txtIdProduto.setVisible(false);
         txtIDIten.setVisible(false);
         txtQuantidadeTotal.setVisible(false);
         txtIdUsuario.setVisible(false);
         txtIdRequerente.setVisible(false);
         txtQualidade.setVisible(false);
+        txtIdItemDevolu.setVisible(false);
         
         RequerenteDialog.setSize(525, 490);
         PatrimonioDialog.setSize(535, 500);
@@ -139,7 +140,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
         }
         
-        Object dados[][] = new String[listaEmprestimo.size()][5];
+        Object dados[][] = new String[listaEmprestimo.size()][7];
             int i = 0;
             for (EmprestimoM venda2 : listaEmprestimo) {
                 dados[i][0] = String.valueOf(venda2.getId());
@@ -152,62 +153,16 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 }else{
                     dados[i][4] = venda2.getDataDevolucao();
                 }
+                dados[i][5] = venda2.getProfessor();
+                dados[i][6] = venda2.getDescricao();
                 i++;
             }
-            String tituloColuna[] = {"ID", "Requerente", "Data Emprestimo","Data Prevista","Devolução"};
+            String tituloColuna[] = {"ID", "Requerente", "Data Emprestimo","Data Prevista","Devolução","Professor","Justificativa"};
             DefaultTableModel tabelaCliente = new DefaultTableModel();
             tabelaCliente.setDataVector(dados, tituloColuna);
             tblEmprestimo.setModel(new DefaultTableModel(dados, tituloColuna) {
                 boolean[] canEdit = new boolean[]{
-                    false, false, false, false, false
-                };
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit[columnIndex];
-                }
-            });
-
-            //tblVenda.getColumnModel().getColumn(0).setMaxWidth(0);
-            //tblVenda.getColumnModel().getColumn(0).setMinWidth(0);
-            //tblVenda.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tblEmprestimo.getColumnModel().getColumn(1).setPreferredWidth(200);
-            tblEmprestimo.getColumnModel().getColumn(2).setPreferredWidth(100);
-            
-            tblEmprestimo.getColumnModel().getColumn(4).setMaxWidth(0);
-            tblEmprestimo.getColumnModel().getColumn(4).setMinWidth(0);
-            tblEmprestimo.getColumnModel().getColumn(4).setPreferredWidth(0);
-            
-            DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
-            centralizado.setHorizontalAlignment(SwingConstants.CENTER);
-            tblEmprestimo.getColumnModel().getColumn(0).setCellRenderer(centralizado);
-            tblEmprestimo.setRowHeight(35);
-            tblEmprestimo.updateUI();
-    }
-    
-    public void atualizaTabelaVendabusca(){
-        emprestimo = new EmprestimoM();
-        
-        String dados[][] = new String[listaEmprestimo.size()][5];
-            int i = 0;
-            for (EmprestimoM venda2 : listaEmprestimo) {
-                dados[i][0] = String.valueOf(venda2.getId());
-                dados[i][1] = venda2.getIdRequerente().getNome();
-                dados[i][2] = venda2.getDataEmprestimo();
-                dados[i][3] = venda2.getDataPrevista();
-                
-                if(venda2.getDataDevolucao() == ""){
-                    dados[i][4] = "Não Devolvido";
-                }else{
-                    dados[i][4] = venda2.getDataDevolucao();
-                }
-                i++;
-            }
-            String tituloColuna[] = {"ID", "Requerente", "Data Emprestimo","Data Prevista","Devolução"};
-            DefaultTableModel tabelaCliente = new DefaultTableModel();
-            tabelaCliente.setDataVector(dados, tituloColuna);
-            tblEmprestimo.setModel(new DefaultTableModel(dados, tituloColuna) {
-                boolean[] canEdit = new boolean[]{
-                    false, false, false, false, false
+                    false, false, false, false, false,false,false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -218,8 +173,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             tblEmprestimo.getColumnModel().getColumn(0).setMaxWidth(0);
             tblEmprestimo.getColumnModel().getColumn(0).setMinWidth(0);
             tblEmprestimo.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tblEmprestimo.getColumnModel().getColumn(1).setPreferredWidth(200);
-            tblEmprestimo.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tblEmprestimo.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tblEmprestimo.getColumnModel().getColumn(3).setPreferredWidth(50);
             
             tblEmprestimo.getColumnModel().getColumn(4).setMaxWidth(0);
             tblEmprestimo.getColumnModel().getColumn(4).setMinWidth(0);
@@ -228,6 +183,60 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
             centralizado.setHorizontalAlignment(SwingConstants.CENTER);
             tblEmprestimo.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+            tblEmprestimo.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+            tblEmprestimo.getColumnModel().getColumn(3).setCellRenderer(centralizado);
+            tblEmprestimo.setRowHeight(35);
+            tblEmprestimo.updateUI();
+    }
+    
+    public void atualizaTabelaVendabusca(){
+        emprestimo = new EmprestimoM();
+        
+        Object dados[][] = new String[listaEmprestimo.size()][7];
+            int i = 0;
+            for (EmprestimoM venda2 : listaEmprestimo) {
+                dados[i][0] = String.valueOf(venda2.getId());
+                dados[i][1] = venda2.getIdRequerente().getNome();
+                dados[i][2] = venda2.getDataEmprestimo();
+                dados[i][3] = venda2.getDataPrevista();
+                
+                if(venda2.getDataDevolucao() == ""){
+                    dados[i][4] = "Não Devolvido";
+                }else{
+                    dados[i][4] = venda2.getDataDevolucao();
+                }
+                dados[i][5] = venda2.getProfessor();
+                dados[i][6] = venda2.getDescricao();
+                i++;
+            }
+            String tituloColuna[] = {"ID", "Requerente", "Data Emprestimo","Data Prevista","Devolução","Professor","Justificativa"};
+            DefaultTableModel tabelaCliente = new DefaultTableModel();
+            tabelaCliente.setDataVector(dados, tituloColuna);
+            tblEmprestimo.setModel(new DefaultTableModel(dados, tituloColuna) {
+                boolean[] canEdit = new boolean[]{
+                    false, false, false, false, false,false,false
+                };
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            });
+
+            tblEmprestimo.getColumnModel().getColumn(0).setMaxWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(0).setMinWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tblEmprestimo.getColumnModel().getColumn(3).setPreferredWidth(50);
+            
+            tblEmprestimo.getColumnModel().getColumn(4).setMaxWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(4).setMinWidth(0);
+            tblEmprestimo.getColumnModel().getColumn(4).setPreferredWidth(0);
+            
+            DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+            centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+            tblEmprestimo.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+            tblEmprestimo.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+            tblEmprestimo.getColumnModel().getColumn(3).setCellRenderer(centralizado);
             tblEmprestimo.setRowHeight(35);
             tblEmprestimo.updateUI();
     }
@@ -476,6 +485,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                     false, false,false,false
                 };
 
+                @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
@@ -501,11 +511,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         for(ItenEmprestimoM iv : listaItemEmprestimo){
             dados[i][0] = String.valueOf(iv.getId());
             dados[i][1] = iv.getIdPatrimonio().getNome();
-            dados[i][2] = String.valueOf(iv.getQuantidade());
-            dados[i][3] = String.valueOf(iv.getDevolvido());
+            dados[i][2] = iv.getQualidade();
+            dados[i][3] = String.valueOf(iv.getQuantidade());
             i++;
         }
-        String tituloColuna[] = {"Id", "Patrimonio", "Quantidade", "Devolução"};
+        String tituloColuna[] = {"Id", "Patrimonio", "Qualidade", "Quantidade"};
         DefaultTableModel tabelaItens = new DefaultTableModel();
         tabelaItens.setDataVector(dados, tituloColuna);
         tblItenVenda.setModel(new DefaultTableModel(dados, tituloColuna) {
@@ -521,12 +531,14 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         tblItenVenda.getColumnModel().getColumn(0).setMinWidth(0);
         tblItenVenda.getColumnModel().getColumn(0).setPreferredWidth(0);
         tblItenVenda.getColumnModel().getColumn(1).setPreferredWidth(100);
-        tblItenVenda.getColumnModel().getColumn(2).setPreferredWidth(100);
-        tblItenVenda.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tblItenVenda.getColumnModel().getColumn(2).setPreferredWidth(50);
+        tblItenVenda.getColumnModel().getColumn(3).setPreferredWidth(50);
         
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
         tblItenVenda.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+        tblItenVenda.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+        tblItenVenda.getColumnModel().getColumn(3).setCellRenderer(centralizado);
         tblItenVenda.setRowHeight(25);
         tblItenVenda.updateUI();
         
@@ -540,10 +552,10 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             dados[i][0] = String.valueOf(iv.getId());
             dados[i][1] = iv.getIdPatrimonio().getNome();
             dados[i][2] = iv.getQualidade();
-            dados[i][3] = String.valueOf(iv.getDevolvido());
+            dados[i][3] = String.valueOf(iv.getQuantidade());
             i++;
         }
-        String tituloColuna[] = {"Id", "Patrimonio", "Quantidade", "Devolução"};
+        String tituloColuna[] = {"Id", "Patrimonio", "Qualidade", "Quantidade"};
         DefaultTableModel tabelaItens = new DefaultTableModel();
         tabelaItens.setDataVector(dados, tituloColuna);
         tblItenVenda.setModel(new DefaultTableModel(dados, tituloColuna) {
@@ -559,12 +571,14 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         tblItenVenda.getColumnModel().getColumn(0).setMinWidth(0);
         tblItenVenda.getColumnModel().getColumn(0).setPreferredWidth(0);
         tblItenVenda.getColumnModel().getColumn(1).setPreferredWidth(100);
-        tblItenVenda.getColumnModel().getColumn(2).setPreferredWidth(100);
-        tblItenVenda.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tblItenVenda.getColumnModel().getColumn(2).setPreferredWidth(50);
+        tblItenVenda.getColumnModel().getColumn(3).setPreferredWidth(50);
         
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
         tblItenVenda.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+        tblItenVenda.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+        tblItenVenda.getColumnModel().getColumn(3).setCellRenderer(centralizado);
         tblItenVenda.setRowHeight(25);
         tblItenVenda.updateUI();
         
@@ -578,13 +592,20 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             dados[i][0] = String.valueOf(iv.getId());
             dados[i][1] = iv.getIdPatrimonio().getNome();
             dados[i][2] = iv.getQualidade();
-            dados[i][3] = String.valueOf(iv.getDevolvido());
+            
+            if(iv.getDevolvido() == false){
+                dados[i][3] = "Pendente";
+            }else{
+                dados[i][3] = "Devolvido";
+            }
+            
+            
             i++;
         }
         String tituloColuna[] = {"Id", "Patrimonio", "Quantidade", "Devolução"};
         DefaultTableModel tabelaItens = new DefaultTableModel();
         tabelaItens.setDataVector(dados, tituloColuna);
-        tblItenVenda.setModel(new DefaultTableModel(dados, tituloColuna) {
+        tblItensDialog.setModel(new DefaultTableModel(dados, tituloColuna) {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false
                 };
@@ -594,9 +615,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 }
             });
 
-            //tblItensDialog.getColumnModel().getColumn(0).setMaxWidth(0);
-            //tblItensDialog.getColumnModel().getColumn(0).setMinWidth(0);
-            //tblItensDialog.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblItensDialog.getColumnModel().getColumn(0).setMaxWidth(0);
+            tblItensDialog.getColumnModel().getColumn(0).setMinWidth(0);
+            tblItensDialog.getColumnModel().getColumn(0).setPreferredWidth(0);
             tblItensDialog.getColumnModel().getColumn(1).setPreferredWidth(200);
             tblItensDialog.getColumnModel().getColumn(2).setPreferredWidth(70);
             
@@ -723,8 +744,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         tblItensDialog = new javax.swing.JTable();
         jSeparator9 = new javax.swing.JSeparator();
         btnDevolver = new javax.swing.JButton();
-        txtIdVenda = new javax.swing.JTextField();
+        txtIdEmprestimo = new javax.swing.JTextField();
         btnSair4 = new javax.swing.JLabel();
+        txtIdItemDevolu = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
@@ -1359,8 +1381,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         btnDevolver.setBackground(new java.awt.Color(255, 255, 255));
         btnDevolver.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnDevolver.setText("Devolver Itens");
+        btnDevolver.setText("Devolver Item");
         btnDevolver.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        btnDevolver.setEnabled(false);
         btnDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDevolverActionPerformed(evt);
@@ -1390,13 +1413,17 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel37Layout.createSequentialGroup()
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addComponent(jSeparator8)
-                    .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtIdVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtIdItemDevolu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(txtIdEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1409,7 +1436,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtIdEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIdItemDevolu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -1847,7 +1876,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtBuscaClienteDialogCaretUpdate
 
     private void tblProdutoDialogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutoDialogMouseClicked
-        // TODO add your handling code here:
+        if(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 4) == "Disponível"){
         txtIdProduto.setText(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 0).toString());
         txtproduto.setText(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 1).toString());
         txtQuantidadeTotal.setText("1");
@@ -1855,6 +1884,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         patrimonio.setId(Integer.parseInt(txtIdProduto.getText()));
         patrimonio.setNome(txtproduto.getText());
         PatrimonioDialog.dispose();
+        }else if(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 4) == "Ocupado"){
+            JOptionPane.showMessageDialog(null, "O Patrimônio selecionado esta Ocupado");
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro");
+        }
     }//GEN-LAST:event_tblProdutoDialogMouseClicked
 
     private void txtClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtClienteMouseClicked
@@ -1952,7 +1986,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblFuncionarioDialogMouseClicked
 
     private void tblItensDialogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItensDialogMouseClicked
-        // TODO add your handling code here:
+        txtIdItemDevolu.setText(tblItensDialog.getValueAt(tblItensDialog.getSelectedRow(), 0).toString());
+        btnDevolver.setEnabled(true);
     }//GEN-LAST:event_tblItensDialogMouseClicked
 
     private void txtBuscaProdutoDialogCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtBuscaProdutoDialogCaretUpdate
@@ -2000,43 +2035,29 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSairMouseExited
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
-        int confirma = JOptionPane.showConfirmDialog(null, "Deseja Excluir ?");
+        int confirma = JOptionPane.showConfirmDialog(null, "Deseja Devolver ?");
             if (confirma == 0) {
                 try {
-                    /*JPasswordField password = new JPasswordField(10);
-                    JPasswordField login = new JPasswordField(10);
-                    password.setEchoChar('*');
-                    login.setEchoChar('*');
-                    JLabel rotulo1 = new JLabel("Login de Administrador:");
-                    JLabel rotulo2 = new JLabel("Senha de Administrador:");
-                    JPanel entUsuario1 = new JPanel();
-                    JPanel entUsuario2 = new JPanel();
-                    entUsuario1.add(rotulo1);
-                    entUsuario1.add(password);
-                    entUsuario2.add(rotulo2);
-                    entUsuario2.add(login);
-                    JOptionPane.showMessageDialog(null, entUsuario1, "Acesso restrito",JOptionPane.PLAIN_MESSAGE);
-                    JOptionPane.showMessageDialog(null, entUsuario2, "Acesso restrito",JOptionPane.PLAIN_MESSAGE);*/
-                
-                
-                String LoginMaster = JOptionPane.showInputDialog(null,"Digite seu login: ");
-                String SenhaMaster = JOptionPane.showInputDialog(null,"Digite sua senha: ");
-                
-                usuario = usuariodao.valida(LoginMaster, SenhaMaster);
-                if(usuario == null){
-                    JOptionPane.showMessageDialog(null, "Funcionario não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
-                }else{
-                
-                    emprestimo.setId(Integer.valueOf(txtIdVenda.getText()));
+                    
+                    int aux = Integer.valueOf(txtIdItemDevolu.getText());
+
+                    emprestimo.setId(Integer.valueOf(txtIdEmprestimo.getText()));
                     emprestimo.setDataDevolucao(new SimpleDateFormat("dd/MM/YYYY").format(new Date(System.currentTimeMillis())));
-                    itemEmprestimo.setIdEmprestimo(emprestimo);
-                    itemEmprestimo.setDevolvido(true);
                     emprestimodao.alterarVendaTrue(emprestimo);
-                    itemEmprestimodao.alterarItemVendaTrue(itemEmprestimo);
-                    ItensDialog.dispose();
+                    
+                    
+                    itemEmprestimo.setIdEmprestimo(emprestimo);
+                    
+                    itemEmprestimo = itemEmprestimodao.buscapatrimonio(aux);
+                            
+                    itemEmprestimo.setDevolvido(true);
+                    
+                    itemEmprestimodao.alterarItemVendaTrue(itemEmprestimo , aux);
                     atualizaTabelaEmprestimo();
                     
-                }
+                    listaItemEmprestimo = itemEmprestimodao.busca(Integer.valueOf(txtIdEmprestimo.getText()));
+                    atualizaTabelaItensDialogo();
+
                 } catch (SQLException ex) {
                     Logger.getLogger(EmprestimoView.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro", JOptionPane.WARNING_MESSAGE);
@@ -2092,11 +2113,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSair1MouseClicked
 
     private void btnSair1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseEntered
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
+        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
     }//GEN-LAST:event_btnSair1MouseEntered
 
     private void btnSair1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseExited
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
+        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
     }//GEN-LAST:event_btnSair1MouseExited
 
     private void btnSair2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair2MouseClicked
@@ -2104,11 +2125,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSair2MouseClicked
 
     private void btnSair2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair2MouseEntered
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
+        btnSair2.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
     }//GEN-LAST:event_btnSair2MouseEntered
 
     private void btnSair2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair2MouseExited
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
+        btnSair2.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
     }//GEN-LAST:event_btnSair2MouseExited
 
     private void btnSair3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair3MouseClicked
@@ -2116,11 +2137,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSair3MouseClicked
 
     private void btnSair3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair3MouseEntered
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
+        btnSair3.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
     }//GEN-LAST:event_btnSair3MouseEntered
 
     private void btnSair3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair3MouseExited
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
+        btnSair3.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
     }//GEN-LAST:event_btnSair3MouseExited
 
     private void btnSair4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair4MouseClicked
@@ -2128,11 +2149,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSair4MouseClicked
 
     private void btnSair4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair4MouseEntered
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
+        btnSair4.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Fechar.png")));
     }//GEN-LAST:event_btnSair4MouseEntered
 
     private void btnSair4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair4MouseExited
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
+        btnSair4.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Fechar.png")));
     }//GEN-LAST:event_btnSair4MouseExited
 
     private void tblEmprestimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEmprestimoMouseClicked
@@ -2143,15 +2164,15 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         }
 
         ItensDialog.setVisible(true);
-        txtIdVenda.setText(tblEmprestimo.getValueAt(tblEmprestimo.getSelectedRow(),0).toString());
+        txtIdEmprestimo.setText(tblEmprestimo.getValueAt(tblEmprestimo.getSelectedRow(),0).toString());
         ItensDialog.setLocationRelativeTo(null);
         tblItensDialog.getTableHeader().setReorderingAllowed(false);
         atualizaTabelaItensDialogo();
     }//GEN-LAST:event_tblEmprestimoMouseClicked
 
     
-    public void gerarDocumento(RequerenteM requerente, UsuarioM usuario, EmprestimoM emprestimo, List<ItenEmprestimoM> listaItemEmprestimoCompro) throws IOException, DocumentException{
-    /*  
+    public void gerarDocumento(RequerenteM requer, UsuarioM usua, EmprestimoM emprest, List<ItenEmprestimoM> listaItemEmprestimoCompro) throws IOException, DocumentException, SQLException{
+      
         File pdf = null;
         JFileChooser chooser = null;
         
@@ -2186,20 +2207,35 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         Font f12 = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
         Font fnormal = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL);
 
-            doc.open();
             
             Paragraph nomeUniversidade = new Paragraph("Universidade do Estado de Minas Gerais",f12);
             nomeUniversidade.setAlignment(Element.ALIGN_CENTER);
             nomeUniversidade.setSpacingAfter(10);
             
-            Paragraph nomeRelatorio = new Paragraph("Comprovante" ,f12);
-            nomeRelatorio.setAlignment(Element.ALIGN_CENTER);
-            nomeRelatorio.setSpacingAfter(10);
+            Paragraph nomeCompro = new Paragraph("Comprovante" ,f12);
+            nomeCompro.setAlignment(Element.ALIGN_CENTER);
+            nomeCompro.setSpacingAfter(10);
+            
+            Paragraph nomeUsu = new Paragraph("Atendimento: "+usua.getNome() ,f10);
+            nomeUsu.setAlignment(Element.ALIGN_JUSTIFIED);
+            nomeUsu.setSpacingAfter(5);
+            
+            Paragraph nomeAlun = new Paragraph("Aluno(a): "+requer.getNome() ,f10);
+            nomeAlun.setAlignment(Element.ALIGN_JUSTIFIED);
+            nomeAlun.setSpacingAfter(5);
+            
+            Paragraph Data = new Paragraph("Data do Emprestimo: " + emprest.getDataEmprestimo() + "\t\tData da Entrega: " + emprest.getDataPrevista() + "\n\n",fnormal);
+            nomeAlun.setAlignment(Element.ALIGN_CENTER);
+            nomeAlun.setSpacingAfter(10);
+
             
             doc.add(nomeUniversidade);
-            doc.add(nomeRelatorio);
+            doc.add(nomeCompro);
+            doc.add(nomeUsu);
+            doc.add(nomeAlun);
+            doc.add(Data);
             
-            PdfPTable tabela = new PdfPTable(7);
+            PdfPTable tabela = new PdfPTable(3);
             tabela.setHorizontalAlignment(Element.ALIGN_CENTER);
             tabela.setWidthPercentage(100f);
 
@@ -2207,79 +2243,54 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             cabecalhoNome.setHorizontalAlignment(Element.ALIGN_CENTER);
             tabela.addCell(cabecalhoNome);
 
-            PdfPCell cabecalhoEnd = new PdfPCell(new Paragraph("Endereço",f10));
-            cabecalhoEnd.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tabela.addCell(cabecalhoEnd);
+            PdfPCell cabecalhoNumero = new PdfPCell(new Paragraph("Número de Patrimônio",f10));
+            cabecalhoNumero.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tabela.addCell(cabecalhoNumero);
             
-            PdfPCell cabecalhoEmail = new PdfPCell(new Paragraph("Email",f10));
-            cabecalhoEmail.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tabela.addCell(cabecalhoEmail);
-            
-            PdfPCell cabecalhoCidade = new PdfPCell(new Paragraph("Cidade/Estado",f10));
-            cabecalhoCidade.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tabela.addCell(cabecalhoCidade);
-            
-            PdfPCell cabecalhoTelefone = new PdfPCell(new Paragraph("Telefone",f10));
-            cabecalhoTelefone.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tabela.addCell(cabecalhoTelefone);
-            
-            PdfPCell cabecalhoCel = new PdfPCell(new Paragraph("Celular",f10));
-            cabecalhoCel.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tabela.addCell(cabecalhoCel);
-            
-            PdfPCell cabecalhoSetor = new PdfPCell(new Paragraph("Setor",f10));
-            cabecalhoSetor.setHorizontalAlignment(Element.ALIGN_CENTER);
-            tabela.addCell(cabecalhoSetor);
+            PdfPCell cabecalhoQualidade = new PdfPCell(new Paragraph("Qualidade",f10));
+            cabecalhoQualidade.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tabela.addCell(cabecalhoQualidade);
+
             
             tabela.setHeaderRows(1); // linha que sera repetida em todas as paginas.
             
-            for (FuncionarioM func : listaFuncionario){
-                Paragraph pNome = new Paragraph(func.getNome(), fnormal);
+            for (ItenEmprestimoM item : listaItemEmprestimoCompro){
+                
+                patrimonio = patrimoniodao.busca(item.getIdPatrimonio().getId());
+                
+                Paragraph pNome = new Paragraph(patrimonio.getNome(), fnormal);
                 pNome.setAlignment(Element.ALIGN_JUSTIFIED);
                 PdfPCell colNome = new PdfPCell(pNome);
                 
-                Paragraph pEnd = new Paragraph(func.getEndereco(), fnormal);
-                pEnd.setAlignment(Element.ALIGN_JUSTIFIED);
-                PdfPCell colEnd = new PdfPCell(pEnd);
+                Paragraph pNum = new Paragraph(patrimonio.getNumero(), fnormal);
+                pNum.setAlignment(Element.ALIGN_CENTER);
+                PdfPCell colNum = new PdfPCell(pNum);
                 
-                Paragraph pEmail = new Paragraph(func.getEmail(), fnormal);
-                pEmail.setAlignment(Element.ALIGN_JUSTIFIED);
-                PdfPCell colEmail = new PdfPCell(pEmail);
-                
-                Paragraph pCidade = new Paragraph(func.getCidadeestado(), fnormal);
-                pCidade.setAlignment(Element.ALIGN_CENTER);
-                PdfPCell colCidade = new PdfPCell(pCidade);
-                colCidade.setHorizontalAlignment(Element.ALIGN_CENTER);
-                
-                Paragraph pTel = new Paragraph("Res:  "+func.getTelresidencial()+"\nCom1: "+func.getTelcomercial1()+"\nCom2: "+func.getTelcomercial2(), fnormal);
-                pTel.setAlignment(Element.ALIGN_CENTER);
-                PdfPCell colTel = new PdfPCell(pTel);
-                colTel.setHorizontalAlignment(Element.ALIGN_CENTER);
-                
-                Paragraph pCel = new Paragraph(func.getCelular1()+"\n"+func.getCelular2()+"\n"+func.getCelular3(), fnormal);
-                pTel.setAlignment(Element.ALIGN_CENTER);
-                PdfPCell colCel = new PdfPCell(pCel);
-                colCel.setHorizontalAlignment(Element.ALIGN_CENTER);
-                
-                Paragraph pSetor = new Paragraph(func.getSetor().getNome(), fnormal);
-                pSetor.setAlignment(Element.ALIGN_CENTER);
-                PdfPCell colSetor = new PdfPCell(pSetor);
-                colSetor.setHorizontalAlignment(Element.ALIGN_CENTER);
+                Paragraph pQuali = new Paragraph(patrimonio.getQualidade(), fnormal);
+                pQuali.setAlignment(Element.ALIGN_CENTER);
+                PdfPCell colQual = new PdfPCell(pQuali);
+
                 
                 tabela.addCell(colNome);
-                tabela.addCell(colEnd);
-                tabela.addCell(colEmail);
-                tabela.addCell(colCidade);
-                tabela.addCell(colTel);
-                tabela.addCell(colCel);
-                tabela.addCell(colSetor);
+                tabela.addCell(colNum);
+                tabela.addCell(colQual);
+
             }
             doc.add(tabela);
             
-            JOptionPane.showMessageDialog(null, "Relatório de Funcionários salvo com sucesso em C:/RelatoriosAgenda/");
-            Desktop.getDesktop().open(new File(caminho));
-
-        doc.close();*/
+            Paragraph espacamento = new Paragraph("\n\n\n\n\n");
+            doc.add(espacamento);
+            
+            doc.add(nomeUniversidade);
+            doc.add(nomeCompro);
+            doc.add(nomeUsu);
+            doc.add(nomeAlun);
+            doc.add(Data);
+            doc.add(tabela);
+            
+            JOptionPane.showMessageDialog(null, "Comprovante Comprovado Com Sucesso");
+        doc.close();
+        JOptionPane.showMessageDialog(null, caminho);
     }
 
     
@@ -2358,10 +2369,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtFuncionario;
     private javax.swing.JFormattedTextField txtHora;
     private javax.swing.JTextField txtIDIten;
+    private javax.swing.JTextField txtIdEmprestimo;
+    private javax.swing.JTextField txtIdItemDevolu;
     private javax.swing.JTextField txtIdProduto;
     private javax.swing.JTextField txtIdRequerente;
     private javax.swing.JTextField txtIdUsuario;
-    private javax.swing.JTextField txtIdVenda;
     private javax.swing.JTextField txtProfessor;
     private javax.swing.JTextField txtQualidade;
     private javax.swing.JTextField txtQuantidadeTotal;
