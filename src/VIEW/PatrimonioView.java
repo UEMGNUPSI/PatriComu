@@ -1,9 +1,15 @@
 package VIEW;
 
+import CONTROLLER.LogDAO;
 import CONTROLLER.PatrimonioDao;
+import MODEL.LogM;
 import MODEL.PatrimonioM;
+import MODEL.RequerenteM;
+import MODEL.UsuarioM;
 import com.sun.java.swing.plaf.windows.WindowsTableHeaderUI;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,8 +36,17 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
     PatrimonioDao patrimoniodao = new PatrimonioDao();
     List<PatrimonioM> listaPatrimonio = new ArrayList<>();
     
+    UsuarioM usuLog = new UsuarioM();
     
-    public PatrimonioView() {
+    RequerenteM requerente = new RequerenteM();    
+    
+     //Log
+    LogM log = new LogM();
+    LogDAO logdao = new LogDAO();
+    //UsuarioM usulog = new UsuarioM();
+    
+    
+    public PatrimonioView(UsuarioM usuarioLog) {
         initComponents();
         this.setVisible(true);
         atualizaTabelaProduto();
@@ -49,7 +64,8 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         btnExcluir.setUI(new BasicButtonUI());
         btnNovo.setUI(new BasicButtonUI());
         btnSalvar.setUI(new BasicButtonUI());
-
+        usuLog = usuarioLog;
+        
         prepararSalvareCancelar();
         desativarCampos();
     }
@@ -606,9 +622,19 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             patrimonio.setQualidade(txtQualidade.getText());
             patrimonio.setOcupado(Boolean.valueOf(txtStatus.getText()));
             
+             //Log
+            log.setUsuario(usuLog);
+            log.setRequerente(requerente);            
+            log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
+            log.setHora(new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis())));
+            log.setAcao("Salvando Patrimônio: "+patrimonio.getNome());
+            
             try{
                 patrimoniodao.salvar(patrimonio);
                 JOptionPane.showMessageDialog(null, "Gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                logdao.salvarLog(log);
+                JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                
             }catch(SQLException ex){
                 JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
             }
@@ -625,9 +651,18 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             patrimonio.setQualidade(txtQualidade.getText());
             patrimonio.setOcupado(Boolean.valueOf(txtStatus.getText()));
             
+             //Log
+            log.setUsuario(usuLog);
+            log.setRequerente(requerente);            
+            log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
+            log.setHora(new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis())));
+            log.setAcao("Alterando Patrimônio: "+patrimonio.getNome());
+            
         try{
             patrimoniodao.alterar(patrimonio);
-            JOptionPane.showMessageDialog(null, "Alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);       
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE); 
+            logdao.salvarLog(log);
+             JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
         }
@@ -658,8 +693,17 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             patrimonio.setId(Integer.parseInt(txtId.getText()));
             int confirma = JOptionPane.showConfirmDialog(null, "Deseja excluir: "+ txtNome.getText());
             if(confirma ==0){
+                 //Log
+                log.setUsuario(usuLog);
+                log.setRequerente(requerente);            
+                log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
+                log.setHora(new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis())));
+                log.setAcao("Excluindo Patrimônio: "+patrimonio.getNome());
                 try{
                     patrimoniodao.excluir(patrimonio);
+                    JOptionPane.showMessageDialog(null, "Patrimônio excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                    logdao.salvarLog(log);
+                    JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                     limparCampos();
                     txtNome.requestFocusInWindow();
                 }catch(SQLException ex){

@@ -222,7 +222,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmprestimoMouseClicked
 
     private void btnPatrimonioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPatrimonioMouseClicked
-        PatrimonioView Patrimonio = new PatrimonioView();
+        PatrimonioView Patrimonio = new PatrimonioView(usu);
         ((BasicInternalFrameUI)Patrimonio.getUI()).setNorthPane(null);
             pnlPrincipal.removeAll();
             pnlPrincipal.add(Patrimonio);

@@ -39,7 +39,6 @@ public class RequerenteView extends javax.swing.JInternalFrame {
     //Log
     LogM log = new LogM();
     LogDAO logdao = new LogDAO();
-    UsuarioM usulog = new UsuarioM();
     
     public RequerenteView(UsuarioM usuarioLog) {
         initComponents();
@@ -830,7 +829,7 @@ public class RequerenteView extends javax.swing.JInternalFrame {
             requerente.setSenha(txtSenha.getText());
             
              //Log
-            log.setUsuario(usulog);
+            log.setUsuario(usuLog);
             log.setRequerente(requerente);            
             log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
             log.setHora(new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis())));
@@ -866,7 +865,7 @@ public class RequerenteView extends javax.swing.JInternalFrame {
             requerente.setSenha(txtSenha.getText());
             
              //Log
-            log.setUsuario(usulog);
+            log.setUsuario(usuLog);
             log.setRequerente(requerente);            
             log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
             log.setHora(new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis())));
@@ -908,13 +907,14 @@ public class RequerenteView extends javax.swing.JInternalFrame {
             int confirma = JOptionPane.showConfirmDialog(null, "Deseja excluir: "+ txtNome.getText());
             if(confirma == 0){
                  //Log
-                log.setUsuario(usulog);
+                log.setUsuario(usuLog);
                 log.setRequerente(requerente);            
                 log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
                 log.setHora(new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis())));
                 log.setAcao("Excluindo Requerente: "+requerente.getNome());
                 try{
                     requerentedao.excluir(requerente);
+                    JOptionPane.showMessageDialog(null, "Requerente excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                     logdao.salvarLog(log);
                     JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                     limparCamposRequerente();
