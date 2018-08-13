@@ -1,11 +1,18 @@
 package VIEW;
 
+import CONTROLLER.LogDAO;
 import CONTROLLER.UsuarioDao;
+import MODEL.LogM;
+import MODEL.RequerenteM;
 import MODEL.UsuarioM;
 import com.sun.java.swing.plaf.windows.WindowsTableHeaderUI;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicButtonUI;
@@ -20,13 +27,25 @@ import util.LimiteDigitos;
  */
 public class UsuarioView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Funcionario_DO_CU_QUENTE
-     */
+    
     
     UsuarioM usuario = new UsuarioM();
+    
     UsuarioDao usuariodao = new UsuarioDao();
     List<UsuarioM> listaUsuario = new ArrayList<>();
+    
+    RequerenteM requerente = new RequerenteM();
+    //RequerenteView requerenteV = new RequerenteView();
+    
+    //Log
+     LogM log = new LogM();
+     LogDAO logdao = new LogDAO();
+     UsuarioM usuariologado = new UsuarioM();
+     
+    
+    
+    
+    
     
     public UsuarioView() {
         initComponents();
@@ -139,6 +158,18 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             tblFuncionario.setRowHeight(35);
             tblFuncionario.updateUI();
     }
+    
+   /* public void salvaLog() throws SQLException{
+        LogM log = new LogM();
+        log.setId(id);
+        log.setData(Data);
+        log.setHora(Hora);
+        log.setAcao(Acao);
+        log.setRequerente(Requerente);
+        log.setUsuario(usuario);
+        LogDAO.salvarLog(log);       
+    }
+    */
     
     // DECLARAÇÃO DE MÉTODOS DE CONTROLE DE BOTÕES
     public void limparCamposFuncionario(){
@@ -371,7 +402,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                         .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -422,7 +453,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         txtNascimento.setBackground(new java.awt.Color(245, 245, 245));
         txtNascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
         try {
-            txtNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
+            txtNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -624,11 +655,12 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(56, 56, 56)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(85, 85, 85)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -643,12 +675,12 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Administradores", jPanel6);
@@ -678,7 +710,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(550, 550, 550)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(491, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 1885, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -711,6 +743,11 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         usuario = new UsuarioM();
+        log = new LogM();
+        
+        
+        
+        
         if(txtNome.getText().isEmpty() || txtNascimento.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha o Nome e Data de Nascimento!", "erro", JOptionPane.WARNING_MESSAGE);
             txtNome.requestFocusInWindow();       
@@ -725,12 +762,28 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             usuario.setCelular(txtCelular1.getText());
             usuario.setLogin(txtLogin.getText());
             usuario.setSenha(txtsenha.getText());
+            
+            
+            //Log
+            log.setUsuario(usuariologado);
+            log.setRequerente(null);            
+            log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
+            log.setHora(new SimpleDateFormat("HH:MM").format(new Date(System.currentTimeMillis())));
+            log.setAcao("Salvando Usuário");           
+       
+            
             try{
+                
                 usuariodao.salvar(usuario);
                 JOptionPane.showMessageDialog(null, "Gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                logdao.salvarLog(log);
+                JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
             }catch(SQLException ex){
-                JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);               
             }
+            
+            
             atualizaTabelaUsuario();
             prepararSalvareCancelar();
             desativarCampos();

@@ -18,7 +18,7 @@ public class Conexao implements Serializable {
 
     private Conexao() {
         
-        usuario = "patricom";        
+        usuario = "patrimonio_comunicacao";        
         senha = "Uemg2018";
 
         url = "jdbc:mysql://10.93.10.10:3306/patrimonio_comunicacao?autoReconnect=true&useSSL=false";    

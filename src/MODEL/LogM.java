@@ -72,5 +72,9 @@ public class LogM {
     public void setUsuario(UsuarioM Usuario) {
         this.Usuario = Usuario;
     }
+
+ 
+
+   
     
 }

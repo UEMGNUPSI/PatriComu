@@ -1,6 +1,5 @@
 package MODEL;
 
-import java.util.Date;
 /**
  *
  * @author Danilo-NOTE
@@ -143,6 +142,8 @@ public class RequerenteM {
     public void setSenha(String Senha) {
         this.Senha = Senha;
     }
+
+  
 
     
     
