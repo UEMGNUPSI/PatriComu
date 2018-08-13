@@ -41,110 +41,110 @@ public class PrincipalView3 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnEstoque = new javax.swing.JLabel();
-        btnVendedor = new javax.swing.JLabel();
-        btnVenda = new javax.swing.JLabel();
-        btnCliente = new javax.swing.JLabel();
+        btnPatrimonio = new javax.swing.JLabel();
+        btnAdministrador = new javax.swing.JLabel();
+        btnEmprestimo = new javax.swing.JLabel();
+        btnAluno = new javax.swing.JLabel();
         pnlPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnEstoque.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnEstoque.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Estoque.png"))); // NOI18N
-        btnEstoque.setText("Patrimônio");
-        btnEstoque.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEstoque.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnEstoque.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnPatrimonio.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
+        btnPatrimonio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnPatrimonio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Estoque.png"))); // NOI18N
+        btnPatrimonio.setText("Patrimônio");
+        btnPatrimonio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPatrimonio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPatrimonio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEstoqueMouseClicked(evt);
+                btnPatrimonioMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEstoqueMouseEntered(evt);
+                btnPatrimonioMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnEstoqueMouseExited(evt);
+                btnPatrimonioMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnEstoqueMousePressed(evt);
+                btnPatrimonioMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnEstoqueMouseReleased(evt);
+                btnPatrimonioMouseReleased(evt);
             }
         });
 
-        btnVendedor.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnVendedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Funcionario.png"))); // NOI18N
-        btnVendedor.setText("Administradores");
-        btnVendedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVendedor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnVendedor.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAdministrador.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
+        btnAdministrador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Funcionario.png"))); // NOI18N
+        btnAdministrador.setText("Administradores");
+        btnAdministrador.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAdministrador.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAdministrador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVendedorMouseClicked(evt);
+                btnAdministradorMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnVendedorMouseEntered(evt);
+                btnAdministradorMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnVendedorMouseExited(evt);
+                btnAdministradorMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnVendedorMousePressed(evt);
+                btnAdministradorMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnVendedorMouseReleased(evt);
+                btnAdministradorMouseReleased(evt);
             }
         });
 
-        btnVenda.setBackground(new java.awt.Color(204, 0, 255));
-        btnVenda.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnVenda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Vendas.png"))); // NOI18N
-        btnVenda.setText("Emprestimo");
-        btnVenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVenda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEmprestimo.setBackground(new java.awt.Color(204, 0, 255));
+        btnEmprestimo.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
+        btnEmprestimo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnEmprestimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Vendas.png"))); // NOI18N
+        btnEmprestimo.setText("Emprestimo");
+        btnEmprestimo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEmprestimo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEmprestimo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVendaMouseClicked(evt);
+                btnEmprestimoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnVendaMouseEntered(evt);
+                btnEmprestimoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnVendaMouseExited(evt);
+                btnEmprestimoMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnVendaMousePressed(evt);
+                btnEmprestimoMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnVendaMouseReleased(evt);
+                btnEmprestimoMouseReleased(evt);
             }
         });
 
-        btnCliente.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Cliente.png"))); // NOI18N
-        btnCliente.setText("Alunos");
-        btnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAluno.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
+        btnAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Cliente.png"))); // NOI18N
+        btnAluno.setText("Alunos");
+        btnAluno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAluno.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAluno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnClienteMouseClicked(evt);
+                btnAlunoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnClienteMouseEntered(evt);
+                btnAlunoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnClienteMouseExited(evt);
+                btnAlunoMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnClienteMousePressed(evt);
+                btnAlunoMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnClienteMouseReleased(evt);
+                btnAlunoMouseReleased(evt);
             }
         });
 
@@ -154,13 +154,13 @@ public class PrincipalView3 extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(147, Short.MAX_VALUE)
-                .addComponent(btnCliente)
+                .addComponent(btnAluno)
                 .addGap(15, 15, 15)
-                .addComponent(btnEstoque)
+                .addComponent(btnPatrimonio)
                 .addGap(15, 15, 15)
-                .addComponent(btnVendedor)
+                .addComponent(btnAdministrador)
                 .addGap(15, 15, 15)
-                .addComponent(btnVenda)
+                .addComponent(btnEmprestimo)
                 .addContainerGap(147, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -168,10 +168,10 @@ public class PrincipalView3 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnEstoque, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnVenda, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCliente, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnAdministrador, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnPatrimonio, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnEmprestimo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAluno, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -206,124 +206,124 @@ public class PrincipalView3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMouseClicked
-        EmprestimoView vendae = new EmprestimoView();
-        ((BasicInternalFrameUI)vendae.getUI()).setNorthPane(null);
+    private void btnEmprestimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmprestimoMouseClicked
+        EmprestimoView Emprestimo = new EmprestimoView();
+        ((BasicInternalFrameUI)Emprestimo.getUI()).setNorthPane(null);
             pnlPrincipal.removeAll();
-            pnlPrincipal.add(vendae);
+            pnlPrincipal.add(Emprestimo);
             pnlPrincipal.updateUI();
-            btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Vendas.png")));
-            btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
-            btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
-            btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
-    }//GEN-LAST:event_btnVendaMouseClicked
+            btnEmprestimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Vendas.png")));
+            btnAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
+            btnPatrimonio.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
+            btnAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
+    }//GEN-LAST:event_btnEmprestimoMouseClicked
 
-    private void btnEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMouseClicked
-        PatrimonioView Produto = new PatrimonioView();
-        ((BasicInternalFrameUI)Produto.getUI()).setNorthPane(null);
+    private void btnPatrimonioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPatrimonioMouseClicked
+        PatrimonioView Patrimonio = new PatrimonioView();
+        ((BasicInternalFrameUI)Patrimonio.getUI()).setNorthPane(null);
             pnlPrincipal.removeAll();
-            pnlPrincipal.add(Produto);
+            pnlPrincipal.add(Patrimonio);
             pnlPrincipal.updateUI();
-            btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Estoque.png")));
-            btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
-            btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
-            btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
-    }//GEN-LAST:event_btnEstoqueMouseClicked
+            btnPatrimonio.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Estoque.png")));
+            btnAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
+            btnAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
+            btnEmprestimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
+    }//GEN-LAST:event_btnPatrimonioMouseClicked
 
-    private void btnVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendedorMouseClicked
-        UsuarioView Funcionario = new UsuarioView();
-        ((BasicInternalFrameUI)Funcionario.getUI()).setNorthPane(null);
+    private void btnAdministradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministradorMouseClicked
+        UsuarioView Usuario = new UsuarioView();
+        ((BasicInternalFrameUI)Usuario.getUI()).setNorthPane(null);
             pnlPrincipal.removeAll();
-            pnlPrincipal.add(Funcionario);
+            pnlPrincipal.add(Usuario);
             pnlPrincipal.updateUI();
-            btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Funcionario.png")));
-            btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
-            btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
-            btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
-    }//GEN-LAST:event_btnVendedorMouseClicked
+            btnAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Funcionario.png")));
+            btnAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Cliente.png")));
+            btnPatrimonio.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
+            btnEmprestimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
+    }//GEN-LAST:event_btnAdministradorMouseClicked
 
-    private void btnEstoqueMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMouseEntered
-    btnEstoque.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnEstoqueMouseEntered
+    private void btnPatrimonioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPatrimonioMouseEntered
+    btnPatrimonio.setForeground(Color.yellow);
+    }//GEN-LAST:event_btnPatrimonioMouseEntered
 
-    private void btnEstoqueMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMouseExited
-    btnEstoque.setForeground(Color.black);
-    }//GEN-LAST:event_btnEstoqueMouseExited
+    private void btnPatrimonioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPatrimonioMouseExited
+    btnPatrimonio.setForeground(Color.black);
+    }//GEN-LAST:event_btnPatrimonioMouseExited
 
-    private void btnEstoqueMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMousePressed
-    btnEstoque.setForeground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_btnEstoqueMousePressed
+    private void btnPatrimonioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPatrimonioMousePressed
+    btnPatrimonio.setForeground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_btnPatrimonioMousePressed
 
-    private void btnEstoqueMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMouseReleased
-    btnEstoque.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnEstoqueMouseReleased
+    private void btnPatrimonioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPatrimonioMouseReleased
+    btnPatrimonio.setForeground(Color.yellow);
+    }//GEN-LAST:event_btnPatrimonioMouseReleased
 
-    private void btnVendedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendedorMouseEntered
-    btnVendedor.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnVendedorMouseEntered
+    private void btnAdministradorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministradorMouseEntered
+    btnAdministrador.setForeground(Color.yellow);
+    }//GEN-LAST:event_btnAdministradorMouseEntered
 
-    private void btnVendedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendedorMouseExited
-    btnVendedor.setForeground(Color.black);
-    }//GEN-LAST:event_btnVendedorMouseExited
+    private void btnAdministradorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministradorMouseExited
+    btnAdministrador.setForeground(Color.black);
+    }//GEN-LAST:event_btnAdministradorMouseExited
 
-    private void btnVendedorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendedorMousePressed
-    btnVendedor.setForeground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_btnVendedorMousePressed
+    private void btnAdministradorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministradorMousePressed
+    btnAdministrador.setForeground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_btnAdministradorMousePressed
 
-    private void btnVendedorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendedorMouseReleased
-    btnVendedor.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnVendedorMouseReleased
+    private void btnAdministradorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministradorMouseReleased
+    btnAdministrador.setForeground(Color.yellow);
+    }//GEN-LAST:event_btnAdministradorMouseReleased
 
-    private void btnVendaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMouseEntered
-    btnVenda.setForeground(Color.YELLOW);
-    }//GEN-LAST:event_btnVendaMouseEntered
+    private void btnEmprestimoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmprestimoMouseEntered
+    btnEmprestimo.setForeground(Color.YELLOW);
+    }//GEN-LAST:event_btnEmprestimoMouseEntered
 
-    private void btnVendaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMouseExited
-    btnVenda.setForeground(Color.black);
-    }//GEN-LAST:event_btnVendaMouseExited
+    private void btnEmprestimoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmprestimoMouseExited
+    btnEmprestimo.setForeground(Color.black);
+    }//GEN-LAST:event_btnEmprestimoMouseExited
 
-    private void btnVendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMousePressed
-    btnVenda.setForeground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_btnVendaMousePressed
+    private void btnEmprestimoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmprestimoMousePressed
+    btnEmprestimo.setForeground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_btnEmprestimoMousePressed
 
-    private void btnVendaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMouseReleased
-    btnVenda.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnVendaMouseReleased
+    private void btnEmprestimoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmprestimoMouseReleased
+    btnEmprestimo.setForeground(Color.yellow);
+    }//GEN-LAST:event_btnEmprestimoMouseReleased
 
-    private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
+    private void btnAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlunoMouseClicked
         RequerenteView cliente = new RequerenteView();
         ((BasicInternalFrameUI)cliente.getUI()).setNorthPane(null);
         pnlPrincipal.removeAll();
         pnlPrincipal.add(cliente);
         pnlPrincipal.updateUI();
-        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Cliente.png")));
-        btnVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
-        btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
-        btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
-    }//GEN-LAST:event_btnClienteMouseClicked
+        btnAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Ativos/Cliente.png")));
+        btnAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Funcionario.png")));
+        btnPatrimonio.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Estoque.png")));
+        btnEmprestimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("Icones Inativos/Vendas.png")));
+    }//GEN-LAST:event_btnAlunoMouseClicked
 
-    private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
-    btnCliente.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnClienteMouseEntered
+    private void btnAlunoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlunoMouseEntered
+    btnAluno.setForeground(Color.yellow);
+    }//GEN-LAST:event_btnAlunoMouseEntered
 
-    private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
-    btnCliente.setForeground(Color.black);
-    }//GEN-LAST:event_btnClienteMouseExited
+    private void btnAlunoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlunoMouseExited
+    btnAluno.setForeground(Color.black);
+    }//GEN-LAST:event_btnAlunoMouseExited
 
-    private void btnClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMousePressed
-    btnCliente.setForeground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_btnClienteMousePressed
+    private void btnAlunoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlunoMousePressed
+    btnAluno.setForeground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_btnAlunoMousePressed
 
-    private void btnClienteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseReleased
-    btnCliente.setForeground(Color.yellow);
-    }//GEN-LAST:event_btnClienteMouseReleased
+    private void btnAlunoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlunoMouseReleased
+    btnAluno.setForeground(Color.yellow);
+    }//GEN-LAST:event_btnAlunoMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnCliente;
-    private javax.swing.JLabel btnEstoque;
-    private javax.swing.JLabel btnVenda;
-    private javax.swing.JLabel btnVendedor;
+    private javax.swing.JLabel btnAdministrador;
+    private javax.swing.JLabel btnAluno;
+    private javax.swing.JLabel btnEmprestimo;
+    private javax.swing.JLabel btnPatrimonio;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables
