@@ -5,6 +5,7 @@
  */
 package VIEW;
 
+import MODEL.UsuarioM;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -20,7 +21,8 @@ public class PrincipalView3 extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalView
      */
-    public PrincipalView3() {
+    UsuarioM usu = new UsuarioM();
+    public PrincipalView3(UsuarioM usuario) {
         initComponents();
         this.setVisible(true);
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -28,7 +30,8 @@ public class PrincipalView3 extends javax.swing.JFrame {
         URL url = this.getClass().getResource("Icones Icon/icone.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
         this.setIconImage(imagemTitulo);
-
+        
+        usu = usuario;
     }
 
     /**
@@ -231,7 +234,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPatrimonioMouseClicked
 
     private void btnAdministradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministradorMouseClicked
-        UsuarioView Usuario = new UsuarioView();
+        UsuarioView Usuario = new UsuarioView(usu);
         ((BasicInternalFrameUI)Usuario.getUI()).setNorthPane(null);
             pnlPrincipal.removeAll();
             pnlPrincipal.add(Usuario);
@@ -291,7 +294,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmprestimoMouseReleased
 
     private void btnAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlunoMouseClicked
-        RequerenteView cliente = new RequerenteView();
+        RequerenteView cliente = new RequerenteView(usu);
         ((BasicInternalFrameUI)cliente.getUI()).setNorthPane(null);
         pnlPrincipal.removeAll();
         pnlPrincipal.add(cliente);

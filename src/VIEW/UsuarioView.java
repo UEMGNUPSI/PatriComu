@@ -38,16 +38,11 @@ public class UsuarioView extends javax.swing.JInternalFrame {
     //RequerenteView requerenteV = new RequerenteView();
     
     //Log
-     LogM log = new LogM();
-     LogDAO logdao = new LogDAO();
-     UsuarioM usuariologado = new UsuarioM();
-     
+    LogM log = new LogM();
+    LogDAO logdao = new LogDAO();
+    UsuarioM usulog = new UsuarioM();
     
-    
-    
-    
-    
-    public UsuarioView() {
+    public UsuarioView(UsuarioM usuarioLog) {
         initComponents();
         this.setVisible(true);
         atualizaTabelaUsuario();
@@ -68,6 +63,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         btnExcluir.setUI(new BasicButtonUI());
         btnNovo.setUI(new BasicButtonUI());
         btnSalvar.setUI(new BasicButtonUI());
+        usulog = usuarioLog;
     }
 
     //Atualiza todos os usuario para a tabela
@@ -655,12 +651,14 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(85, 85, 85)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -675,12 +673,12 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Administradores", jPanel6);
@@ -710,7 +708,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(550, 550, 550)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(491, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 1885, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -746,8 +744,6 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         log = new LogM();
         
         
-        
-        
         if(txtNome.getText().isEmpty() || txtNascimento.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha o Nome e Data de Nascimento!", "erro", JOptionPane.WARNING_MESSAGE);
             txtNome.requestFocusInWindow();       
@@ -765,11 +761,11 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             
             
             //Log
-            log.setUsuario(usuariologado);
-            log.setRequerente(null);            
+            log.setUsuario(usulog);
+            log.setRequerente(requerente);            
             log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
-            log.setHora(new SimpleDateFormat("HH:MM").format(new Date(System.currentTimeMillis())));
-            log.setAcao("Salvando Usuário");           
+            log.setHora(new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis())));
+            log.setAcao("Salvando Usuário: "+usuario.getNome());           
        
             
             try{
@@ -800,9 +796,20 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             usuario.setCelular(txtCelular1.getText());
             usuario.setLogin(txtLogin.getText());
             usuario.setSenha(txtsenha.getText());
+            
+            //Log
+            log.setUsuario(usulog);
+            log.setRequerente(requerente);            
+            log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
+            log.setHora(new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis())));
+            log.setAcao("Alterando Usuário: "+usuario.getNome());  
+            
+            
         try{
             usuariodao.alterar(usuario);
-            JOptionPane.showMessageDialog(null, "Alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);       
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);  
+            logdao.salvarLog(log);
+                JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
         }
@@ -839,9 +846,17 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         else{
             usuario.setId(Integer.parseInt(txtId.getText()));
             int confirma = JOptionPane.showConfirmDialog(null, "Deseja excluir: "+ txtNome.getText());
-            if(confirma ==0){
+            if(confirma == 0){
+                //Log
+                log.setUsuario(usulog);
+                log.setRequerente(requerente);            
+                log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
+                log.setHora(new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis())));
+                log.setAcao("Excluindo Usuário: "+usuario.getNome());  
                 try{
                     usuariodao.excluir(usuario);
+                    logdao.salvarLog(log);
+                    JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                     limparCamposFuncionario();
                     txtNome.requestFocusInWindow();
                 }catch(SQLException ex){

@@ -172,7 +172,7 @@ public class LoginView extends javax.swing.JFrame {
                     txtSenha.requestFocus();
                 }else{
        
-                    PrincipalView3 principal = new PrincipalView3();
+                    PrincipalView3 principal = new PrincipalView3(usuario);
                     this.dispose();
                     
                 }
@@ -211,7 +211,7 @@ public class LoginView extends javax.swing.JFrame {
                     txtSenha.requestFocus();
                 }else{
        
-                    PrincipalView3 principal = new PrincipalView3();
+                    PrincipalView3 principal = new PrincipalView3(usuario);
                     this.dispose();
                     
                 }

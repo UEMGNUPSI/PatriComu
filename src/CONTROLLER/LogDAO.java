@@ -15,11 +15,11 @@ import java.sql.SQLException;
         sql = "insert into log values(?,?,?,?,?,?)";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, 0);     
-        pst.setInt(2, log.getRequerente().getId());
-        pst.setInt(3, log.getUsuario().getId());
-        pst.setString(4, log.getData());
-        pst.setString(5, log.getHora());
-        pst.setString(6, log.getAcao());   
+        pst.setString(2, log.getData());
+        pst.setString(3, log.getHora());
+        pst.setString(4, log.getAcao());
+        pst.setString(5, log.getRequerente().getNome());
+        pst.setString(6, log.getUsuario().getNome());
         pst.execute();
         pst.close();
   
