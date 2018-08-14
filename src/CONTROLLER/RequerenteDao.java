@@ -203,4 +203,34 @@ public class RequerenteDao {
         pst.close();
         return requerente;
     }
+    
+    public RequerenteM Valida(int id, String Senha) throws SQLException{
+        PreparedStatement pst;
+        String sql;
+        RequerenteM requerente = null;        
+        sql = "select id, nome, endereco, cidade, telefone, email, DATE_FORMAT( Nascimento, \"%d/%m/%Y\" ) AS Nascimento,"
+                + "ra, rg, cpf, curso, bloqueio, senha from Requerente where id = ? and senha = ?";
+        pst = Conexao.getInstance().prepareStatement(sql);
+        pst.setInt(1, id);
+        pst.setString(2, Senha);
+        ResultSet rs = pst.executeQuery();
+        while(rs.next()){
+            requerente = new RequerenteM(
+                            rs.getInt("id"),
+                            rs.getString("nome"),
+                            rs.getString("endereco"),
+                            rs.getString("cidade"),
+                            rs.getString("telefone"),
+                            rs.getString("email"),
+                            rs.getString("nascimento"),
+                            rs.getString("ra"),
+                            rs.getString("rg"),
+                            rs.getString("cpf"),
+                            rs.getString("curso"),
+                            rs.getBoolean("bloqueio"),
+                            rs.getString("senha"));
+        }
+        pst.close();
+        return requerente;
+    }
 }

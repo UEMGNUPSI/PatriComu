@@ -54,7 +54,7 @@ public class PatrimonioDao {
         pst.setString(2, patrimonio.getNumero());
         pst.setString(3, patrimonio.getQualidade());
         pst.setBoolean(4, patrimonio.getOcupado());
-        pst.setInt(10,patrimonio.getId());
+        pst.setInt(5,patrimonio.getId());
         pst.execute();
         pst.close();
      }

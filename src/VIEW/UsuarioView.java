@@ -807,7 +807,6 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 usuariodao.salvar(usuario);
                 JOptionPane.showMessageDialog(null, "Gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 logdao.salvarLog(log);
-                JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 
             }catch(SQLException ex){
                 JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);               
@@ -890,7 +889,6 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 try{
                     usuariodao.excluir(usuario);
                     logdao.salvarLog(log);
-                    JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                     limparCamposFuncionario();
                     txtNome.requestFocusInWindow();
                 }catch(SQLException ex){

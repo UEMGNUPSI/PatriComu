@@ -27,9 +27,9 @@ public class PrincipalView3 extends javax.swing.JFrame {
         this.setVisible(true);
         this.setExtendedState(MAXIMIZED_BOTH);
         
-        URL url = this.getClass().getResource("Icones Icon/icone.png");
-        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
-        this.setIconImage(imagemTitulo);
+        //URL url = this.getClass().getResource("Icones Icon/icone.png");
+        //Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        //this.setIconImage(imagemTitulo);
         
         usu = usuario;
     }
@@ -210,7 +210,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmprestimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmprestimoMouseClicked
-        EmprestimoView Emprestimo = new EmprestimoView();
+        EmprestimoView Emprestimo = new EmprestimoView(usu);
         ((BasicInternalFrameUI)Emprestimo.getUI()).setNorthPane(null);
             pnlPrincipal.removeAll();
             pnlPrincipal.add(Emprestimo);

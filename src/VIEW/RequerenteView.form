@@ -86,7 +86,7 @@
                       <Component id="jLabel15" min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btnSair" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jTabbedPane1" min="-2" pref="691" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
               </Group>
@@ -843,7 +843,6 @@
                                       <Component id="RadioNao" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                                       <Component id="txtSenha" min="-2" pref="236" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>

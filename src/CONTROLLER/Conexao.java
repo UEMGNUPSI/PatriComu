@@ -18,10 +18,12 @@ public class Conexao implements Serializable {
 
     private Conexao() {
         
-        usuario = "patricom";        
-        senha = "Uemg2018";
+        
+        usuario = "server";senha = "server";url = "jdbc:mysql://127.0.0.1:3306/patrimonio_comunicacao?autoReconnect=true&useSSL=false"; 
+        
 
-        url = "jdbc:mysql://10.93.10.10:3306/patrimonio_comunicacao?autoReconnect=true&useSSL=false";    
+        
+        //usuario = "patricom";senha = "Uemg2018";url = "jdbc:mysql://10.93.10.10:3306/patrimonio_comunicacao?autoReconnect=true&useSSL=false";    
         
         try {
             Class.forName("com.mysql.jdbc.Driver");

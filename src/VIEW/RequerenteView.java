@@ -886,7 +886,6 @@ public class RequerenteView extends javax.swing.JInternalFrame {
                 requerentedao.salvar(requerente);
                 JOptionPane.showMessageDialog(null, "Gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);      
                 logdao.salvarLog(log);
-                JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             }catch(SQLException ex){
                 JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
             }
@@ -919,9 +918,7 @@ public class RequerenteView extends javax.swing.JInternalFrame {
             log.setAcao("Alterando Requerente: "+requerente.getNome());
         try{
             requerentedao.alterar(requerente);
-            JOptionPane.showMessageDialog(null, "Alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             logdao.salvarLog(log);
-                JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
         }

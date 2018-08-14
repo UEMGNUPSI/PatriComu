@@ -35,15 +35,13 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
     PatrimonioM patrimonio = new PatrimonioM();
     PatrimonioDao patrimoniodao = new PatrimonioDao();
     List<PatrimonioM> listaPatrimonio = new ArrayList<>();
-    
-    UsuarioM usuLog = new UsuarioM();
-    
+
     RequerenteM requerente = new RequerenteM();    
     
      //Log
     LogM log = new LogM();
     LogDAO logdao = new LogDAO();
-    //UsuarioM usulog = new UsuarioM();
+    UsuarioM usuLog = new UsuarioM();
     
     
     public PatrimonioView(UsuarioM usuarioLog) {
@@ -256,9 +254,9 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         txtNumero = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtQualidade = new javax.swing.JFormattedTextField();
         jLabel29 = new javax.swing.JLabel();
         txtStatus = new javax.swing.JLabel();
+        txtQualidade = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -378,7 +376,7 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,12 +423,6 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         jLabel18.setForeground(new java.awt.Color(32, 33, 41));
         jLabel18.setText("Qualidade:");
 
-        txtQualidade.setBackground(new java.awt.Color(245, 245, 245));
-        txtQualidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
-        txtQualidade.setForeground(new java.awt.Color(32, 33, 41));
-        txtQualidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        txtQualidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
         jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(32, 33, 41));
         jLabel29.setText("Status:");
@@ -438,6 +430,11 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         txtStatus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtStatus.setForeground(new java.awt.Color(32, 33, 41));
         txtStatus.setText("...");
+
+        txtQualidade.setBackground(new java.awt.Color(245, 245, 245));
+        txtQualidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtQualidade.setForeground(new java.awt.Color(32, 33, 41));
+        txtQualidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -452,14 +449,15 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtQualidade, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtQualidade, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtNumero, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -581,7 +579,7 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(560, 560, 560)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(529, Short.MAX_VALUE))
+                .addContainerGap(501, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -633,7 +631,6 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                 patrimoniodao.salvar(patrimonio);
                 JOptionPane.showMessageDialog(null, "Gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 logdao.salvarLog(log);
-                JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 
             }catch(SQLException ex){
                 JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
@@ -662,7 +659,7 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
             patrimoniodao.alterar(patrimonio);
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE); 
             logdao.salvarLog(log);
-             JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
         }
@@ -703,7 +700,6 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
                     patrimoniodao.excluir(patrimonio);
                     JOptionPane.showMessageDialog(null, "Patrimônio excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                     logdao.salvarLog(log);
-                    JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                     limparCampos();
                     txtNome.requestFocusInWindow();
                 }catch(SQLException ex){
@@ -805,7 +801,7 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNome;
     private javax.swing.JFormattedTextField txtNumero;
-    private javax.swing.JFormattedTextField txtQualidade;
+    private javax.swing.JTextField txtQualidade;
     private javax.swing.JLabel txtStatus;
     // End of variables declaration//GEN-END:variables
 }

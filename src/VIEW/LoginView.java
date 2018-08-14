@@ -46,9 +46,9 @@ public class LoginView extends javax.swing.JFrame {
         
         btnLogin.setUI(new BasicButtonUI());
 
-        URL url = this.getClass().getResource("Icones Icon/icone.png");
-        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
-        this.setIconImage(imagemTitulo);
+        //URL url = this.getClass().getResource("Icones Icon/icone.png");
+        //Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        //this.setIconImage(imagemTitulo);
     }
 
     @SuppressWarnings("unchecked")
@@ -182,11 +182,12 @@ public class LoginView extends javax.swing.JFrame {
        
                     PrincipalView3 principal = new PrincipalView3(usuario);
                     //Log
-                    log.setUsuario(usulog);
+                    log.setUsuario(usuario);
                     log.setRequerente(requerente);            
                     log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new java.sql.Date(System.currentTimeMillis())));
                     log.setHora(new SimpleDateFormat("HH:mm").format(new java.sql.Date(System.currentTimeMillis())));
-                    log.setAcao("Salvando Usuário: "+usuario.getNome());
+                    log.setAcao("Entrando com Usuário: "+usuario.getNome());
+                    logdao.salvarLog(log);
                     this.dispose();
                     
                 }
@@ -227,11 +228,12 @@ public class LoginView extends javax.swing.JFrame {
        
                     PrincipalView3 principal = new PrincipalView3(usuario);
                     //Log
-                    log.setUsuario(usulog);
+                    log.setUsuario(usuario);
                     log.setRequerente(requerente);            
                     log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new java.sql.Date(System.currentTimeMillis())));
                     log.setHora(new SimpleDateFormat("HH:mm").format(new java.sql.Date(System.currentTimeMillis())));
-                    log.setAcao("Salvando Usuário: "+usuario.getNome());
+                    log.setAcao("Entrando com Usuário: "+usuario.getNome());
+                    logdao.salvarLog(log);
                     this.dispose();
                     
                 }

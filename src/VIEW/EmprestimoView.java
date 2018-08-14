@@ -3,6 +3,7 @@ package VIEW;
 import CONTROLLER.EmprestimoDao;
 import CONTROLLER.UsuarioDao;
 import CONTROLLER.ItemEmprestimoDao;
+import CONTROLLER.LogDAO;
 import CONTROLLER.RequerenteDao;
 import CONTROLLER.PatrimonioDao;
 import MODEL.*;
@@ -54,6 +55,10 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     Document doc;
     String caminho;
     
+    LogM log = new LogM();
+    LogDAO logdao = new LogDAO();
+    UsuarioM usulog = new UsuarioM();
+    
     PatrimonioM patrimonio = new PatrimonioM();
     PatrimonioDao patrimoniodao = new PatrimonioDao();
     List<PatrimonioM> listaPatrimonio = new ArrayList<>();
@@ -84,7 +89,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }
     
     
-    public EmprestimoView() {
+    public EmprestimoView(UsuarioM usuarioLog) {
         initComponents();
         this.setVisible(true);
         atualizaTabelaEmprestimo();
@@ -129,6 +134,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnNovo.setUI(new BasicButtonUI());
         btnSalvar.setUI(new BasicButtonUI());
         btnVoltar.setUI(new BasicButtonUI());
+        usulog = usuarioLog;
     }
 
     //Atualiza todos os usuario para a tabela
@@ -546,6 +552,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     
     private void atualizaTabelaItemVendalimpa() {
         emprestimo = new EmprestimoM();
+        listaItemEmprestimo = null;
         String dados[][] = new String[listaItemEmprestimo.size()][4];
         int i = 0;
         for(ItenEmprestimoM iv : listaItemEmprestimo){
@@ -1879,6 +1886,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         if(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 4) == "Disponível"){
         txtIdProduto.setText(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 0).toString());
         txtproduto.setText(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 1).toString());
+        txtQualidade.setText(tblProdutoDialog.getValueAt(tblProdutoDialog.getSelectedRow(), 3).toString());
         txtQuantidadeTotal.setText("1");
         patrimonio = new PatrimonioM();
         patrimonio.setId(Integer.parseInt(txtIdProduto.getText()));
@@ -1914,38 +1922,58 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtFuncionarioMouseClicked
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-            emprestimo.setIdCliente(requerente);
-            emprestimo.setIdUsuario(usuario);
-            emprestimo.setProfessor(txtProfessor.getText());
-            emprestimo.setDescricao(txtDescricao.getText());
-            emprestimo.setHora(txtHora.getText());
-            emprestimo.setDataEmprestimo(txtDataAtual.getText());
-            emprestimo.setDataPrevista(txtDataPrev.getText());
-            try{
-                int auxback = emprestimodao.salvar(emprestimo,listaItemEmprestimo);
-                JOptionPane.showMessageDialog(null, "Gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-
+        RequerenteM RequerenteValida = new RequerenteM();
+        int confirma = JOptionPane.showConfirmDialog(null, "Use a senha do Aluno no próximo passo!");
+            if (confirma == 0) {
+                String SenhaMaster = JOptionPane.showInputDialog(null,"Digite sua senha: ");
+            try {
+                RequerenteValida = requerentedao.Valida(Integer.valueOf(txtIdRequerente.getText()), SenhaMaster);
+            } catch (SQLException ex) {
+                Logger.getLogger(EmprestimoView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    if(RequerenteValida == null){
+                        JOptionPane.showMessageDialog(null, "Senha incorreta!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        emprestimo.setIdCliente(requerente);
+                        emprestimo.setIdUsuario(usuario);
+                        emprestimo.setProfessor(txtProfessor.getText());
+                        emprestimo.setDescricao(txtDescricao.getText());
+                        emprestimo.setHora(txtHora.getText());
+                        emprestimo.setDataEmprestimo(txtDataAtual.getText());
+                        emprestimo.setDataPrevista(txtDataPrev.getText());
+                        int auxback = 0;
+                    try {
+                        auxback = emprestimodao.salvar(emprestimo,listaItemEmprestimo);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EmprestimoView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                        JOptionPane.showMessageDialog(null, "Gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             String nomediretorio = null;
             String nomepasta = "Comprovantes Emprestimo"; // Informa o nome da pasta que armazenará o relatório
             String separador = java.io.File.separator;
-            try 
-            {
+           
                 nomediretorio = caminho + separador + nomepasta;
                 
                     if(auxback == 1){
-                        gerarDocumento(requerente,usuario, emprestimo, listaItemEmprestimo);
+                            try {
+                                gerarDocumento(requerente,usuario, emprestimo, listaItemEmprestimo);
+                                 //Log
+                                log.setUsuario(usulog);
+                                log.setRequerente(requerente);            
+                                log.setData(new SimpleDateFormat("dd/MM/yyyy").format(new java.sql.Date(System.currentTimeMillis())));
+                                log.setHora(new SimpleDateFormat("HH:mm").format(new java.sql.Date(System.currentTimeMillis())));
+                                log.setAcao("Emprestimo Requerente: "+requerente.getNome());
+                                logdao.salvarLog(log);
+               
+                            } catch (IOException ex) {
+                                Logger.getLogger(EmprestimoView.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (DocumentException ex) {
+                                Logger.getLogger(EmprestimoView.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(EmprestimoView.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                     }
-                    else{
-                    JOptionPane.showMessageDialog( null, "Remova o espaço depois do seu ultimo nome do orientador!");
-                    }
-
-            } catch (Exception e) 
-            {
-                e.printStackTrace();
             }
- 
-            }catch(SQLException ex){
-                JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
             }
             atualizaTabelaEmprestimo();
             atualizaTabelaItemVendalimpa();
@@ -2225,8 +2253,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             nomeAlun.setSpacingAfter(5);
             
             Paragraph Data = new Paragraph("Data do Emprestimo: " + emprest.getDataEmprestimo() + "\t\tData da Entrega: " + emprest.getDataPrevista() + "\n\n",fnormal);
-            nomeAlun.setAlignment(Element.ALIGN_CENTER);
-            nomeAlun.setSpacingAfter(10);
+            Data.setAlignment(Element.ALIGN_CENTER);
+            Data.setSpacingAfter(10);
 
             
             doc.add(nomeUniversidade);
@@ -2287,10 +2315,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             doc.add(nomeAlun);
             doc.add(Data);
             doc.add(tabela);
-            
-            JOptionPane.showMessageDialog(null, "Comprovante Comprovado Com Sucesso");
+
         doc.close();
-        JOptionPane.showMessageDialog(null, caminho);
     }
 
     
