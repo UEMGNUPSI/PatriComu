@@ -205,7 +205,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             tblEmprestimo.updateUI();
     }
     
-    public void atualizaTabelaVendabusca(){
+    public void atualizaTabelaEmprestimobusca(){
         emprestimo = new EmprestimoM();
         
         Object dados[][] = new String[listaEmprestimo.size()][7];
@@ -1882,7 +1882,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Nenhuma venda encontrado!","", JOptionPane.WARNING_MESSAGE);
                     atualizaTabelaEmprestimo();
                 }else{
-                    atualizaTabelaVendabusca();
+                    atualizaTabelaEmprestimobusca();
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);

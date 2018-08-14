@@ -176,8 +176,8 @@ public class EmprestimoDao {
     public List<EmprestimoM> buscaNomeLista(int Nome) throws SQLException{
         List<EmprestimoM> listavenda = new ArrayList<>();
         //String name = "%"+Nome+"%";
-        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( dataemprestimo, \"%d/%m/%Y\" ) AS DataEmprestimo, DATE_FORMAT( datapresvista, \"%d/%m/%Y\" ) AS DataPrevista,"
-                + " DATE_FORMAT( datadevolucao, \"%d/%m/%Y\" ) AS DataDevolucao from Venda where idcliente like ?";
+        sql = "select id, IdRequerente, IdUsuario, Professor, Descricao, Hora, DATE_FORMAT( dataemprestimo, \"%d/%m/%Y\" ) AS DataEmprestimo, DATE_FORMAT( dataprevista, \"%d/%m/%Y\" ) AS DataPrevista,"
+                + " DATE_FORMAT( datadevolucao, \"%d/%m/%Y\" ) AS DataDevolucao from Emprestimo where IdRequerente like ?";
         pst = Conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, Nome);
         pst.execute();
@@ -198,53 +198,5 @@ public class EmprestimoDao {
         pst.close();
         return listavenda;
     }
-    
-    /*public List<EmprestimoM> buscaDataLista(String de, String ate) throws SQLException{
-        List<EmprestimoM> listavenda = new ArrayList<>();
-        //String name = "%"+Nome+"%";
-        sql = "select id, idcliente, idfuncionario, DATE_FORMAT( data, \"%d/%m/%Y\" ) AS data, totalvenda, formapagamento, excluido from Venda where Data >= STR_TO_DATE( ?, \"%d/%m/%Y\" ) and Data <= STR_TO_DATE( ?, \"%d/%m/%Y\" ) ";
-        pst = Conexao.getInstance().prepareStatement(sql);
-        pst.setString(1, de);
-        pst.setString(2, ate);
-        pst.execute();
-        ResultSet rs = pst.executeQuery();
-        while(rs.next()){
-            listavenda.add(new EmprestimoM(
-            rs.getInt("id"),
-            requerentedao.busca(rs.getInt("idcliente")),
-            usuariodao.busca(rs.getInt("idfuncionario")),
-                        rs.getString("data"),
-                        rs.getFloat("totalvenda"),
-                        rs.getString("formapagamento"),
-                        rs.getBoolean("excluido")));
-        }
-
-        pst.close();
-        return listavenda;
-    }*/
-    
-    /*public List<EmprestimoM> buscaClienteLista(String nome) throws SQLException{
-        List<EmprestimoM> listavenda = new ArrayList<>();
-        String name = "%"+nome+"%";
-        sql = "select venda.id, idcliente, idfuncionario, DATE_FORMAT( data, \"%d/%m/%Y\" ) AS data, totalvenda, formapagamento, excluido from Venda, Cliente where Cliente.id = Venda.IdCliente and Cliente.Nome like ?";
-        pst = Conexao.getInstance().prepareStatement(sql);
-        pst.setString(1, name);
-        pst.execute();
-        ResultSet rs = pst.executeQuery();
-        while(rs.next()){
-            listavenda.add(new EmprestimoM(
-            rs.getInt("id"),
-            requerentedao.busca(rs.getInt("idcliente")),
-            usuariodao.busca(rs.getInt("idfuncionario")),
-                        rs.getString("data"),
-                        rs.getFloat("totalvenda"),
-                        rs.getString("formapagamento"),
-                        rs.getBoolean("excluido")));
-        }
-
-        pst.close();
-        return listavenda;
-    }*/
-    
     
 }
