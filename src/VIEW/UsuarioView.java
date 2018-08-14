@@ -782,8 +782,8 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         log = new LogM();
         
         
-        if(txtNome.getText().isEmpty() || txtNascimento.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Preencha o Nome e Data de Nascimento!", "erro", JOptionPane.WARNING_MESSAGE);
+        if(txtNome.getText().isEmpty() || txtNascimento.getText().isEmpty() || txtLogin.getText().isEmpty() || txtsenha.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha o Nome, Login, Senha e Data de Nascimento!", "erro", JOptionPane.WARNING_MESSAGE);
             txtNome.requestFocusInWindow();       
         } else if(txtsenha.getText().equals(txtsenha2.getText())){
             if(txtId.getText().isEmpty()){
@@ -846,7 +846,6 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             usuariodao.alterar(usuario);
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);  
             logdao.salvarLog(log);
-                JOptionPane.showMessageDialog(null, "Log Gravado!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro: "+ex.getMessage(), "erro", JOptionPane.WARNING_MESSAGE);
         }
@@ -870,10 +869,17 @@ public class UsuarioView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-    prepararAlterar();
-    ativarCampos();
-    jTabbedPane1.setSelectedIndex(1);
-    txtNome.requestFocusInWindow(); 
+    String ConfirmarAlt = JOptionPane.showInputDialog(null,"Digite sua senha:");
+        String senhaAlt = txtsenha.getText();
+        if(ConfirmarAlt.equals(senhaAlt)){
+            prepararAlterar();
+        ativarCampos();
+        jTabbedPane1.setSelectedIndex(1);
+        txtNome.requestFocusInWindow(); 
+        }else{
+            JOptionPane.showMessageDialog(null, "Senha Não Confere.");
+        }
+    
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed

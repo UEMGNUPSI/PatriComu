@@ -133,7 +133,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         PatrimonioDialog.setSize(535, 500);
         UsuarioDialog.setSize(525, 490);
         ItensDialog.setSize(550, 500);
-        FinalizaDialog.setSize(860, 365);
+        FinalizaDialog.setSize(858, 381);
         btnAddItemVendas.setUI(new BasicButtonUI());
         btnCancelar.setUI(new BasicButtonUI());
         btnRemoverItemVenda.setUI(new BasicButtonUI());
@@ -263,14 +263,18 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         
         String dados[][] = new String[listaRequerente.size()][4];
             int i = 0;
-            for (RequerenteM cliente : listaRequerente) {
+             for (RequerenteM cliente : listaRequerente) {
                 dados[i][0] = String.valueOf(cliente.getId());
                 dados[i][1] = cliente.getNome();
                 dados[i][2] = cliente.getRA();
-                dados[i][3] = cliente.getCurso();
+                if(cliente.getBloqueio() == true){
+                    dados[i][3] = "Bloqueado";
+                }else{
+                    dados[i][3] = "Permitido";
+                }
                 i++;
             }
-            String tituloColuna[] = {"ID", "Nome", "RA", "Curso"};
+            String tituloColuna[] = {"ID", "Nome", "RA", "Permissão"};
             DefaultTableModel tabelaCliente = new DefaultTableModel();
             tabelaCliente.setDataVector(dados, tituloColuna);
             tblClienteDialog.setModel(new DefaultTableModel(dados, tituloColuna) {
@@ -311,10 +315,14 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 dados[i][0] = String.valueOf(cliente.getId());
                 dados[i][1] = cliente.getNome();
                 dados[i][2] = cliente.getRA();
-                dados[i][3] = cliente.getCurso();
+                if(cliente.getBloqueio() == true){
+                    dados[i][3] = "Bloqueado";
+                }else{
+                    dados[i][3] = "Permitido";
+                }
                 i++;
             }
-            String tituloColuna[] = {"ID", "Nome", "RA", "Curso"};
+            String tituloColuna[] = {"ID", "Nome", "RA", "Permissão"};
             DefaultTableModel tabelaCliente = new DefaultTableModel();
             tabelaCliente.setDataVector(dados, tituloColuna);
             tblClienteDialog.setModel(new DefaultTableModel(dados, tituloColuna) {
@@ -562,7 +570,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     
     private void atualizaTabelaItemVendalimpa() {
         emprestimo = new EmprestimoM();
-        listaItemEmprestimo = null;
+        List<ItenEmprestimoM> listaItemEmprestimo = new ArrayList<>();
         String dados[][] = new String[listaItemEmprestimo.size()][4];
         int i = 0;
         for(ItenEmprestimoM iv : listaItemEmprestimo){
@@ -1635,6 +1643,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnAddItemVendas.setForeground(new java.awt.Color(32, 33, 41));
         btnAddItemVendas.setText("+ ADICIONAR ");
         btnAddItemVendas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        btnAddItemVendas.setEnabled(false);
         btnAddItemVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddItemVendasActionPerformed(evt);
@@ -1646,6 +1655,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnRemoverItemVenda.setForeground(new java.awt.Color(32, 33, 41));
         btnRemoverItemVenda.setText("- REMOVER");
         btnRemoverItemVenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        btnRemoverItemVenda.setEnabled(false);
         btnRemoverItemVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoverItemVendaActionPerformed(evt);
@@ -1656,6 +1666,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         txtproduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtproduto.setForeground(new java.awt.Color(32, 33, 41));
         txtproduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
+        txtproduto.setEnabled(false);
         txtproduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtprodutoMouseClicked(evt);
@@ -1733,6 +1744,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnFinalizar.setForeground(new java.awt.Color(32, 33, 41));
         btnFinalizar.setText("SALVAR");
         btnFinalizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        btnFinalizar.setEnabled(false);
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizarActionPerformed(evt);
@@ -1757,6 +1769,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnCancelar.setForeground(new java.awt.Color(32, 33, 41));
         btnCancelar.setText("CANCELAR");
         btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        btnCancelar.setEnabled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -1882,11 +1895,17 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         prepararSalvareCancelar();
         desativarCampos();
         atualizaTabelaItemVendalimpa();
+        btnAddItemVendas.setEnabled(false);
+        btnRemoverItemVenda.setEnabled(false);
+        txtproduto.setEnabled(false);
         listaItemEmprestimo = new ArrayList<>();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         listaItemEmprestimo = new ArrayList<>();
+        btnAddItemVendas.setEnabled(true);
+        btnRemoverItemVenda.setEnabled(true);
+        txtproduto.setEnabled(true);
         limparCampos();
         prepararNovo();
         ativarCampos();
@@ -1947,11 +1966,16 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtClienteMouseClicked
 
     private void tblClienteDialogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteDialogMouseClicked
+        if(tblClienteDialog.getValueAt(tblClienteDialog.getSelectedRow(), 3) == "Bloqueado"){
+            JOptionPane.showMessageDialog(null, "O aluno Não pode pegar o patrimônio!");
+        }
+        else{
         txtIdRequerente.setText(tblClienteDialog.getValueAt(tblClienteDialog.getSelectedRow(), 0).toString());
         txtCliente.setText(tblClienteDialog.getValueAt(tblClienteDialog.getSelectedRow(), 1).toString());
         requerente.setId(Integer.valueOf(txtIdRequerente.getText()));
         requerente.setNome(txtCliente.getText());
         RequerenteDialog.dispose();
+        }
     }//GEN-LAST:event_tblClienteDialogMouseClicked
 
     private void txtFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFuncionarioMouseClicked
@@ -1963,6 +1987,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         RequerenteM RequerenteValida = new RequerenteM();
+        if(txtFuncionario.getText().isEmpty() || txtCliente.getText().isEmpty() || txtProfessor.getText().isEmpty() || txtDescricao.getText().isEmpty() || txtDataPrev.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Existem campos vazios!");
+        }else{
         int confirma = JOptionPane.showConfirmDialog(null, "Use a senha do Aluno no próximo passo!");
             if (confirma == 0) {
                 String SenhaMaster = JOptionPane.showInputDialog(null,"Digite sua senha: ");
@@ -2015,6 +2042,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                     }
             }
             }
+        }
             atualizaTabelaEmprestimo();
             atualizaTabelaItemVendalimpa();
             prepararSalvareCancelar();
@@ -2276,7 +2304,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         Font fnormal = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL);
 
             
-            Paragraph nomeUniversidade = new Paragraph("Universidade do Estado de Minas Gerais",f12);
+            Paragraph nomeUniversidade = new Paragraph("Universidade do Estado de Minas Gerais - Unidade Frutal",f12);
             nomeUniversidade.setAlignment(Element.ALIGN_CENTER);
             nomeUniversidade.setSpacingAfter(10);
             
@@ -2346,7 +2374,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             }
             doc.add(tabela);
             
-            Paragraph espacamento = new Paragraph("\n\n\n\n\n");
+            Paragraph espacamento = new Paragraph("\n\n\n\n\n\n\n\n\n");
             doc.add(espacamento);
             
             doc.add(nomeUniversidade);

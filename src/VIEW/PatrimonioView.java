@@ -54,7 +54,9 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         tblProduto.getTableHeader().setUI(new WindowsTableHeaderUI());
         tblProduto.getTableHeader().setReorderingAllowed(false);
         txtId.setVisible(false);
-
+        jLabel29.setVisible(false);
+        txtStatus.setVisible(false);
+        
         txtNome.setDocument(new LimiteDigitos(60));
         txtNumero.setDocument(new LimiteDigitos(20));
         txtQualidade.setDocument(new LimiteDigitos(20));

@@ -809,7 +809,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Endere&#xe7;o">
+                        <TitledBorder title="Dados Complementares">
                           <Font PropertyName="font" name="Segoe UI" size="18" style="0"/>
                           <Color PropertyName="color" blue="29" green="21" red="20" type="rgb"/>
                         </TitledBorder>
@@ -826,7 +826,6 @@
                                   <Component id="txtEndereco" pref="511" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -841,6 +840,7 @@
                                               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                                               <Component id="txtSenha" min="-2" pref="236" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="jLabel2" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -896,7 +896,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="29" green="21" red="20" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
+                        <Property name="text" type="java.lang.String" value="Endere&#xe7;o Completo:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel5">
