@@ -96,8 +96,15 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         atualizaTabelaEmprestimo();
         atualizaTabelaItemEmprestimo();
         jTabbedPane1.setUI(new BasicTabbedPaneUI());
+        
+        // Formatando o cabeçalho da tabela.
         tblEmprestimo.getTableHeader().setFont(new java.awt.Font("Segoe UI", 0, 18));
         tblItenVenda.getTableHeader().setFont(new java.awt.Font("Segoe UI", 0, 18));
+        tblItensDialog.getTableHeader().setFont(new java.awt.Font("Segoe UI", 0, 18));
+        tblFuncionarioDialog.getTableHeader().setFont(new java.awt.Font("Segoe UI", 0, 18));
+        tblProdutoDialog.getTableHeader().setFont(new java.awt.Font("Segoe UI", 0, 18));
+        tblClienteDialog.getTableHeader().setFont(new java.awt.Font("Segoe UI", 0, 18));
+        
         tblClienteDialog.getTableHeader().setUI(new WindowsTableHeaderUI());
         tblClienteDialog.getTableHeader().setReorderingAllowed(false);
         tblFuncionarioDialog.getTableHeader().setUI(new WindowsTableHeaderUI());
@@ -788,6 +795,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         RequerenteDialog.setResizable(false);
 
         jPanel34.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel34.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
 
         btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Fechar.png"))); // NOI18N
         btnSair1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -802,13 +810,14 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel68.setFont(new java.awt.Font("Champagne & Limousines", 0, 14)); // NOI18N
-        jLabel68.setForeground(new java.awt.Color(26, 26, 26));
+        jLabel68.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel68.setForeground(new java.awt.Color(32, 33, 41));
         jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel68.setText("Buscar Requerente");
 
         txtBuscaClienteDialog.setBackground(new java.awt.Color(253, 253, 254));
-        txtBuscaClienteDialog.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtBuscaClienteDialog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtBuscaClienteDialog.setForeground(new java.awt.Color(32, 33, 41));
         txtBuscaClienteDialog.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBuscaClienteDialog.setToolTipText("Limite em Reais para comprar fiado na loja.");
         txtBuscaClienteDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(104, 129, 164)));
@@ -823,7 +832,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         tblClienteDialog.setBackground(new java.awt.Color(248, 248, 248));
         tblClienteDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(210, 210, 210)));
-        tblClienteDialog.setFont(new java.awt.Font("Champagne & Limousines", 1, 12)); // NOI18N
+        tblClienteDialog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblClienteDialog.setForeground(new java.awt.Color(32, 33, 41));
         tblClienteDialog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -844,21 +854,19 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel34Layout.setHorizontalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
-                .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel34Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jSeparator5))
-                    .addGroup(jPanel34Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel34Layout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscaClienteDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSair1))
+                .addComponent(btnSair1)
+                .addGap(7, 7, 7))
+            .addGroup(jPanel34Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator5)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -867,14 +875,16 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel34Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnSair1))
+                    .addGroup(jPanel34Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnSair1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtBuscaClienteDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout RequerenteDialogLayout = new javax.swing.GroupLayout(RequerenteDialog.getContentPane());
@@ -894,14 +904,16 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         PatrimonioDialog.setResizable(false);
 
         jPanel35.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
 
-        jLabel69.setFont(new java.awt.Font("Champagne & Limousines", 0, 14)); // NOI18N
-        jLabel69.setForeground(new java.awt.Color(26, 26, 26));
+        jLabel69.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel69.setForeground(new java.awt.Color(32, 33, 41));
         jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel69.setText("Buscar Patrimônio");
 
         txtBuscaProdutoDialog.setBackground(new java.awt.Color(253, 253, 254));
-        txtBuscaProdutoDialog.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtBuscaProdutoDialog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtBuscaProdutoDialog.setForeground(new java.awt.Color(32, 33, 41));
         txtBuscaProdutoDialog.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBuscaProdutoDialog.setToolTipText("Limite em Reais para comprar fiado na loja.");
         txtBuscaProdutoDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(104, 129, 164)));
@@ -914,7 +926,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jSeparator6.setBackground(new java.awt.Color(249, 249, 249));
         jSeparator6.setForeground(new java.awt.Color(104, 129, 164));
 
-        tblProdutoDialog.setFont(new java.awt.Font("Champagne & Limousines", 0, 11)); // NOI18N
+        tblProdutoDialog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblProdutoDialog.setForeground(new java.awt.Color(32, 33, 41));
         tblProdutoDialog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -948,40 +961,37 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel35Layout.setHorizontalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel35Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator6)
-                            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)))
-                    .addGroup(jPanel35Layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBuscaProdutoDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                    .addComponent(jSeparator6))
                 .addContainerGap())
-            .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel35Layout.createSequentialGroup()
-                    .addGap(0, 546, Short.MAX_VALUE)
-                    .addComponent(btnSair2)))
+            .addGroup(jPanel35Layout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscaProdutoDialog, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSair2)
+                .addGap(7, 7, 7))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel35Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel35Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnSair2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtBuscaProdutoDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel35Layout.createSequentialGroup()
-                    .addComponent(btnSair2)
-                    .addGap(0, 467, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout PatrimonioDialogLayout = new javax.swing.GroupLayout(PatrimonioDialog.getContentPane());
@@ -1000,15 +1010,18 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         FinalizaDialog.setResizable(false);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Iniciais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Champagne & Limousines", 0, 14), new java.awt.Color(30, 30, 30))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Iniciais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(32, 33, 41))); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(32, 33, 41));
         jLabel9.setText("Administrador(a):");
 
         txtFuncionario.setBackground(new java.awt.Color(245, 245, 245));
-        txtFuncionario.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtFuncionario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtFuncionario.setForeground(new java.awt.Color(32, 33, 41));
         txtFuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
         txtFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1045,13 +1058,15 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Requerente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Champagne & Limousines", 0, 14), new java.awt.Color(30, 30, 30))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Requerente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(32, 33, 41))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(32, 33, 41));
         jLabel1.setText("Aluno(a):");
 
         txtCliente.setBackground(new java.awt.Color(245, 245, 245));
-        txtCliente.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCliente.setForeground(new java.awt.Color(32, 33, 41));
         txtCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
         txtCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1086,8 +1101,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         );
 
         btnSalvar.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalvar.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnSalvar.setText("Finalizar");
+        btnSalvar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(32, 33, 41));
+        btnSalvar.setText("FINALIZAR");
         btnSalvar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1096,8 +1112,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         });
 
         btnVoltar.setBackground(new java.awt.Color(255, 255, 255));
-        btnVoltar.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnVoltar.setText("Voltar");
+        btnVoltar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(32, 33, 41));
+        btnVoltar.setText("VOLTAR");
         btnVoltar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1106,24 +1123,29 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         });
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Champagne & Limousines", 0, 14), new java.awt.Color(30, 30, 30))); // NOI18N
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(32, 33, 41))); // NOI18N
+        jPanel9.setForeground(new java.awt.Color(32, 33, 41));
 
         txtProfessor.setBackground(new java.awt.Color(245, 245, 245));
-        txtProfessor.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtProfessor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtProfessor.setForeground(new java.awt.Color(32, 33, 41));
         txtProfessor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
 
-        jLabel11.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(32, 33, 41));
         jLabel11.setText("Professor(a):");
 
-        jLabel12.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(32, 33, 41));
         jLabel12.setText("Justificativa do Emprestimo:");
 
         txtDescricao.setBackground(new java.awt.Color(245, 245, 245));
         txtDescricao.setColumns(20);
-        txtDescricao.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtDescricao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtDescricao.setForeground(new java.awt.Color(32, 33, 41));
         txtDescricao.setLineWrap(true);
         txtDescricao.setRows(5);
-        txtDescricao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
+        txtDescricao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(247, 247, 247)));
         jScrollPane1.setViewportView(txtDescricao);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -1135,8 +1157,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
         jPanel9Layout.setVerticalGroup(
@@ -1155,30 +1177,37 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         txtDataAtual.setBackground(new java.awt.Color(245, 245, 245));
         txtDataAtual.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
+        txtDataAtual.setForeground(new java.awt.Color(32, 33, 41));
         txtDataAtual.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        txtDataAtual.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtDataAtual.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDataAtual.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Data:");
 
-        jLabel4.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Entrega Prevista:");
 
         txtHora.setBackground(new java.awt.Color(245, 245, 245));
         txtHora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
+        txtHora.setForeground(new java.awt.Color(32, 33, 41));
         txtHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        txtHora.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtHora.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtHora.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jLabel10.setFont(new java.awt.Font("Champagne & Limousines", 0, 15)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setText("Hora:");
 
         txtDataPrev.setBackground(new java.awt.Color(245, 245, 245));
         txtDataPrev.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
+        txtDataPrev.setForeground(new java.awt.Color(32, 33, 41));
         try {
             txtDataPrev.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtDataPrev.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDataPrev.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1186,8 +1215,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(txtDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1198,18 +1230,18 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtDataPrev))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDataPrev))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1221,11 +1253,11 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -1256,14 +1288,16 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         UsuarioDialog.setResizable(false);
 
         jPanel36.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel36.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
 
-        jLabel70.setFont(new java.awt.Font("Champagne & Limousines", 0, 14)); // NOI18N
-        jLabel70.setForeground(new java.awt.Color(26, 26, 26));
+        jLabel70.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel70.setForeground(new java.awt.Color(32, 33, 41));
         jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel70.setText("Buscar Funcionario");
 
         txtBuscaFuncionarioDialog.setBackground(new java.awt.Color(253, 253, 254));
-        txtBuscaFuncionarioDialog.setFont(new java.awt.Font("Champagne & Limousines", 0, 18)); // NOI18N
+        txtBuscaFuncionarioDialog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtBuscaFuncionarioDialog.setForeground(new java.awt.Color(32, 33, 41));
         txtBuscaFuncionarioDialog.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBuscaFuncionarioDialog.setToolTipText("Limite em Reais para comprar fiado na loja.");
         txtBuscaFuncionarioDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(104, 129, 164)));
@@ -1278,7 +1312,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         tblFuncionarioDialog.setBackground(new java.awt.Color(248, 248, 248));
         tblFuncionarioDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(210, 210, 210)));
-        tblFuncionarioDialog.setFont(new java.awt.Font("Champagne & Limousines", 1, 12)); // NOI18N
+        tblFuncionarioDialog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblFuncionarioDialog.setForeground(new java.awt.Color(32, 33, 41));
         tblFuncionarioDialog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1312,41 +1347,37 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel36Layout.setHorizontalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel36Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jSeparator7))
-                    .addGroup(jPanel36Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel36Layout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtBuscaFuncionarioDialog)
                     .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
-                    .addGap(0, 546, Short.MAX_VALUE)
-                    .addComponent(btnSair3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSair3)
+                .addGap(7, 7, 7))
+            .addGroup(jPanel36Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator7)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel36Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel36Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnSair3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtBuscaFuncionarioDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
-            .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel36Layout.createSequentialGroup()
-                    .addComponent(btnSair3)
-                    .addGap(0, 467, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout UsuarioDialogLayout = new javax.swing.GroupLayout(UsuarioDialog.getContentPane());
@@ -1366,11 +1397,13 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         ItensDialog.setResizable(false);
 
         jPanel37.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
 
         jSeparator8.setBackground(new java.awt.Color(249, 249, 249));
         jSeparator8.setForeground(new java.awt.Color(104, 129, 164));
 
-        tblItensDialog.setFont(new java.awt.Font("Champagne & Limousines", 0, 11)); // NOI18N
+        tblItensDialog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblItensDialog.setForeground(new java.awt.Color(32, 33, 41));
         tblItensDialog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1390,8 +1423,9 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jSeparator9.setForeground(new java.awt.Color(104, 129, 164));
 
         btnDevolver.setBackground(new java.awt.Color(255, 255, 255));
-        btnDevolver.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
-        btnDevolver.setText("Devolver Item");
+        btnDevolver.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnDevolver.setForeground(new java.awt.Color(32, 33, 41));
+        btnDevolver.setText("DEVOLVER");
         btnDevolver.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         btnDevolver.setEnabled(false);
         btnDevolver.addActionListener(new java.awt.event.ActionListener() {
@@ -1417,35 +1451,36 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel37.setLayout(jPanel37Layout);
         jPanel37Layout.setHorizontalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnSair4))
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel37Layout.createSequentialGroup()
-                        .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addComponent(jSeparator8)
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel37Layout.createSequentialGroup()
                         .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtIdItemDevolu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(txtIdEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(16, 16, 16)
+                        .addComponent(txtIdEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator9)
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+                    .addComponent(jSeparator8))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSair4)
+                .addGap(7, 7, 7))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
                 .addComponent(btnSair4)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtIdEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtIdItemDevolu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1478,6 +1513,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setForeground(new java.awt.Color(32, 33, 41));
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -1618,6 +1654,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
 
         txtproduto.setBackground(new java.awt.Color(245, 245, 245));
         txtproduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtproduto.setForeground(new java.awt.Color(32, 33, 41));
         txtproduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 225, 225)));
         txtproduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1731,7 +1768,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(339, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
