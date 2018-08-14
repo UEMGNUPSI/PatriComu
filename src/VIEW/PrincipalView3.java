@@ -26,11 +26,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setExtendedState(MAXIMIZED_BOTH);
-        
-        //URL url = this.getClass().getResource("Icones Icon/icone.png");
-        //Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
-        //this.setIconImage(imagemTitulo);
-        
+
         usu = usuario;
     }
 

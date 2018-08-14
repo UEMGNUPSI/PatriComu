@@ -128,8 +128,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Patrimonio_Comunicacao`.`Log` (
   `Id` INT NOT NULL AUTO_INCREMENT,
-  `Data` DATE NULL,
-  `Hora` TIME NULL,
+  `Data` VARCHAR(60) NULL,
+  `Hora` VARCHAR(60) NULL,
   `Acao` VARCHAR(60) NULL,
   `Requerente` VARCHAR(60) NULL,
   `Usuario` VARCHAR(60) NULL,
