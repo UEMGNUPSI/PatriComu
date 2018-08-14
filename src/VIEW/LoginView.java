@@ -41,8 +41,8 @@ public class LoginView extends javax.swing.JFrame {
         lblErro.setVisible(false);
         txtUser.setDocument(new LimiteDigitos(20));
         txtSenha.setDocument(new LimiteDigitos(20));
-        txtUser.setText("root");
-        txtSenha.setText("root");
+        //txtUser.setText("root");
+        //txtSenha.setText("root");
         
         btnLogin.setUI(new BasicButtonUI());
 
