@@ -42,6 +42,7 @@ import java.text.ParseException;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.MaskFormatter;
+import util.LimiteDigitos;
 /**
  *
  * @author Danilo-NOTE
@@ -135,6 +136,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
         btnSalvar.setUI(new BasicButtonUI());
         btnVoltar.setUI(new BasicButtonUI());
         usulog = usuarioLog;
+        txtDescricao.setDocument(new LimiteDigitos(70));
+        txtProfessor.setDocument(new LimiteDigitos(200));
     }
 
     //Atualiza todos os usuario para a tabela

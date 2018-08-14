@@ -55,8 +55,9 @@ public class PatrimonioView extends javax.swing.JInternalFrame {
         tblProduto.getTableHeader().setReorderingAllowed(false);
         txtId.setVisible(false);
 
-        //txtNome.setDocument(new LimiteDigitos(50));
-        //txtCodigo.setDocument(new LimiteDigitos(45));
+        txtNome.setDocument(new LimiteDigitos(60));
+        txtNumero.setDocument(new LimiteDigitos(20));
+        txtQualidade.setDocument(new LimiteDigitos(20));
         btnAlterar.setUI(new BasicButtonUI());
         btnCancelar.setUI(new BasicButtonUI());
         btnExcluir.setUI(new BasicButtonUI());

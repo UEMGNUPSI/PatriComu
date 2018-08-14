@@ -54,11 +54,15 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         prepararSalvareCancelar();
         desativarCampos();
         
-        /*txtNome.setDocument(new LimiteDigitos(45));
+        txtNome.setDocument(new LimiteDigitos(60));
+        txtCpf.setDocument(new LimiteDigitos(20));
         txtRg.setDocument(new LimiteDigitos(20));
-        txtLogin.setDocument(new LimiteDigitos(45));
-        txtsenha.setDocument(new LimiteDigitos(45));
-        txtsenha2.setDocument(new LimiteDigitos(45));*/
+        txtTelefone.setDocument(new LimiteDigitos(20));
+        txtCelular1.setDocument(new LimiteDigitos(20));
+        txtLogin.setDocument(new LimiteDigitos(20));
+        txtsenha.setDocument(new LimiteDigitos(20));
+        txtsenha2.setDocument(new LimiteDigitos(20));
+        
         btnAlterar.setUI(new BasicButtonUI());
         btnCancelar.setUI(new BasicButtonUI());
         btnExcluir.setUI(new BasicButtonUI());

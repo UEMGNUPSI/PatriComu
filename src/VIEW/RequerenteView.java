@@ -54,12 +54,17 @@ public class RequerenteView extends javax.swing.JInternalFrame {
         prepararSalvareCancelar();
         desativarCampos();
         
-        /*txtNome.setDocument(new LimiteDigitos(50));
-        txtRg.setDocument(new LimiteDigitos(20));
-        txtEndereco.setDocument(new LimiteDigitos(50));
+        txtNome.setDocument(new LimiteDigitos(60));
+        txtEndereco.setDocument(new LimiteDigitos(60));
+        txtCidade.setDocument(new LimiteDigitos(45));
+        txtTelefone.setDocument(new LimiteDigitos(20));
+        txtEmail.setDocument(new LimiteDigitos(45));
         txtRA.setDocument(new LimiteDigitos(10));
-        txtEmail.setDocument(new LimiteDigitos(40));
-        txtCidade.setDocument(new LimiteDigitos(45));*/
+        txtRg.setDocument(new LimiteDigitos(20));
+        txtCpf.setDocument(new LimiteDigitos(20));
+        txtCurso.setDocument(new LimiteDigitos(45));
+        txtSenha.setDocument(new LimiteDigitos(20));
+        
         btnAlterar.setUI(new BasicButtonUI());
         btnCancelar.setUI(new BasicButtonUI());
         btnExcluir.setUI(new BasicButtonUI());

@@ -39,8 +39,8 @@ public class LoginView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         lblErro.setVisible(false);
-        txtUser.setDocument(new LimiteDigitos(45));
-        txtSenha.setDocument(new LimiteDigitos(45));
+        txtUser.setDocument(new LimiteDigitos(20));
+        txtSenha.setDocument(new LimiteDigitos(20));
         txtUser.setText("root");
         txtSenha.setText("root");
         
