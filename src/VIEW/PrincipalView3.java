@@ -77,7 +77,7 @@ public class PrincipalView3 extends javax.swing.JFrame {
         btnAdministrador.setFont(new java.awt.Font("Champagne & Limousines", 1, 18)); // NOI18N
         btnAdministrador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Icones Inativos/Funcionario.png"))); // NOI18N
-        btnAdministrador.setText("Administradores");
+        btnAdministrador.setText("Servidores");
         btnAdministrador.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAdministrador.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAdministrador.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,15 +152,15 @@ public class PrincipalView3 extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(147, Short.MAX_VALUE)
+                .addContainerGap(114, Short.MAX_VALUE)
                 .addComponent(btnAluno)
+                .addGap(15, 15, 15)
+                .addComponent(btnEmprestimo)
                 .addGap(15, 15, 15)
                 .addComponent(btnPatrimonio)
                 .addGap(15, 15, 15)
                 .addComponent(btnAdministrador)
-                .addGap(15, 15, 15)
-                .addComponent(btnEmprestimo)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

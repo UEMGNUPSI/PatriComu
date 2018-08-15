@@ -2031,7 +2031,13 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                                 log.setHora(new SimpleDateFormat("HH:mm").format(new java.sql.Date(System.currentTimeMillis())));
                                 log.setAcao("Emprestimo Requerente: "+requerente.getNome());
                                 logdao.salvarLog(log);
-               
+                                    
+                                atualizaTabelaEmprestimo();
+                                atualizaTabelaItemVendalimpa();
+                                prepararSalvareCancelar();
+                                desativarCampos();
+                                limparCampos();
+                                FinalizaDialog.dispose();
                             } catch (IOException ex) {
                                 Logger.getLogger(EmprestimoView.class.getName()).log(Level.SEVERE, null, ex);
                             } catch (DocumentException ex) {
@@ -2043,12 +2049,6 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             }
             }
         }
-            atualizaTabelaEmprestimo();
-            atualizaTabelaItemVendalimpa();
-            prepararSalvareCancelar();
-            desativarCampos();
-            limparCampos();
-            FinalizaDialog.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtBuscaFuncionarioDialogCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtBuscaFuncionarioDialogCaretUpdate
@@ -2320,7 +2320,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             nomeAlun.setAlignment(Element.ALIGN_JUSTIFIED);
             nomeAlun.setSpacingAfter(5);
             
-            Paragraph Data = new Paragraph("Data do Emprestimo: " + emprest.getDataEmprestimo() + "\t\tData da Entrega: " + emprest.getDataPrevista() + "\n\n",fnormal);
+            Paragraph Data = new Paragraph("Data do Emprestimo: " + emprest.getDataEmprestimo() + "      Data da Entrega: " + emprest.getDataPrevista() + "\n",fnormal);
             Data.setAlignment(Element.ALIGN_CENTER);
             Data.setSpacingAfter(10);
 
@@ -2374,7 +2374,21 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             }
             doc.add(tabela);
             
-            Paragraph espacamento = new Paragraph("\n\n\n\n\n\n\n\n\n");
+            
+            Paragraph Linha1 = new Paragraph("\n\n\n_____________________________________              "+"              _____________________________________" ,f10);
+            Linha1.setAlignment(Element.ALIGN_JUSTIFIED);
+            Linha1.setSpacingAfter(5);
+            
+            Paragraph Linha2 = new Paragraph("\nAtendimento: " + usua.getNome() + "                                         Aluno(a): " + requer.getNome()  ,f10);
+            Linha2.setAlignment(Element.ALIGN_JUSTIFIED);
+            Linha2.setSpacingAfter(5);
+            
+            doc.add(Linha1);
+            doc.add(Linha2);
+            
+            
+            
+            Paragraph espacamento = new Paragraph("\n\n\n\n\n\n\n");
             doc.add(espacamento);
             
             doc.add(nomeUniversidade);
@@ -2383,6 +2397,8 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
             doc.add(nomeAlun);
             doc.add(Data);
             doc.add(tabela);
+            doc.add(Linha1);
+            doc.add(Linha2);
 
         doc.close();
     }
