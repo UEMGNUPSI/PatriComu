@@ -451,7 +451,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 }
                 i++;
             }
-            String tituloColuna[] = {"ID", "Nome", "Patrimônio", "Qualidade", "Ocupado"};
+            String tituloColuna[] = {"ID", "Nome", "Número", "Qualidade", "Ocupado"};
             DefaultTableModel tabelaproduto = new DefaultTableModel();
             tabelaproduto.setDataVector(dados, tituloColuna);
             tblProdutoDialog.setModel(new DefaultTableModel(dados, tituloColuna) {
@@ -501,7 +501,7 @@ public class EmprestimoView extends javax.swing.JInternalFrame {
                 }
                 i++;
             }
-            String tituloColuna[] = {"ID", "Nome", "Patrimônio", "Qualidade", "Ocupado"};
+            String tituloColuna[] = {"ID", "Nome", "Número", "Qualidade", "Ocupado"};
             DefaultTableModel tabelaproduto = new DefaultTableModel();
             tabelaproduto.setDataVector(dados, tituloColuna);
             tblProdutoDialog.setModel(new DefaultTableModel(dados, tituloColuna) {
