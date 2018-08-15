@@ -126,8 +126,8 @@ public class LoginView extends javax.swing.JFrame {
         lblversão.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblversão.setForeground(new java.awt.Color(32, 33, 41));
         lblversão.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblversão.setText("Patrimônio Comunicação 0.8 Beta");
-        jPanel1.add(lblversão, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, -1));
+        lblversão.setText("Patrimônio Comunicação 1.0 Beta");
+        jPanel1.add(lblversão, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 320, -1));
 
         lblErro.setFont(new java.awt.Font("Segoe UI Light", 1, 22)); // NOI18N
         lblErro.setForeground(new java.awt.Color(199, 65, 65));
@@ -152,7 +152,7 @@ public class LoginView extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(88, 145, 193));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Patrimonio Comunicação");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1370, 140));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1360, 140));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
 

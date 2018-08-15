@@ -176,11 +176,11 @@
               <Color blue="29" green="21" red="20" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Patrim&#xf4;nio Comunica&#xe7;&#xe3;o 0.8 Beta"/>
+            <Property name="text" type="java.lang.String" value="Patrim&#xf4;nio Comunica&#xe7;&#xe3;o 1.0 Beta"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="10" width="290" height="-1"/>
+              <AbsoluteConstraints x="10" y="10" width="320" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -230,7 +230,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="60" width="1370" height="140"/>
+              <AbsoluteConstraints x="0" y="60" width="1360" height="140"/>
             </Constraint>
           </Constraints>
         </Component>
